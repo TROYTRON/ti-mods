@@ -22,6 +22,7 @@ TO DO
 ## Modding Wishlist
 - Ability for code changes to somehow be retained or easily redone across new builds.
 - Ability to specify new AssetBundles to be loaded into the game (as opposed to having to repackage existing ones).
+- Ability to modify specific classes instead of the Assembly-CSharp.dll as a whole. This would mean that your mod would be easily compatible with other mods or new builds that do not make changes to or overly rely on the classes your mod modifies.
 
 ## Future Investigation
 - Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
