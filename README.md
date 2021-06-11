@@ -2,8 +2,10 @@
 
 ## Basic Knowledge
 - Terra Invicta is currently (as of build 0.1.11) built with Unity 2020.
-- Configuration files are located in *\TerraInvicta_Data\StreamingAssets\Templates*.
-- Localization files (game text) are located in *\TerraInvicta_Data\StreamingAssets\Localization\en*.
+- Configuration files are located in `\TerraInvicta_Data\StreamingAssets\Templates`.
+- Localization files (game text) are located in `\TerraInvicta_Data\StreamingAssets\Localization\en`.
+- The game's assets (textures, models, videos) are located in `\TerraInvicta_Data\StreamingAssets\AssetBundles`.
+- The game's code is located in `\TerraInvicta_Data\Managed\Assembly-CSharp.dll`.
 
 ## Useful Tools
 - [Unity](https://unity3d.com/get-unity/download/archive): Necessary for creating new AssetBundles to import new assets into the game.
@@ -17,7 +19,8 @@
 - [JSON to CSV](http://www.convertcsv.com/json-to-csv.htm): Enables easier editing of the game's configuration files in spreadsheet format.
 
 ## Tutorials
-TO DO
+- [Introduction to Importing Assets](tutorials/Custom%20Orgs.md)
+- [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
 
 ## Modding Wishlist
 - Ability for code changes to somehow be retained or easily redone across new builds.
