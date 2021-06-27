@@ -30,3 +30,6 @@
 ## Future Investigation
 - Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
 - Ability to add new UI elements to the game.
+
+## Mod Releases
+- [Tayta Malikai](mods/tayta/Tayta's%20Mods.md)
