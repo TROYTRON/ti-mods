@@ -1,7 +1,15 @@
 # Tayta's Mods
 
-- [Wars of Liberation](mods/tayta/code%20mods/liberation_wars.cs).
+## Wars of Liberation
 
-## Liberation Wars
+Functions changed:
+- [TIRegionState.CompleteOccupationofRegion()](mods/tayta/code%20mods/liberation_wars.cs).
 
-TODO
+This modifies army occupation behaviour so that:
+- Armies can conquer regions on behalf of allies who are not actively participating in the war.
+  - This usually occurs when said allies are ineligible to participate due to not having armies of their own.
+  - Allows LARPing and "vassal feeding".
+- Armies can force regions to break away from war enemies, if there is a non-existent nation with a capital claim on that region.
+  - This uses the regular Secession mechanic.
+  - The breakaway will begin allied to the occupying army. This is necessary to avoid having the occupiers instantly evicted from the region.
+  - The breakaway's CPs will go to unresting factions and _not_ the faction which controls the occupying army. Lore-wise, this is because the army is supporting local movements and not directly installing its own government. Gameplay-wise, this is fine, because the intent of the mechanic is to weaken the target nation, and not necessarily straight conquest. It also potentially leads to more intrigue by involving other factions in the war.
