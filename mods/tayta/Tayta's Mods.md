@@ -22,3 +22,10 @@ Classes added:
 This adds a modifier for use in TIMissionTemplate.json. The effect is to penalize (although it could also give a bonus) missions targeting rivals of nations you already control, as it is otherwise not overly difficult to infiltrate two mortal enemies and have them make peace with the snap of a finger.
 
 War enemies count as double for the purposes of calculation. This means that the maximum penalty can in fact go over 6.
+
+## Secrecy Stat for Nations
+
+Classes modified:
+- [TINationState](mods/tayta/code%20mods/national_secrecy.cs).
+
+The current formula for Secrecy is max((10 - Democracy) * 5 + Cohesion * 5).
