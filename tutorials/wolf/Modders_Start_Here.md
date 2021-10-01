@@ -1,12 +1,10 @@
-# CREATING TERRA INVICTA MODS
+# Setting up your environment for Terra Invicta mod development
+
+STILL UNDER CONSTRUCTION
 
 ### Step 1: Install Mod Loader
 
-Download the x64 version here: https://github.com/BepInEx/BepInEx/releases/tag/v5.4.16
-
-Follow this installation guide: https://docs.bepinex.dev/v5.4.16/articles/user_guide/installation/index.html
-
-In your `Terra Invicta` folder, there should now be a `BepInEx` folder with the `plugins` subfolder. Mods you would like to install should be moved into this subfolder as `.dll` files.
+First, you'll need to go the "Players_Start_Here" tutorial in this repo and complete it.
 
 ### Step 2: Setup Development Environment
 
