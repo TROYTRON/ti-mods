@@ -1,7 +1,7 @@
 # Terra Invicta Modding Hub
 
 ## Basic Knowledge
-- Terra Invicta is currently (as of build 0.1.11) built with Unity 2020.
+- Terra Invicta is currently (as of build 0.2.04) built with Unity 2020.3.30f1.
 - Configuration files are located in `\TerraInvicta_Data\StreamingAssets\Templates`.
 - Localization files (game text) are located in `\TerraInvicta_Data\StreamingAssets\Localization\en`.
 - The game's assets (textures, models, videos) are located in `\TerraInvicta_Data\StreamingAssets\AssetBundles`.
@@ -24,8 +24,10 @@
 
 ## Modding Wishlist
 - Ability for code changes to somehow be retained or easily redone across new builds.
-- Ability to specify new AssetBundles to be loaded into the game (as opposed to having to repackage existing ones).
+~~- Ability to specify new AssetBundles to be loaded into the game (as opposed to having to repackage existing ones).~~
+-- This has now been officially implemented into the game and confirmed to be working by the devs, though not yet by modders.
 - Ability to modify specific classes instead of the Assembly-CSharp.dll as a whole. This would mean that your mod would be easily compatible with other mods or new builds that do not make changes to or overly rely on the classes your mod modifies.
+-- The current thinking is to use Bepinx / Harmony to make this possible. NotSoLoneWolf has made this work and written a draft tutorial on this repository, but it has yet to be tested by other modders.
 
 ## Future Investigation
 - Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
