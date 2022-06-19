@@ -1,0 +1,382 @@
+ManifestFileVersion: 0
+CRC: 719997980
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 70a32f641d460c1ff6367f759cf76dd3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8fdb1aef40c021e9930c5a9af26fd680
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 329
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_03_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_02_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_16_Casual_icon.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_04_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_12_Gym_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_04_Casual.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_06_Officer.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_05_Summer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_01_Gym.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_07_Officer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_13_Gym_icon.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_03_Winter_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_03_Plugsuit.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_01_Gym_icon.png
+- Assets/Anime Councilor Portraits/Root Double/M_RDB_01_Summer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_13_Winter.png
+- Assets/Anime Councilor Portraits/Root Double/M_RDB_02_Winter.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_04_Summer_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_06_Casual_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/M_RDB_02_Winter.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_10_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_02_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_05_Civilian.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_13_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_04_Winter.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_08_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_12_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_05_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_07_Gym.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_01_Winter.webm
+- Assets/Anime Councilor Portraits/Remember11/F_R11_03_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/M_RDB_03_Winter.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_03_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_09_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_02.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_01_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Ever17/F_E17_02_Casual.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_07_Winter_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_03_Summer.webm
+- Assets/Anime Councilor Portraits/Ever17/M_E17_03_Casual.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/M_SMA_01_Officer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_10_Winter.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_03_Fatigues.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_04_Winter_icon.png
+- Assets/Anime Councilor Portraits/Ever17/videos/M_E17_01_Casual.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_05_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_04_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_04_Winter.webm
+- Assets/Anime Councilor Portraits/Ever17/videos/M_E17_04_Casual.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_03_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_10_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/M_SMA_05_Officer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_06_Officer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_01_Winter.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_04_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_11_Civilian.webm
+- Assets/Anime Councilor Portraits/Ever17/videos/F_E17_02_Swim.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_12_Gym.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_12_Winter.webm
+- Assets/Anime Councilor Portraits/Ever17/icons/F_E17_03_Casual_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/M_SMA_03_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_04_Plugsuit.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_11_Summer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_04_Winter_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_07_Officer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_01_Civilian.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_06_Officer.webm
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_02_Casual_icon.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_06.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_04_Officer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_02_Gym.webm
+- Assets/Anime Councilor Portraits/Ever17/icons/M_E17_03_Casual_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/M_SMA_04_Officer.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_04_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_05_Civilian.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/M_SMA_04_Officer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_01_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_06_Summer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_06_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_05_Officer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_03_Winter.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_05_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_06_Casual.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_07_Plugsuit.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_08_Summer.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_07_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_08_Casual_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/M_SMA_01_Officer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_02_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_02_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_05_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_09_Casual_icon.png
+- Assets/Anime Councilor Portraits/Ever17/icons/F_E17_01_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_09_Casual.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_07_Winter.png
+- Assets/Anime Councilor Portraits/Ever17/F_E17_01_Casual.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_04_Summer_icon.png
+- Assets/Anime Councilor Portraits/Ever17/videos/M_E17_02_Casual.webm
+- Assets/Anime Councilor Portraits/Ever17/F_E17_02_Swim.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_03_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_09_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_06_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/M_RDB_01_Winter_icon.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_03_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_15_Gym_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_15_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_12_Winter.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_09_Casual_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_08_Plugsuit.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_07_Summer.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_02_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_03_Casual_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/M_RDB_01_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/M_SMA_03_Civilian.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_16_Summer.png
+- Assets/Anime Councilor Portraits/Ever17/videos/F_E17_03_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_16_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_02_Gym_icon.png
+- Assets/Anime Councilor Portraits/Ever17/icons/F_E17_02_Swim_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_03_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_03_Officer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_13_Winter_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_09_Civilian.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_09_Casual.webm
+- Assets/Anime Councilor Portraits/Ever17/F_E17_04_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_04_Summer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_11_Winter.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_02_Plugsuit.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_04_Casual_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/M_RDB_01_Winter.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/M_SMA_05_Officer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_03_Winter.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_02_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_04_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_03_Fatigues.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_06_Winter_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_04_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_01_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/M_RDB_03_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_01_Gym.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_13_Summer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_15_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_04_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_12_Summer.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_01_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_12_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/M_RDB_02_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_06_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_05_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_03_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_04_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_01_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_13_Gym.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_01_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_06_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_13_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_04_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_08_Gym.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_11_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_03_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_05.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_04_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_03_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_02_Winter_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_07_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_06_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_02_Gym.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_08_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_04_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_05_Plugsuit.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_14.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_07_Gym.png
+- Assets/Anime Councilor Portraits/Ever17/M_E17_01_Casual.png
+- Assets/Anime Councilor Portraits/Ever17/videos/F_E17_05_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_13_Winter.webm
+- Assets/Anime Councilor Portraits/Remember11/M_R11_04_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_02_Casual.png
+- Assets/Anime Councilor Portraits/Ever17/M_E17_04_Casual.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_06_Winter.webm
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_01_Casual_icon.png
+- Assets/Anime Councilor Portraits/Ever17/videos/F_E17_04_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_11_Summer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_06_Summer.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_06_Summer.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_05_Winter.png
+- Assets/Anime Councilor Portraits/Ever17/F_E17_03_Casual.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_01_Civilian.webm
+- Assets/Anime Councilor Portraits/Ever17/icons/F_E17_04_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_05.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_01_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_06_Plugsuit.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_02_Summer.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_05_Civilian.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_11_Civilian.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_02_icon.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_04_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_09_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_10_Summer.png
+- Assets/Anime Councilor Portraits/Ever17/icons/M_E17_02_Casual_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/M_SMA_01_Officer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_16_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_06_Winter.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_01_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_03_Casual.png
+- Assets/Anime Councilor Portraits/Ever17/videos/F_E17_01_Casual.webm
+- Assets/Anime Councilor Portraits/Ever17/videos/F_E17_02_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_15_Gym.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_10_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_11_Winter.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_02_Summer.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/M_RDB_03_Summer.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_09_Civilian.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/M_SMA_02_Officer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_04_Officer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_07_Winter.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_05_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_16_Casual.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_01_Civilian.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_07_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_08_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_10_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_16_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_03_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/M_SMA_02_Officer.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_07_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_08_Gym_icon.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_05_Summer.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_03_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_13_Gym.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_01_Summer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_01_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_03_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_05_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_03_Summer.png
+- Assets/Anime Councilor Portraits/Root Double/icons/M_RDB_03_Summer_icon.png
+- Assets/Anime Councilor Portraits/Ever17/icons/M_E17_04_Casual_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_01_Civilian.webm
+- Assets/Anime Councilor Portraits/Remember11/F_R11_04_Summer.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_01_Winter_icon.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_01_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_10_Civilian.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_08_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_12_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_03_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_10_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_05_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_04_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_15_Winter.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_07_Summer_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_07_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_06_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_02_Officer.png
+- Assets/Anime Councilor Portraits/Root Double/M_RDB_01_Winter.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_04_Casual_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_03_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_02_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/M_SMA_03_Civilian.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_13_Summer_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_02_Fatigues_icon.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_07_Summer.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_04_Winter.png
+- Assets/Anime Councilor Portraits/Ever17/icons/F_E17_05_Casual_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_04_Winter.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_01_Winter.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_09_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_09_Civilian.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_14.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_08_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_03_Winter_icon.png
+- Assets/Anime Councilor Portraits/Ever17/F_E17_05_Casual.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_06.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_08_Casual.png
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_02_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_06_Winter.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_13_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_05_Civilian.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_03_Casual.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/M_SMA_02_Officer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_09_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_02_Casual.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_02_Officer.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_01_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_04_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_07_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_15_Summer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_03_Summer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_12_Gym.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_01_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/M_RDB_02_Summer.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_02.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_09_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_09_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/M_SMA_05_Officer.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_06_Casual.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_02_Winter_icon.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_02_Casual.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_08_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_01_Summer.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_02_Winter.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_07_Gym_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_13_Casual.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_03_Fatigues_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_09_Summer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_01_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_09_Casual.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_02_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_03_Winter.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_01_Officer.webm
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_03_Winter.webm
+- Assets/Anime Councilor Portraits/Remember11/F_R11_04_Winter.png
+- Assets/Anime Councilor Portraits/Root Double/videos/M_RDB_02_Summer.webm
+- Assets/Anime Councilor Portraits/Remember11/F_R11_03_Summer.png
+- Assets/Anime Councilor Portraits/Ever17/icons/M_E17_01_Casual_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_07_Winter.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_05_Officer.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_06_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_06_Winter.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_16_Casual.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_03_Officer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/F_KSR_08_Gym.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_07_Summer.webm
+- Assets/Anime Councilor Portraits/Root Double/icons/M_RDB_02_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_02_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_15_Gym.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_09_Civilian.png
+- Assets/Anime Councilor Portraits/Remember11/F_R11_01_Casual.png
+- Assets/Anime Councilor Portraits/Root Double/icons/F_RDB_07_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_04_Winter_icon.png
+- Assets/Anime Councilor Portraits/Remember11/icons/F_R11_01_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_11_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_10_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_02_Fatigues.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_15_Summer_icon.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_10_Civilian.webm
+- Assets/Anime Councilor Portraits/Ever17/icons/F_E17_02_Casual_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_03_Winter.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/M_SMA_04_Officer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_15_Winter_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_16_Summer.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_03_Casual.webm
+- Assets/Anime Councilor Portraits/Root Double/videos/M_RDB_03_Winter.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_02_Plugsuit_icon.png
+- Assets/Anime Councilor Portraits/Root Double/icons/M_RDB_01_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_05_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_04_Winter.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_11_Winter_icon.png
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_02_Fatigues.png
+- Assets/Anime Councilor Portraits/Remember11/icons/M_R11_01_Summer_icon.png
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_08_Summer.webm
+- Assets/Anime Councilor Portraits/Ever17/M_E17_02_Casual.png
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/F_SMA_01_Officer.png
+- Assets/Anime Councilor Portraits/Ever17/videos/M_E17_03_Casual.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/icons/F_SMA_10_Civilian_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/F_R11_04_Summer.webm
+- Assets/Anime Councilor Portraits/Sunrider - Mask of Arcadius/videos/F_SMA_04_Plugsuit.webm
+- Assets/Anime Councilor Portraits/Root Double/F_RDB_10_Casual.png
+- Assets/Anime Councilor Portraits/Remember11/M_R11_02_Winter.png
+- Assets/Anime Councilor Portraits/Root Double/videos/F_RDB_08_Casual.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/icons/F_KSR_09_Summer_icon.png
+- Assets/Anime Councilor Portraits/Remember11/videos/M_R11_01_Summer.webm
+- Assets/Anime Councilor Portraits/Kindred Spirits on the Roof/videos/F_KSR_16_Winter.webm
+- Assets/Anime Councilor Portraits/Root Double/M_RDB_03_Summer.png
+Dependencies: []
