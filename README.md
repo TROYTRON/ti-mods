@@ -10,6 +10,7 @@
 ## Useful Tools
 - [Unity](https://unity3d.com/get-unity/download/archive): Necessary for creating new AssetBundles to import new assets into the game.
 - [FFmpeg](https://www.ffmpeg.org/download.html): Used for creating .webms to add as new councillor portraits to TI.
+  - [PowerShell script](mods/tayta/anime-councilors/waifu2vid.ps1) for mass conversion of pngs to webms.
 - [GIMP](https://www.gimp.org/downloads/): Open-source image editor, useful for preparing new 2D graphics to import into the game.
   - [Older versions archive](https://download.gimp.org/pub/gimp/)
 - [dnSpy](https://github.com/dnSpy/dnSpy/releases): Used to view and edit the game's code.
