@@ -2,7 +2,7 @@
 
 ## Project Valkyrie Core - World Map Prototype
 
-See [here](mods/tayta/pvc-world-map/README.md) for details.
+See [here](pvc-world-map/README.md) for details.
 
 ## Wars of Liberation
 
