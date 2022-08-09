@@ -12,3 +12,4 @@ KNOWN ISSUES:
 - Many nations' flags and federation / union names are placeholders.
 - All nation claims are enabled at start because I didn't want to touch the tech tree at this point. Thus the various Independence / Unification techs will be mostly useless in this version of the mod.
 - Absolutely no changes have been made to narrative events, faction plotlines, or alien invasion mechanics.
+- Any updates to the main game will require you to reinstall the mod.
