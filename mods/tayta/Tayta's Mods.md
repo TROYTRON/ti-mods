@@ -1,5 +1,9 @@
 # Tayta's Mods
 
+## Project Valkyrie Core - World Map Prototype
+
+See [here](mods/tayta/pvc-world-map/README.md) for details.
+
 ## Wars of Liberation
 
 Functions changed:
