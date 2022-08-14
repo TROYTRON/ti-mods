@@ -1,0 +1,277 @@
+ManifestFileVersion: 0
+CRC: 1273401676
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9ae744e39738eb6b49db5615b4c91b61
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/UI/Common Art/Flags/Algeria.png
+- Assets/UI/Common Art/Flags/Finland.png
+- Assets/UI/Common Art/Flags/Manchuria.png
+- Assets/UI/Common Art/Flags/Sul_Brazil.png
+- Assets/UI/Common Art/Flags/Caliphate.png
+- Assets/UI/Common Art/Flags/Malaysia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Castile.png
+- Assets/UI/Common Art/Flags/East_Germany.png
+- Assets/UI/Common Art/Flags/Ivory_Coast.png
+- Assets/UI/Common Art/Flags/Karelia.png
+- Assets/UI/Common Art/Flags/Ireland.png
+- Assets/UI/Common Art/Flags/Katanga.png
+- Assets/UI/Common Art/Flags/Netherlands.png
+- Assets/UI/Common Art/Flags/Kurdistan.png
+- Assets/UI/Common Art/Flags/Nepal.png
+- Assets/UI/Common Art/Flags/Waziristan.png
+- Assets/UI/Common Art/Flags/Brazil.png
+- Assets/UI/Common Art/Flags/Canada.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Colorado.png
+- Assets/UI/Common Art/Flags/Norway.png
+- Assets/UI/Common Art/Flags/Ecuador.png
+- Assets/UI/Common Art/Flags/England.png
+- Assets/UI/Common Art/Flags/Ural.png
+- Assets/UI/Common Art/Flags/France.png
+- Assets/UI/Common Art/Flags/Sicily.png
+- Assets/UI/Common Art/Flags/Sweden.png
+- Assets/UI/Common Art/Flags/United_Arab_Emirates.png
+- Assets/UI/Common Art/Flags/Bosnia_and_Herzegovina.png
+- Assets/UI/Common Art/Flags/Bolivia.png
+- Assets/UI/Common Art/Flags/spareflag4.png
+- Assets/UI/Common Art/Flags/Alaska.png
+- Assets/UI/Common Art/Flags/Greenland.png
+- Assets/UI/Common Art/Flags/Guinea.png
+- Assets/UI/Common Art/Flags/Indonesia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Novorossiya.png
+- Assets/UI/Common Art/Flags/Southeast_Asian_Alliance.png
+- Assets/UI/Common Art/Flags/Botswana.png
+- Assets/UI/Common Art/Flags/Nigeria.png
+- Assets/UI/Common Art/Flags/North_Korea.png
+- Assets/UI/Common Art/Flags/Tajikistan.png
+- Assets/UI/Common Art/Flags/Burkina_Faso.png
+- Assets/UI/Common Art/Flags/Uganda.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Far_Eastern_Republic.png
+- Assets/UI/Common Art/Flags/Tayta Flags/South_China.png
+- Assets/UI/Common Art/Flags/Assam.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Missouri.png
+- Assets/UI/Common Art/Flags/Moluccas.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Wales.png
+- Assets/UI/Common Art/Flags/Singapore.png
+- Assets/UI/Common Art/Flags/Dominican_Republic.png
+- Assets/UI/Common Art/Flags/Taiwan.png
+- Assets/UI/Common Art/Flags/African_Union.png
+- Assets/UI/Common Art/Flags/Czech_Republic.png
+- Assets/UI/Common Art/Flags/Chile.png
+- Assets/UI/Common Art/Flags/Sri_Lanka.png
+- Assets/UI/Common Art/Flags/South_Sudan.png
+- Assets/UI/Common Art/Flags/Biafra.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Aragon.png
+- Assets/UI/Common Art/Flags/Ukraine.png
+- Assets/UI/Common Art/Flags/Croatia.png
+- Assets/UI/Common Art/Flags/India.png
+- Assets/UI/Common Art/Flags/Denmark.png
+- Assets/UI/Common Art/Flags/Papua_New_Guinea.png
+- Assets/UI/Common Art/Flags/Republic_Ainu.png
+- Assets/UI/Common Art/Flags/Alien_Nation.png
+- Assets/UI/Common Art/Flags/Slovenia.png
+- Assets/UI/Common Art/Flags/Azerbaijan.png
+- Assets/UI/Common Art/Flags/South_American_Union.png
+- Assets/UI/Common Art/Flags/Kazakhstan.png
+- Assets/UI/Common Art/Flags/Qatar.png
+- Assets/UI/Common Art/Flags/spareFlag5.png
+- Assets/UI/Common Art/Flags/Sumatra.png
+- Assets/UI/Common Art/Flags/Iceland.png
+- Assets/UI/Common Art/Flags/Syria.png
+- Assets/UI/Common Art/Flags/Turkey.png
+- Assets/UI/Common Art/Flags/Lebanon.png
+- Assets/UI/Common Art/Flags/Moldova.png
+- Assets/UI/Common Art/Flags/Costa_Rica.png
+- Assets/UI/Common Art/Flags/Rep_Congo.png
+- Assets/UI/Common Art/Flags/Lakota.png
+- Assets/UI/Common Art/Flags/spareflag9.png
+- Assets/UI/Common Art/Flags/Jamaica.png
+- Assets/UI/Common Art/Flags/Niger.png
+- Assets/UI/Common Art/Flags/Phillipines.png
+- Assets/UI/Common Art/Flags/Kenya.png
+- Assets/UI/Common Art/Flags/Quebec.png
+- Assets/UI/Common Art/Flags/Hungary.png
+- Assets/UI/Common Art/Flags/Laos.png
+- Assets/UI/Common Art/Flags/UnitedNordicStates.png
+- Assets/UI/Common Art/Flags/China.png
+- Assets/UI/Common Art/Flags/Cascadia.png
+- Assets/UI/Common Art/Flags/East_Turkestan.png
+- Assets/UI/Common Art/Flags/Belarus.png
+- Assets/UI/Common Art/Flags/Turkmenistan.png
+- Assets/UI/Common Art/Flags/Guatemala.png
+- Assets/UI/Common Art/Flags/United_Nations.png
+- Assets/UI/Common Art/Flags/Mali.png
+- Assets/UI/Common Art/Flags/Switzerland.png
+- Assets/UI/Common Art/Flags/Tayta Flags/North_Philippines.png
+- Assets/UI/Common Art/Flags/spareflag2.png
+- Assets/UI/Common Art/Flags/Tamazgha.png
+- Assets/UI/Common Art/Flags/Japan.png
+- Assets/UI/Common Art/Flags/Occitania.png
+- Assets/UI/Common Art/Flags/Mexico.png
+- Assets/UI/Common Art/Flags/Somalia.png
+- Assets/UI/Common Art/Flags/United_Northeast_Brazil.png
+- Assets/UI/Common Art/Flags/United_Arab_League.png
+- Assets/UI/Common Art/Flags/Slavic_Commonwealth.png
+- Assets/UI/Common Art/Flags/Baluchistan.png
+- Assets/UI/Common Art/Flags/Cuba.png
+- Assets/UI/Common Art/Flags/Slovakia.png
+- Assets/UI/Common Art/Flags/Crimea.png
+- Assets/UI/Common Art/Flags/Bulgaria.png
+- Assets/UI/Common Art/Flags/Ingria.png
+- Assets/UI/Common Art/Flags/Peru.png
+- Assets/UI/Common Art/Flags/UnitedBantuNation.png
+- Assets/UI/Common Art/Flags/Libya.png
+- Assets/UI/Common Art/Flags/DR_Congo.png
+- Assets/UI/Common Art/Flags/New_Zealand.png
+- Assets/UI/Common Art/Flags/Cameroon.png
+- Assets/UI/Common Art/Flags/Kuwait.png
+- Assets/UI/Common Art/Flags/Scotland.png
+- Assets/UI/Common Art/Flags/Kyrgyzstan.png
+- Assets/UI/Common Art/Flags/Turkestan.png
+- Assets/UI/Common Art/Flags/Siberia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Kanaky.png
+- Assets/UI/Common Art/Flags/spareflag6.png
+- Assets/UI/Common Art/Flags/California.png
+- Assets/UI/Common Art/Flags/Kosovo.png
+- Assets/UI/Common Art/Flags/Uzbekistan.png
+- Assets/UI/Common Art/Flags/Honduras.png
+- Assets/UI/Common Art/Flags/Tibet.png
+- Assets/UI/Common Art/Flags/Sindh.png
+- Assets/UI/Common Art/Flags/Poland.png
+- Assets/UI/Common Art/Flags/Spain.png
+- Assets/UI/Common Art/Flags/Central_African_Republic.png
+- Assets/UI/Common Art/Flags/Italy.png
+- Assets/UI/Common Art/Flags/Paraguay.png
+- Assets/UI/Common Art/Flags/West_Papua.png
+- Assets/UI/Common Art/Flags/Amazonas.png
+- Assets/UI/Common Art/Flags/spareflag3.png
+- Assets/UI/Common Art/Flags/Yunnan.png
+- Assets/UI/Common Art/Flags/Serbia.png
+- Assets/UI/Common Art/Flags/Pakistan.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Western_Canada.png
+- Assets/UI/Common Art/Flags/Eurasian_Union.png
+- Assets/UI/Common Art/Flags/South_Africa.png
+- Assets/UI/Common Art/Flags/Sichuan.png
+- Assets/UI/Common Art/Flags/Angola.png
+- Assets/UI/Common Art/Flags/Dominion_of_america.png
+- Assets/UI/Common Art/Flags/Tanzania.png
+- Assets/UI/Common Art/Flags/Mauritania.png
+- Assets/UI/Common Art/Flags/Germany.png
+- Assets/UI/Common Art/Flags/Nicaragua.png
+- Assets/UI/Common Art/Flags/United_Kingdom.png
+- Assets/UI/Common Art/Flags/Zambia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Sakha.png
+- Assets/UI/Common Art/Flags/Georgia.png
+- Assets/UI/Common Art/Flags/Latvia.png
+- Assets/UI/Common Art/Flags/Mongolia.png
+- Assets/UI/Common Art/Flags/Greece.png
+- Assets/UI/Common Art/Flags/Colombia.png
+- Assets/UI/Common Art/Flags/Afghanistan_Old.png
+- Assets/UI/Common Art/Flags/Gabon.png
+- Assets/UI/Common Art/Flags/Iran.png
+- Assets/UI/Common Art/Flags/Austria.png
+- Assets/UI/Common Art/Flags/Tatarstan.png
+- Assets/UI/Common Art/Flags/Belize.png
+- Assets/UI/Common Art/Flags/Lithuania.png
+- Assets/UI/Common Art/Flags/Vietnam.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Acadia.png
+- Assets/UI/Common Art/Flags/spareflag1.png
+- Assets/UI/Common Art/Flags/Macedonia.png
+- Assets/UI/Common Art/Flags/Russia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Utah.png
+- Assets/UI/Common Art/Flags/Belgium.png
+- Assets/UI/Common Art/Flags/Guyana.png
+- Assets/UI/Common Art/Flags/Saudi_Arabia.png
+- Assets/UI/Common Art/Flags/Khalistan.png
+- Assets/UI/Common Art/Flags/El_Salvador.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Darfur.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Komi.png
+- Assets/UI/Common Art/Flags/Estonia.png
+- Assets/UI/Common Art/Flags/Bangladesh.png
+- Assets/UI/Common Art/Flags/United_States_of_NorthAmerica.png
+- Assets/UI/Common Art/Flags/Yemen.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Orleans.png
+- Assets/UI/Common Art/Flags/Oman.png
+- Assets/UI/Common Art/Flags/Guangdong.png
+- Assets/UI/Common Art/Flags/Senegal.png
+- Assets/UI/Common Art/Flags/Egypt.png
+- Assets/UI/Common Art/Flags/Cambodia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Reunion.png
+- Assets/UI/Common Art/Flags/Venezuela.png
+- Assets/UI/Common Art/Flags/Sahrawi.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Patagonia.png
+- Assets/UI/Common Art/Flags/Shanghai_Republic.png
+- Assets/UI/Common Art/Flags/spareflag7.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Galicia-Volhynia.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Oregon.png
+- Assets/UI/Common Art/Flags/Myanmar.png
+- Assets/UI/Common Art/Flags/Rostov.png
+- Assets/UI/Common Art/Flags/Zimbabwe.png
+- Assets/UI/Common Art/Flags/Portugal.png
+- Assets/UI/Common Art/Flags/Armenia.png
+- Assets/UI/Common Art/Flags/Atzlan.png
+- Assets/UI/Common Art/Flags/Borneo.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Kyushu.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Soviet_Union.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Wallmapu.png
+- Assets/UI/Common Art/Flags/Mauritius.png
+- Assets/UI/Common Art/Flags/Texas.png
+- Assets/UI/Common Art/Flags/Albania.png
+- Assets/UI/Common Art/Flags/Romania.png
+- Assets/UI/Common Art/Flags/Australia.png
+- Assets/UI/Common Art/Flags/Uruguay.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Celtic_Union.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Hawaii.png
+- Assets/UI/Common Art/Flags/Dravida_Nadu.png
+- Assets/UI/Common Art/Flags/Madagascar.png
+- Assets/UI/Common Art/Flags/spareflag8.png
+- Assets/UI/Common Art/Flags/Mozambique.png
+- Assets/UI/Common Art/Flags/Jammu_And_Kashmir.png
+- Assets/UI/Common Art/Flags/Morocco.png
+- Assets/UI/Common Art/Flags/Tayta Flags/Belarus_SSR.png
+- Assets/UI/Common Art/Flags/Chad.png
+- Assets/UI/Common Art/Flags/West_African_Alliance.png
+- Assets/UI/Common Art/Flags/European_Union.png
+- Assets/UI/Common Art/Flags/Yugoslavia.png
+- Assets/UI/Common Art/Flags/Afghanistan.png
+- Assets/UI/Common Art/Flags/Thailand.png
+- Assets/UI/Common Art/Flags/Iraq.png
+- Assets/UI/Common Art/Flags/Ethiopia.png
+- Assets/UI/Common Art/Flags/Sudan.png
+- Assets/UI/Common Art/Flags/Panama.png
+- Assets/UI/Common Art/Flags/East_African_Federation.png
+- Assets/UI/Common Art/Flags/Catalonia.png
+- Assets/UI/Common Art/Flags/Tigray.png
+- Assets/UI/Common Art/Flags/United_States.png
+- Assets/UI/Common Art/Flags/Tunisia.png
+- Assets/UI/Common Art/Flags/Palestine.png
+- Assets/UI/Common Art/Flags/Montenegro.png
+- Assets/UI/Common Art/Flags/Republic_New_England.png
+- Assets/UI/Common Art/Flags/South_Korea.png
+- Assets/UI/Common Art/Flags/South_Vietnam.png
+- Assets/UI/Common Art/Flags/Westralia.png
+- Assets/UI/Common Art/Flags/Israel.png
+- Assets/UI/Common Art/Flags/First_Nation.png
+- Assets/UI/Common Art/Flags/Haiti.png
+- Assets/UI/Common Art/Flags/Argentina.png
+- Assets/UI/Common Art/Flags/Jordan.png
+- Assets/UI/Common Art/Flags/Tayta Flags/New_York.png
+- Assets/UI/Common Art/Flags/PanAsian_Cooperative.png
+- Assets/UI/Common Art/Flags/Cape_Republic.png
+- Assets/UI/Common Art/Flags/Suriname.png
+- Assets/UI/Common Art/Flags/Eritrea.png
+- Assets/UI/Common Art/Flags/Republic_Of_The_Southern_Cross.png
+- Assets/UI/Common Art/Flags/Ghana.png
+- Assets/UI/Common Art/Flags/Namibia.png
+Dependencies: []

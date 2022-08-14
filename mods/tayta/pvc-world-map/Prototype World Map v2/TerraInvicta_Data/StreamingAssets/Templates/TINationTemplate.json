@@ -9704,7 +9704,7 @@
  {
    "friendlyName": "Kanaky",
    "dataName": "NCL_PVC",
-   "flagResource": "tayta_nationflags/Kanaky",
+   "flagResource": "nationflags/Kanaky",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -9900,8 +9900,8 @@
  {
    "friendlyName": "South China",
    "dataName": "CHS_PVC",
-   "flagResource": "tayta_nationflags/South_China",
-   "unionFlagResource": "tayta_nationflags/South_China",
+   "flagResource": "nationflags/South_China",
+   "unionFlagResource": "nationflags/South_China",
    "unionTrigger": 7,
    "multiplier": 1,
    "color32": {
@@ -10439,7 +10439,7 @@
  {
    "friendlyName": "Kyushu",
    "dataName": "KYU_PVC",
-   "flagResource": "tayta_nationflags/Kyushu",
+   "flagResource": "nationflags/Kyushu",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -11076,7 +11076,7 @@
  {
    "friendlyName": "North Philippines",
    "dataName": "PHN_PVC",
-   "flagResource": "tayta_nationflags/North_Philippines",
+   "flagResource": "nationflags/North_Philippines",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -12693,7 +12693,7 @@
  {
    "friendlyName": "Komi-Karelia",
    "dataName": "KOM_PVC",
-   "flagResource": "tayta_nationflags/Komi",
+   "flagResource": "nationflags/Komi",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -12889,7 +12889,7 @@
  {
    "friendlyName": "Sakha-Buryatia",
    "dataName": "SKH_PVC",
-   "flagResource": "tayta_nationflags/Sakha",
+   "flagResource": "nationflags/Sakha",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -12938,8 +12938,8 @@
  {
    "friendlyName": "Far Eastern Republic",
    "dataName": "FER_PVC",
-   "flagResource": "tayta_nationflags/Far_Eastern_Republic",
-   "unionFlagResource": "tayta_nationflags/Soviet_Union",
+   "flagResource": "nationflags/Far_Eastern_Republic",
+   "unionFlagResource": "nationflags/Soviet_Union",
    "unionTrigger": 3,
    "multiplier": 1,
    "color32": {
@@ -12988,7 +12988,7 @@
    "friendlyName": "Belarus",
    "dataName": "BLR_PVC",
    "flagResource": "nationflags/Belarus",
-   "unionFlagResource": "tayta_nationflags/Soviet_Union",
+   "unionFlagResource": "nationflags/Soviet_Union",
    "unionTrigger": 2,
    "multiplier": 1,
    "color32": {
@@ -13036,7 +13036,7 @@
  {
    "friendlyName": "Galicia-Volhynia",
    "dataName": "GLV_PVC",
-   "flagResource": "tayta_nationflags/Galicia-Volhynia",
+   "flagResource": "nationflags/Galicia-Volhynia",
    "unionFlagResource": "nationflags/Ukraine",
    "unionTrigger": 2,
    "multiplier": 1,
@@ -13085,7 +13085,7 @@
  {
    "friendlyName": "Novorossiya",
    "dataName": "NVR_PVC",
-   "flagResource": "tayta_nationflags/Novorossiya",
+   "flagResource": "nationflags/Novorossiya",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -14066,7 +14066,7 @@
    "friendlyName": "Wales",
    "dataName": "WLS_PVC",
    "flagResource": "nationflags/England",
-   "unionFlagResource": "tayta_nationflags/Celtic_Union",
+   "unionFlagResource": "nationflags/Celtic_Union",
    "unionTrigger": null,
    "multiplier": 1,
    "color32": {
@@ -14115,7 +14115,7 @@
    "friendlyName": "Scotland",
    "dataName": "SCT_PVC",
    "flagResource": "nationflags/Scotland",
-   "unionFlagResource": "tayta_nationflags/Celtic_Union",
+   "unionFlagResource": "nationflags/Celtic_Union",
    "unionTrigger": null,
    "multiplier": 1,
    "color32": {
@@ -14164,7 +14164,7 @@
    "friendlyName": "Ireland",
    "dataName": "IRL_PVC",
    "flagResource": "nationflags/Ireland",
-   "unionFlagResource": "tayta_nationflags/Celtic_Union",
+   "unionFlagResource": "nationflags/Celtic_Union",
    "unionTrigger": null,
    "multiplier": 1,
    "color32": {
@@ -14212,7 +14212,7 @@
  {
    "friendlyName": "Orleans",
    "dataName": "OLN_PVC",
-   "flagResource": "tayta_nationflags/Orleans",
+   "flagResource": "nationflags/Orleans",
    "unionFlagResource": "nationflags/France",
    "unionTrigger": null,
    "multiplier": 1,
@@ -14359,7 +14359,7 @@
  {
    "friendlyName": "Castile",
    "dataName": "CST_PVC",
-   "flagResource": "tayta_nationflags/Castile",
+   "flagResource": "nationflags/Castile",
    "unionFlagResource": "nationflags/Spain",
    "unionTrigger": null,
    "multiplier": 1,
@@ -14408,7 +14408,7 @@
  {
    "friendlyName": "Aragon",
    "dataName": "AGN_PVC",
-   "flagResource": "tayta_nationflags/Aragon",
+   "flagResource": "nationflags/Aragon",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -14800,7 +14800,7 @@
  {
    "friendlyName": "Darfur",
    "dataName": "DFR_PVC",
-   "flagResource": "tayta_nationflags/Darfur",
+   "flagResource": "nationflags/Darfur",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -16613,7 +16613,7 @@
  {
    "friendlyName": "Wallmapu",
    "dataName": "WMP_PVC",
-   "flagResource": "tayta_nationflags/Wallmapu",
+   "flagResource": "nationflags/Wallmapu",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -16662,7 +16662,7 @@
  {
    "friendlyName": "Patagonia",
    "dataName": "PTG_PVC",
-   "flagResource": "tayta_nationflags/Patagonia",
+   "flagResource": "nationflags/Patagonia",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -17348,8 +17348,8 @@
  {
    "friendlyName": "Greater Oregon",
    "dataName": "ORE_PVC",
-   "flagResource": "tayta_nationflags/Oregon",
-   "unionFlagResource": "tayta_nationflags/Oregon",
+   "flagResource": "nationflags/Oregon",
+   "unionFlagResource": "nationflags/Oregon",
    "unionTrigger": 5,
    "multiplier": 1,
    "color32": {
@@ -17495,7 +17495,7 @@
  {
    "friendlyName": "Yellowstone",
    "dataName": "YLS_PVC",
-   "flagResource": "tayta_nationflags/Colorado",
+   "flagResource": "nationflags/Colorado",
    "unionFlagResource": "nationflags/United_States",
    "unionTrigger": 5,
    "multiplier": 1,
@@ -17544,8 +17544,8 @@
  {
    "friendlyName": "Missouri",
    "dataName": "MSR_PVC",
-   "flagResource": "tayta_nationflags/Missouri",
-   "unionFlagResource": "tayta_nationflags/Missouri",
+   "flagResource": "nationflags/Missouri",
+   "unionFlagResource": "nationflags/Missouri",
    "unionTrigger": 5,
    "multiplier": 1,
    "color32": {
@@ -17691,7 +17691,7 @@
  {
    "friendlyName": "New York",
    "dataName": "NYS_PVC",
-   "flagResource": "tayta_nationflags/New_York",
+   "flagResource": "nationflags/New_York",
    "unionFlagResource": "nationflags/United_States",
    "unionTrigger": 5,
    "multiplier": 1,
@@ -17887,7 +17887,7 @@
  {
    "friendlyName": "Hawaii",
    "dataName": "HWA_PVC",
-   "flagResource": "tayta_nationflags/Hawaii",
+   "flagResource": "nationflags/Hawaii",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -17936,7 +17936,7 @@
  {
    "friendlyName": "Western Canada",
    "dataName": "WSC_PVC",
-   "flagResource": "tayta_nationflags/Western_Canada",
+   "flagResource": "nationflags/Western_Canada",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
@@ -18083,7 +18083,7 @@
  {
    "friendlyName": "Acadia",
    "dataName": "ACD_PVC",
-   "flagResource": "tayta_nationflags/Acadia",
+   "flagResource": "nationflags/Acadia",
    "unionFlagResource": "",
    "unionTrigger": null,
    "multiplier": 1,
