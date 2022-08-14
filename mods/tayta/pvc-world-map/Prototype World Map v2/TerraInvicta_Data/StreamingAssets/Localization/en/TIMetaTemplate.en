@@ -1,0 +1,27 @@
+TIMetaTemplate.displayName.CompleteSolarSystem=Full Solar System
+TIMetaTemplate.description.CompleteSolarSystem=350 Space Objects<br/>(Higher performance impact)
+TIMetaTemplate.displayName.MediumSolarSystem=Medium Solar System
+TIMetaTemplate.description.MediumSolarSystem=250 Space Objects
+TIMetaTemplate.displayName.LightSolarSystem=Light Solar System
+TIMetaTemplate.description.LightSolarSystem=110 Space Objects
+TIMetaTemplate.displayName.VeryLightSolarSystem=Minimal Solar System
+TIMetaTemplate.description.VeryLightSolarSystem=70 Space Objects
+TIMetaTemplate.displayName.ModernScenario=Modern Scenario
+TIMetaTemplate.description.ModernScenario=2022 start
+TIMetaTemplate.displayName.2030Scenario=Space Warfare Test scenario
+TIMetaTemplate.description.2030Scenario=Test Settings for Space Warfare<br/>NOT A PLAYABLE CAMPAIGN
+TIMetaTemplate.displayName.3Factions=Three Factions
+TIMetaTemplate.description.3Factions=Resist, Alien, Submit
+TIMetaTemplate.displayName.4Factions=Four Factions
+TIMetaTemplate.description.4Factions=Resist, Alien, Submit, Exploit
+TIMetaTemplate.displayName.5Factions=Five Factions
+TIMetaTemplate.description.5Factions=Resist, Alien, Submit, Exploit, Escape
+TIMetaTemplate.displayName.6Factions=Six Factions
+TIMetaTemplate.description.6Factions=Resist, Alien, Submit, Exploit, Escape, Cooperate
+TIMetaTemplate.displayName.7Factions=Seven Factions
+TIMetaTemplate.description.7Factions=Resist, Alien, Submit, Exploit, Escape, Cooperate, Destroy
+TIMetaTemplate.displayName.8Factions=Eight Factions
+TIMetaTemplate.description.8Factions=Resist, Alien, Submit, Exploit, Escape, Cooperate, Destroy, Appease
+
+TIMetaTemplate.displayName.BAHHSCQScenario=Project Valkyrie Core
+TIMetaTemplate.description.BAHHSCQScenario=13 Post-Impact start (2025 C.E.)
