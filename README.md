@@ -29,6 +29,7 @@
   - This has now been officially implemented into the game and confirmed to be working by the devs, though not yet by modders. It also currently (as of 0.2.04) has a major bug preventing existing mods from being updated properly. Official tutorial also TBD.
 - Ability to modify specific classes instead of the Assembly-CSharp.dll as a whole. This would mean that your mod would be easily compatible with other mods or new builds that do not make changes to or overly rely on the classes your mod modifies.
   - The current thinking is to use Bepinx / Harmony to make this possible. NotSoLoneWolf has made this work and written a draft tutorial on this repository, but it has yet to be tested by other modders.
+  - Harmony has been shown to work. Stallion wrote some guides on the Discord and BOTcommander made a prototype new mechanic mod using it. Official tutorial also TBD.
 
 ## Future Investigation
 - Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
