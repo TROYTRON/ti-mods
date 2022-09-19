@@ -22,6 +22,7 @@
 ## Tutorials
 - [Introduction to Importing Assets](tutorials/Custom%20Orgs.md)
 - [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
+- [Setting up your Build Environment for Code Mods](tutorials/Build%20Environment.md)
 
 ## Modding Wishlist
 - Ability for code changes to somehow be retained or easily redone across new builds.
