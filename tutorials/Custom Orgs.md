@@ -25,3 +25,8 @@ a. You should now see arrows on all your imported logos.
 13.	Launch the game.
 14.	Use the console command “giveorg [faction], [org]” to spawn your modified orgs. [faction] is the dataName of the faction (e.g. “ResistCouncil” for the Resistance), and [org] is the dataName of the org. Remember there is a comma between [faction] and [org]!
 15.	Bask in the glory of your modded content.
+
+If you want custom non-generic orgs to be available for spawning randomly during the campaign, you will need to update TIMetaTemplate.json. Specifically:
+1. Navigate to TIMetaTemplate.json (found in `TerraInvicta_Data\StreamingAssets\Templates`).
+2. Scroll down to `ModernOrgTemplates`.
+3. Add an entry at the end with the dataName of your new org, as defined in TIOrgTemplate.json previously.
