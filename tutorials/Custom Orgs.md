@@ -1,3 +1,5 @@
+NOTE: This tutorial is outdated now that dedicated modding support is available for TI. I'll update it with a better methodology at some point.
+
 Tools used:
 -	Unity 2020.1.0f1
 -	AssetStudio
@@ -13,8 +15,8 @@ Steps:
 “UI/Common Art/Org Logos”. Unsure if this step is necessary.~~
     -	It turned out this is not necessary after all.
 4. Import all desired logos into the Org Logos folder in Unity. Drag-and-drop from Windows Explorer is sufficient. Make sure to include the existing game logos!
-5. Ctrl+A to select all the logos you just imported.
-6. In the Inspector pane in Unity (should already be open on the right of the screen) you should see “[number] Texture 2Ds Import Settings” near the top. Below that is a drop-down menu marked “Texture Type”. Change this from “Default” to “Sprite (2D and UI)”. Click “Apply” further down.
+6. Ctrl+A to select all the logos you just imported.
+7. In the Inspector pane in Unity (should already be open on the right of the screen) you should see “[number] Texture 2Ds Import Settings” near the top. Below that is a drop-down menu marked “Texture Type”. Change this from “Default” to “Sprite (2D and UI)”. Click “Apply” further down.
 a. You should now see arrows on all your imported logos.
 7. Ctrl+A to select all the logos again.
 8. At the bottom of the Inspector pane, you should see a drop-down menu marked “AssetBundle”. Click on the centre menu, click “New”, and type in “orglogos”.
