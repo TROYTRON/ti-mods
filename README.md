@@ -1,7 +1,7 @@
 # Terra Invicta Modding Hub
 
 ## Basic Knowledge
-- Terra Invicta is currently (as of build 0.2.04) built with Unity 2020.3.30f1.
+- Terra Invicta is currently (as of build 0.3.15) built with Unity 2020.3.30f1.
 - Configuration files are located in `\TerraInvicta_Data\StreamingAssets\Templates`.
 - Localization files (game text) are located in `\TerraInvicta_Data\StreamingAssets\Localization\en`.
 - The game's assets (textures, models, videos) are located in `\TerraInvicta_Data\StreamingAssets\AssetBundles`.
