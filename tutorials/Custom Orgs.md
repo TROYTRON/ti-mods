@@ -10,7 +10,7 @@ Steps:
 2. Import all desired logos into the Org Logos folder in Unity. Drag-and-drop from Windows Explorer is sufficient.
 3. Ctrl+A to select all the logos you just imported.
 4. In the Inspector pane in Unity (should already be open on the right of the screen) you should see “[number] Texture 2Ds Import Settings” near the top. Below that is a drop-down menu marked “Texture Type”. Change this from “Default” to “Sprite (2D and UI)”. Click “Apply” further down.
-a. You should now see arrows on all your imported logos.
+    -	You should now see arrows on all your imported logos.
 5. Ctrl+A to select all the logos again.
 6. At the bottom of the Inspector pane, you should see a drop-down menu marked “AssetBundle”. Click on the centre menu, click “New”, and type in “orglogos”.
 7. In the Unity toolbar, click “Assets -> Build AssetBundles”.
@@ -18,7 +18,7 @@ a. You should now see arrows on all your imported logos.
 9. Navigate to your game directory, and then to the `Mods\Enabled\ folder. Create a new folder, let's call it "NewOrgs", and paste the above two files in there.
 10.	Navigate to TIOrgTemplate.json (found in `TerraInvicta_Data\StreamingAssets\Templates`). Copy and paste this file into `NewOrgs`.
 11.	Remove all the entries in NewOrgs\TIOrgTemplate.json, and then add new entries with your org's desired stats.
-a. I strongly recommend using [JSON2CSV](http://www.convertcsv.com/json-to-csv.htm) to convert the JSON to a CSV, make your changes there, then convert it back using [CSV2JSON](http://www.convertcsv.com/csv-to-json.htm). Trust me, it's much easier.
+    -	I strongly recommend using [JSON2CSV](http://www.convertcsv.com/json-to-csv.htm) to convert the JSON to a CSV, make your changes there, then convert it back using [CSV2JSON](http://www.convertcsv.com/csv-to-json.htm). Trust me, it's much easier.
 12. Configure `TIOrgTemplate.en` in `TerraInvicta_Data\StreamingAssets\Localization\en` (or your equivalent) to make sure your org’s name appears correctly in-game.
 13.	Launch the game.
 14.	Use the console command “giveorg [faction], [org]” to spawn your modified orgs. [faction] is the dataName of the faction (e.g. “ResistCouncil” for the Resistance), and [org] is the dataName of the org. Remember there is a comma between [faction] and [org]!
