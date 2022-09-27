@@ -24,6 +24,9 @@
 - [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
 - [Setting up your Build Environment for Code Mods](tutorials/Build%20Environment.md)
 
+## Tips and Tricks
+- If you want to savegame edit you unpack, edit the embedded json and repack with z7ip, default settings for gzip (format: gzip, 5 - normal,word size:32)
+
 ## Modding Wishlist
 - Ability for code changes to somehow be retained or easily redone across new builds.
 - ~~- Ability to specify new AssetBundles to be loaded into the game (as opposed to having to repackage existing ones).~~
