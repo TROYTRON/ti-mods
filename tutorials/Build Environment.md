@@ -2,13 +2,16 @@
 This example sets up a Build Environment using Visual Studio. Other code development environments may work. As details of how to set those up are learned they may be added
 
 ## Install Visual Studio Community 2019
-* Go to the [Microsoft Visual Studio website](https://visualstudio.microsoft.com/) and head into the Downloads section
-* Scroll down to the bottom and find the section "Older Downloads". Select the 2019 section, and Download the "Visual Studio 2019 and other Products"
+* Go to the [Microsoft Visual Studio website](https://visualstudio.microsoft.com/)
+* Currently to access Visual Studio Community 2019 you must have a Microsoft account and be logged in
+* Once you are logged in, select the Downloads tab and search for "Visual Studio Community 2019"
+![Visual Studio Community 2019 Download](https://user-images.githubusercontent.com/11687023/194719522-262c64a5-0ed1-40a3-b05d-4ef6901d4edb.png)
 * In the Workloads section,under the "Desktop & Mobile" area select ".NET desktop development" and under the "Gaming" area select "Game development with Unity"
-![Visual Studio Community Install Options](https://user-images.githubusercontent.com/11687023/190953860-2a0c0be6-428d-44fd-8a4c-516dc73caa3a.PNG)
+![Visual Studio Community Installer](https://user-images.githubusercontent.com/11687023/194719674-c7cf8f5f-0a3e-4f7d-8b44-e86b589bea4f.png)
+![Visual Studio Community Install Options](https://user-images.githubusercontent.com/11687023/194719784-53a2ad2d-421e-42e0-8f3a-1c2e3d23e68f.png)
 
 
-## Install Unity Mod Manager 2.0.2
+## Install Unity Mod Manager
 * Go to the [Nexus Mods Unity Mod Manager website](https://www.nexusmods.com/site/mods/21/)
 * Select the "Files" tab, and scroll down to "OLD FILES" section and sort them by version in Descending order
 * Select the version 0.24.2f. 
