@@ -23,6 +23,7 @@
 - [Introduction to Importing Assets](tutorials/Custom%20Orgs.md)
 - [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
 - [Setting up your Build Environment for Code Mods](tutorials/Build%20Environment.md)
+- [Reference Guide for Narrative Events](https://docs.google.com/document/d/1s3x96SyjvKFwx3pRSaMS7Zjo3FLwVVSLzSWzidT4CEo/edit)
 
 ## Tips and Tricks
 - If you want to savegame edit you unpack, edit the embedded json and repack with z7ip, default settings for gzip (format: gzip, 5 - normal,word size:32)
