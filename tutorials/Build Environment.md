@@ -13,26 +13,9 @@ This example sets up a Build Environment using Visual Studio. Other code develop
 
 ## Install Unity Mod Manager
 * Go to the [Nexus Mods Unity Mod Manager website](https://www.nexusmods.com/site/mods/21/)
-* Select the "Files" tab, and scroll down to "OLD FILES" section and sort them by version in Descending order
-* Select the version 0.24.2f. 
+* Select the "Files" tab, any version 0.25.0 or later
 * Download this and install it (it is only necessary to decompress it into the desired location)
-* Modify the UMM config file "UnityModManagerConfig.xml" to add Terra Invicta to the list of games. At the bottom of this file, add the xml section
-```xml
-	<GameInfo Name="Terra Invicta">
-		<Folder>Terra Invicta</Folder>
-		<ModsDirectory>Mods/Enabled</ModsDirectory>
-		<ModInfo>ModInfo.json</ModInfo>
-		<GameExe>TerraInvicta.exe</GameExe>
-		<EntryPoint>[UnityEngine.UIModule.dll]UnityEngine.Canvas.cctor:Before</EntryPoint>
-		<StartingPoint>[Assembly-CSharp.dll]StartMenuController.Start:Before</StartingPoint>
-		<UIStartingPoint>[Assembly-CSharp.dll]StartMenuController.Start:After</UIStartingPoint>
-		<MinimalManagerVersion>0.24.0</MinimalManagerVersion>
-	</GameInfo>
-  ```
-  ![image](https://user-images.githubusercontent.com/11687023/190954269-9e548bcd-ccae-40a4-aa93-b6d9737fdb53.png)
-  (Note that this is only necessary until a version of Unity Mod Manager with the needed Terra Invicta config data is available through Nexus Mods)  
-  
-* After this has been added, run the UnityModManager.exe
+* Run the UnityModManager.exe
   * Select Game = Terra Invicta
   * Select the Folder where Terra Invicta is installed
   * Select Installation method = DoorstopProxy
@@ -40,7 +23,7 @@ This example sets up a Build Environment using Visual Studio. Other code develop
 ![UnityModManager_PreInstall](https://user-images.githubusercontent.com/11687023/190954427-0093c2d3-43b7-4313-8cb8-d029e6e4812b.PNG)
 ![UnityModManager_PostInstall](https://user-images.githubusercontent.com/11687023/190954435-838b63fd-7881-4cbd-9b57-fa32caf7294e.PNG)
 
-Unity Mod Manager can also be used to download and update Terra Invicta mods available on Nexus Mods.
+Unity Mod Manager can also be used to install and update Terra Invicta mods available on Nexus Mods.
 
 ## Install Unity (optional)
 * Required version is 2020.3.30f1 (64-bit). Last I checked the automatic download of Visual Studio Community 2019 with Unity install was broken (likely because Visual Studio has updated current version to 2022).
