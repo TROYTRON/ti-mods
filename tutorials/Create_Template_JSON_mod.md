@@ -115,6 +115,8 @@ For this example, we will include some simple changes to the `TIBilateralTemplat
 
 ![image](https://user-images.githubusercontent.com/11687023/195460805-dbf2eb70-feb0-475a-8839-4bfb03d96c16.png)
 
+[ModInfo file](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/tutorial-files/template-json-mod-examples/TIBilateralTemplate.json)
+
 ## Creating The JSON Mod File
 
 Mod JSON files need only include the fields that they are changing with respect to the base game's definition (including the `dataName` field for matching) and any _new_ entries that will include a _new_ `dataName`
@@ -192,6 +194,8 @@ Put together, the full mod `TIBilateralTemplate.json` files reads
 ```
 
 Once this file is saved, the mod is complete.
+- [ModInfo.json](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/tutorial-files/template-json-mod-examples/TIBilateralTemplate.json)
+- [TIBilateralTemplate.json](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/tutorial-files/template-json-mod-examples/TIBilateralTemplate.json)
 
 ## Testing The Mod
 
