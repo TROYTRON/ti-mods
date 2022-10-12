@@ -1,7 +1,11 @@
 # Creating a Template/JSON Mod
 
-- [Template Structure](https://github.com/TROYTRON/ti-mods/new/main/tutorials#template-structure)
-- [Setting Up The Mod Folder](https://github.com/TROYTRON/ti-mods/new/main/tutorials#setting-up-the-mod-folder)
+- [Template Structure](#template-structure)
+- [Setting Up The Mod Folder](#setting-up-the-mod-folder)
+- [Creating The JSON Mod File](#creating-the-json-mod-file)
+- [Testing The Mod](#testing-the-mod)
+
+[Uploading A Mod To Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
 
 ## Template Structure
 Terra Invicta stores static / configuration data in the \Terra Invicta\TerraInvicta_Data\StreamingAssets\Templates folder. Each file in this folder corresponds to a Template class in the game assembly. Each file is organized as [JSON](https://www.json.org/json-en.html) formatted data. It is the serialization of an array of class instances.
@@ -11,7 +15,7 @@ For example, here is the definition of `TIBilateralTemplate.cs`
 ```cs
 public class TIBilateralTemplate : TIDataTemplate
 {
-  // public fields are read
+	// public fields are read
 	public BilateralRelationType relationType;
 	public string federation;
 	public string nation1;
@@ -25,7 +29,7 @@ public class TIBilateralTemplate : TIDataTemplate
 	public bool friendlyOnly;
 
 	// private fields are not read and are for temporary code use only
-  private bool _currentScenarioSet;
+	private bool _currentScenarioSet;
 	private bool _inCurrentScenario;
 }
 ```
@@ -110,3 +114,94 @@ If Unity Mod Manager is installed, an expanded number of fields are available. (
 For this example, we will include some simple changes to the `TIBilateralTemplate.json` that will start a new campaign with Alaska owned by Canada instead of the USA. To accomplish this only the following files are required in the mod folder
 
 ![image](https://user-images.githubusercontent.com/11687023/195460805-dbf2eb70-feb0-475a-8839-4bfb03d96c16.png)
+
+## Creating The JSON Mod File
+
+Mod JSON files need only include the fields that they are changing with respect to the base game's definition (including the `dataName` field for matching) and any _new_ entries that will include a _new_ `dataName`
+
+Continuing our example mod, the first piece we will look at is the existing ownership of the Alaska region by USA at game start. This is defined in the base game's `TIBilateralTemplate.json` with the entry
+
+```json
+  {
+    "dataName": "ClaimUSAAlaska",
+    "relationType": "Claim",
+    "nation1": "USA",
+    "nation2": "",
+    "federation": "",
+    "region1": "Alaska",
+    "region2": "",
+    "projectUnlockName": "",
+    "capitalClaim": null,
+    "initialOwner": true,
+    "initialColony": null,
+    "friendlyOnly": null
+  },
+```
+
+The only thing we want to change is that the initial owner is false. This will preserve a claim on the Alaska region by the USA, but it will not start a new campaign as a part of the USA. To accomplish this, we add to our mod's `TIBilateralTemplate.json`
+
+```json
+  {
+    "dataName": "ClaimUSAAlaska",
+    "initialOwner": false,
+  },
+```
+
+Canada starts with no claim or relation to the Alaska region, so we have to create a new entry, with a new dataName, filling out all of the relevant information. I did so by copying the information from an existing claim (British Columbia) and modifying it.
+
+```json
+  {
+    "dataName": "ExampleMod_ClaimCANAlaska",
+    "relationType": "Claim",
+    "nation1": "CAN",
+    "nation2": "",
+    "federation": "",
+    "region1": "Alaska",
+    "region2": "",
+    "projectUnlockName": "",
+    "capitalClaim": null,
+    "initialOwner": true,
+    "initialColony": null,
+    "friendlyOnly": null
+  },
+```
+
+Put together, the full mod `TIBilateralTemplate.json` files reads
+
+```json
+[
+  {
+    "dataName": "ClaimUSAAlaska",
+    "initialOwner": false,
+  },
+  {
+    "dataName": "ExampleMod_ClaimCANAlaska",
+    "relationType": "Claim",
+    "nation1": "CAN",
+    "nation2": "",
+    "federation": "",
+    "region1": "Alaska",
+    "region2": "",
+    "projectUnlockName": "",
+    "capitalClaim": null,
+    "initialOwner": true,
+    "initialColony": null,
+    "friendlyOnly": null
+  },
+]
+```
+
+Once this file is saved, the mod is complete.
+
+## Testing The Mod
+
+After launching the game and enabling the mod (if it was created in the Disabled folder), relaunching the game will result in the game making a backup copy of the original `TIBilateralTemplate.json` and then merging in your mod's changes in to the version in the Templates folder. ![image](https://user-images.githubusercontent.com/11687023/195463092-dc9abea8-99a3-4f40-9d79-2781cbbc017a.png)
+
+Examining the changed `TIBilateralTemplate.json` from the Templates folder we can verify that the "ClaimUSAAlaska" has `"initialOwner": false` and the new claim for Canada with initial ownership has been added.
+
+Launching a new campaign demonstrates the modded-in regional claim and initial ownership.
+
+![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
+
+After your mod is complete, you can [upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+
