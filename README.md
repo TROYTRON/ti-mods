@@ -21,10 +21,10 @@
 
 ## Tutorials
 - [Introduction to Importing Assets](tutorials/Custom%20Orgs.md)
-- [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
-- [Setting up your Build Environment for Code Mods](tutorials/Build%20Environment.md)
-- [Reference Guide for Narrative Events](https://docs.google.com/document/d/1s3x96SyjvKFwx3pRSaMS7Zjo3FLwVVSLzSWzidT4CEo/edit)
 - [Creating Template JSON Mods](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Create_Template_JSON_mod.md)
+- [Building Code Mods](/tutorials/code-mods-with-umm.md)
+- [Reference Guide for Narrative Events](https://docs.google.com/document/d/1s3x96SyjvKFwx3pRSaMS7Zjo3FLwVVSLzSWzidT4CEo/edit)
+- [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
 - [Uploading and Updating Steam Workshop Mods](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
 
 ## Tips and Tricks
