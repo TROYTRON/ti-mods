@@ -154,4 +154,78 @@ In-game effect of mod
 
 ## Terra Invicta Architecture
 
+## Data Architecture for Terra Invicta
+
+The design pattern is that templates hold static data, and are only instanced by deserializing JSON files. Any data values that don't change during a campaign are better placed in a template and configured through JSON so that the data is easily visible/moddable and changes adjust ongoing campaign.
+The other data structure is the GameState, which holds dynamic data. It holds all data that is important to the overall game state. The savefile consists of a direct serialization of all GameState classes.
+
+### Data Templates
+
+The base class for data templates is TIDataTemplate. TIDataTemplate has the following structure, which affects all template classes derived from it
+
+```cs
+public class TIDataTemplate
+{
+	public string dataName { get; protected set; }		// key field used to store/retrieve a template
+	public string friendlyName { get; protected set; }	// display-only field
+
+	public string displayName {get;}			// getter to retrieve localized dataName
+	public string displayNameCurrent();			// method access to above getter
+	public TIDataTemplate();				// base constructor, used by deserializer
+	public TIDataTemplate(string templateName);		// constructor that allows specifying a dataName for code-based template construction
+	public virtual TIGameState CreateGameState();		// polymorphic method that allows loaded templates to create associated gamestates
+	public virtual bool IsValid(out string error);		// unit-test code for templates to validate the data loaded into them
+}
+```
+
+Template classes hold **static** data. They may also hold properties or methods that compute values based on passed parameters and/or local fields. No data stored in a Template class will be serialized into the savefile, so data in a Template is only "safe" between game sessions in that the same data is re-loaded from the JSON files. Best practice is that static data should be referenced from the Template so that changes to the JSON files will be reflected in an ongoing campaign.
+
+Template class instances are in practice created from the JSON files located in the Templates folder. Each file in the Templates folder is the JSON serialization of an array of Template class instances. The *type* of the template is the name of the JSON file. For example, *TIOrgTemplate.json* contains an array of serialized classes of type `TIOrgTemplate`. For each element in the array, the serializer calls the constructor for the Template class (which will set any fields to the default value as defined in the class definition). Each entry in the JSON class is matched against (public) fields defined in the class. If the field exists in the class, it is overwritten. If the field does not exist, the entry is discarded. Any field not overwritten retains its default value.
+
+Template files are commonly accessed through their associated GameState (if they have one) via the TIGameState method:
+```cs
+public virtual T GetMyTemplate<T>() where T : TIDataTemplate
+```
+
+The other common access method for Templates is through the TemplateManager. All instanced Templates are stored in the TemplateManager, and can be accessed through the following methods:
+
+```cs
+public class TemplateManager
+{
+	// getter for the special-case TIGlobalConfig singleton Template
+	public static TIGlobalConfig global {get;}	
+	
+	// allows iterating through all Templates of a particular class. optional parameter includes child classes of the specified Template type
+	public static IEnumerable<T> IterateByClass<T>(bool allowChild = true) where T : TIDataTemplate;
+	
+	// Retrieves an array of all templates of the specified template type
+	public static T[] GetAllTemplates<T>(bool allowChild = true) where T : TIDataTemplate;
+		
+	// finds a specific template keyed off the dataName of the template
+	public static T Find<T>(string templateName, bool allowChild = false) where T : TIDataTemplate;
+}
+```
+
+A typical use of Template.IterateByClass<T>
+```cs
+foreach (TIOrgTemplate orgTemplate in from org in TemplateManager.IterateByClass<TIOrgTemplate>(true)
+	where org.randomized
+	select org)
+{ ... }
+```
+
+A typical usage of Template.GetAllTemplates<T>
+```cs
+List<TIShipHullTemplate> hulls = (from x in TemplateManager.GetAllTemplates<TIShipHullTemplate>(true)
+	where !x.alien || this.fullDesignerTest
+	select x) : base.activePlayer.allowedShipHulls).OrderBy((TIShipHullTemplate x) => x.volume_m3).ToList<TIShipHullTemplate>();
+```
+
+A typical usage of Template.Find<T>
+```cs
+TIProjectTemplate projectTemplate = TemplateManager.Find<TIProjectTemplate>(this.selectedProjectEntry);
+```
+	
+### GameStates
+	
 TODO
