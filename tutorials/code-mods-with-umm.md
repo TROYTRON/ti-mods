@@ -137,6 +137,8 @@ Build the mod dll
 
 ![image](https://user-images.githubusercontent.com/11687023/195727600-35a34df5-f25b-4dcd-8d21-ee5846212821.png)
 
+For VS 2022 users, use [this guide](https://learn.microsoft.com/en-us/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2022) on Adding References. Which references are needed will vary based on mod functionality, but the ones above are a good starting point.
+
 Files placed in Terra Invicta Mods folder
 
 ![image](https://user-images.githubusercontent.com/11687023/195728189-af1aad5e-3a64-4fec-ad9c-50664f505e10.png)
