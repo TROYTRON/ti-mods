@@ -156,8 +156,9 @@ In-game effect of mod
 
 ## Data Architecture for Terra Invicta
 
-The design pattern is that templates hold static data, and are only instanced by deserializing JSON files. Any data values that don't change during a campaign are better placed in a template and configured through JSON so that the data is easily visible/moddable and changes adjust ongoing campaign.
-The other data structure is the GameState, which holds dynamic data. It holds all data that is important to the overall game state. The savefile consists of a direct serialization of all GameState classes.
+Terra Invicta's design pattern is that **Templates** hold static data, and are only instanced by deserializing JSON files. Any data values that don't change during a campaign are best placed in a template and configured through JSON so that the data is easily visible/moddable and changes adjust the ongoing campaign.
+
+The other core data structure is the **GameState**, which holds dynamic data. It holds all data that is important to the overall game state. Any dynamic data that must be preserved through a Save/Load cycle must be stored in a GameState. The savefile consists of a direct serialization of all GameState class instances.
 
 ### Data Templates
 
@@ -178,16 +179,16 @@ public class TIDataTemplate
 }
 ```
 
-Template classes hold **static** data. They may also hold properties or methods that compute values based on passed parameters and/or local fields. No data stored in a Template class will be serialized into the savefile, so data in a Template is only "safe" between game sessions in that the same data is re-loaded from the JSON files. Best practice is that static data should be referenced from the Template so that changes to the JSON files will be reflected in an ongoing campaign.
+Template classes hold **static** data. They may also contain properties or methods that compute values based on passed parameters and/or local fields. No data stored in a Template class will be serialized into the savefile, so data in a Template is only "safe" between game sessions only in that the same data is re-loaded from the JSON files. Best practice is that static data should be referenced from a Template so that changes to the JSON files will be reflected in an ongoing campaign.
 
 Template class instances are in practice created from the JSON files located in the Templates folder. Each file in the Templates folder is the JSON serialization of an array of Template class instances. The *type* of the template is the name of the JSON file. For example, *TIOrgTemplate.json* contains an array of serialized classes of type `TIOrgTemplate`. For each element in the array, the serializer calls the constructor for the Template class (which will set any fields to the default value as defined in the class definition). Each entry in the JSON class is matched against (public) fields defined in the class. If the field exists in the class, it is overwritten. If the field does not exist, the entry is discarded. Any field not overwritten retains its default value.
 
-Template files are commonly accessed through their associated GameState (if they have one) via the TIGameState method:
+Template instances are commonly accessed through their associated GameState (if they have one) via the TIGameState method:
 ```cs
 public virtual T GetMyTemplate<T>() where T : TIDataTemplate
 ```
 
-The other common access method for Templates is through the TemplateManager. All instanced Templates are stored in the TemplateManager, and can be accessed through the following methods:
+The other common access method for Template instances is through the TemplateManager. All instanced Templates are stored in the TemplateManager, and can be accessed through the following methods:
 
 ```cs
 public class TemplateManager
