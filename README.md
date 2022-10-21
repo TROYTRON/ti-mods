@@ -18,6 +18,7 @@
 - [AssetStudio](https://github.com/Perfare/AssetStudio/releases): Allows decompiling the game's AssetBundles to see what's inside.
   - Currently the only known such utility that works with Unity 2020.
 - [JSON to CSV](http://www.convertcsv.com/json-to-csv.htm): Enables easier editing of the game's configuration files in spreadsheet format.
+- [Navigatable Tech Tree](https://rookiv.github.io/terra-invicta/) : Allows navigating the large tech tree outside the game.
 
 ## Tutorials
 - [Introduction to Importing Assets](tutorials/Custom%20Orgs.md)
