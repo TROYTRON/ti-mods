@@ -205,13 +205,20 @@ Once this file is saved, the mod is complete.
 
 ## Testing The Mod
 
-After launching the game and enabling the mod (if it was created in the Disabled folder), relaunching the game will result in the game making a backup copy of the original `TIBilateralTemplate.json` and then merging in your mod's changes in to the version in the Templates folder. ![image](https://user-images.githubusercontent.com/11687023/195463092-dc9abea8-99a3-4f40-9d79-2781cbbc017a.png)
-
-Examining the changed `TIBilateralTemplate.json` from the Templates folder we can verify that the "ClaimUSAAlaska" has `"initialOwner": false` and the new claim for Canada with initial ownership has been added.
-
-Launching a new campaign demonstrates the modded-in regional claim and initial ownership.
-
-![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
+* Launch the game
+* Navigate to `Mods` menu
+* Make sure to `Enable` the mod if you created it in `Disabled` folder
+* Make sure "Use Mods" check box is checked
+* Relaunch the game
+* When the game starts it will make a backup copy of the original
+  `TIBilateralTemplate.json` and then will merge in your mod's changes to the
+  file in the Templates folder.  
+  ![image](https://user-images.githubusercontent.com/11687023/195463092-dc9abea8-99a3-4f40-9d79-2781cbbc017a.png)
+* You can examine the changed `TIBilateralTemplate.json` int the Templates
+  folder to verify that the "ClaimUSAAlaska" has `"initialOwner": false` and
+  Canada has a new claim added.
+* Launch a new campaign to observe the modded-in regional claim and initial
+  ownership.  
+  ![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
 
 After your mod is complete, you can [upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
-
