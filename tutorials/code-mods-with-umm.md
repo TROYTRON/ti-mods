@@ -9,6 +9,12 @@ Below are some links to general information on using these tools:
 - [Harmony: Guide and API](https://harmony.pardeike.net/index.html)
 - [Local: Guide to setting up Build Environment](Build%20Environment.md)
 
+## Coding Language
+
+Coding in Terra Invicta is done using C#. If you are new to coding in C#, here are some resources for learning the language:
+- [Learn C# at Microsoft.com](https://dotnet.microsoft.com/en-us/learn/csharp)
+- [Learn How to Code in C# for Beginners at Unity3d](https://unity.com/how-to/learning-c-sharp-unity-beginners)
+
 ## Terra Invicta Example
 
 The following example mod alters the `TICouncilorState.projectContributionString` property getter to return a numeric value string instead of the `+`, `++`, `+++` in the base game.
