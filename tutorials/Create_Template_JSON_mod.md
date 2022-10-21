@@ -5,6 +5,7 @@
 - [Creating The JSON Mod File](#creating-the-json-mod-file)
 - [Testing The Mod](#testing-the-mod)
 - [Upload your mod](#upload-your-mod)
+- [Known issues](#known-issues)
 
 ## Template Structure
 Terra Invicta stores static / configuration data in the \Terra Invicta\TerraInvicta_Data\StreamingAssets\Templates folder. Each file in this folder corresponds to a Template class in the game assembly. Each file is organized as [JSON](https://www.json.org/json-en.html) formatted data. It is the serialization of an array of class instances.
@@ -224,3 +225,19 @@ Once this file is saved, the mod is complete.
 
 After your mod is complete, you can
 [upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+
+## Known issues
+
+* If mod directory contains a json file that doesn't match the name of an
+  existing one in the game's Templates folder (with the exception for
+  `ModInfo.json`), it will crash. If you have a code-mode that needs to load a
+  new template type, you need to alternate the extension of the file and load
+  it manually.
+* `TIMapGroupVisualizerTemplate.json` and `TISpaceFleetTemplate.json` contain
+  invalid json, and will likely cause a crash if tried modding.
+* Patching arrays performs field-wise merge for entries on the matching indices.
+  The only presently known ways to "extend" the list with a json mode are to
+  either specify the list in its entirety or to specify empty stubs for already
+  presented entries. Both ways likely make multiple mods patching the same list
+  incompatible. You may create a code mod to do such patching
+  <TODO(dkoiman): add a guide for in-code modifications of templates>
