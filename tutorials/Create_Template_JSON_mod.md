@@ -4,8 +4,7 @@
 - [Setting Up The Mod Folder](#setting-up-the-mod-folder)
 - [Creating The JSON Mod File](#creating-the-json-mod-file)
 - [Testing The Mod](#testing-the-mod)
-
-[Uploading A Mod To Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+- [Upload your mod](#upload-your-mod)
 
 ## Template Structure
 Terra Invicta stores static / configuration data in the \Terra Invicta\TerraInvicta_Data\StreamingAssets\Templates folder. Each file in this folder corresponds to a Template class in the game assembly. Each file is organized as [JSON](https://www.json.org/json-en.html) formatted data. It is the serialization of an array of class instances.
@@ -221,4 +220,7 @@ Once this file is saved, the mod is complete.
   ownership.  
   ![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
 
-After your mod is complete, you can [upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+## Upload your mod
+
+After your mod is complete, you can
+[upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
