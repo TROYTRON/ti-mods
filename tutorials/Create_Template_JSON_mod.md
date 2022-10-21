@@ -98,7 +98,7 @@ Each mod requires a `ModInfo.json` file. This file allows description of all pos
 If Unity Mod Manager is installed, an expanded number of fields are available. (Reminder : any field in JSON that does not exist in the C# source is ignored, so including the below field will not cause problems if UMM is not installed)
 
 NOTE: if UMM is installed it will be complaining that there is no EntryPoint
-specified. You can ignore it for JSON modes, the in-game mod manager will pick
+specified. You can ignore it for JSON mods, the in-game mod manager will pick
 it up regardless. To suppress the warning, you would need to turn your code into
 a proper [code mod](code-mods-with-umm.md) - you don't have to add logic, but
 you need to create an entry point.
@@ -230,13 +230,13 @@ After your mod is complete, you can
 
 * If mod directory contains a json file that doesn't match the name of an
   existing one in the game's Templates folder (with the exception for
-  `ModInfo.json`), it will crash. If you have a code-mode that needs to load a
+  `ModInfo.json`), it will crash. If you have a code-mod that needs to load a
   new template type, you need to alternate the extension of the file and load
   it manually.
 * `TIMapGroupVisualizerTemplate.json` and `TISpaceFleetTemplate.json` contain
   invalid json, and will likely cause a crash if tried modding.
 * Patching arrays performs field-wise merge for entries on the matching indices.
-  The only presently known ways to "extend" the list with a json mode are to
+  The only presently known ways to "extend" the list with a json mod are to
   either specify the list in its entirety or to specify empty stubs for already
   presented entries. Both ways likely make multiple mods patching the same list
   incompatible. You may create a code mod to do such patching.
