@@ -97,6 +97,12 @@ Each mod requires a `ModInfo.json` file. This file allows description of all pos
 
 If Unity Mod Manager is installed, an expanded number of fields are available. (Reminder : any field in JSON that does not exist in the C# source is ignored, so including the below field will not cause problems if UMM is not installed)
 
+NOTE: if UMM is installed it will be complaining that there is no EntryPoint
+specified. You can ignore it for JSON modes, the in-game mod manager will pick
+it up regardless. To suppress the warning, you would need to turn your code into
+a proper [code mod](code-mods-with-umm.md) - you don't have to add logic, but
+you need to create an entry point.
+
 ```json
 {
 	"Id": "Nexus Mods / Unity Mod Manager ID",
