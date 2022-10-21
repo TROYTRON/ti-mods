@@ -205,11 +205,11 @@ Once this file is saved, the mod is complete.
 
 ## Testing The Mod
 
-* Launch the game
-* Navigate to `Mods` menu
-* Make sure to `Enable` the mod if you created it in `Disabled` folder
-* Make sure "Use Mods" check box is checked
-* Relaunch the game
+* Launch the game.
+* Navigate to `Mods` menu.
+* Make sure to `Enable` the mod if you created it in `Disabled` folder.
+* Make sure "Use Mods" check box is checked.
+* Relaunch the game.
 * When the game starts it will make a backup copy of the original
   `TIBilateralTemplate.json` and then will merge in your mod's changes to the
   file in the Templates folder.  
@@ -224,7 +224,7 @@ Once this file is saved, the mod is complete.
 ## Upload your mod
 
 After your mod is complete, you can
-[upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+[upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md).
 
 ## Known issues
 
@@ -239,5 +239,5 @@ After your mod is complete, you can
   The only presently known ways to "extend" the list with a json mode are to
   either specify the list in its entirety or to specify empty stubs for already
   presented entries. Both ways likely make multiple mods patching the same list
-  incompatible. You may create a code mod to do such patching
+  incompatible. You may create a code mod to do such patching.
   <TODO(dkoiman): add a guide for in-code modifications of templates>
