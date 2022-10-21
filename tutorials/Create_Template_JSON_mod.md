@@ -4,8 +4,8 @@
 - [Setting Up The Mod Folder](#setting-up-the-mod-folder)
 - [Creating The JSON Mod File](#creating-the-json-mod-file)
 - [Testing The Mod](#testing-the-mod)
-
-[Uploading A Mod To Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+- [Upload your Mod](#upload-your-mod)
+- [Known Issues](#known-issues)
 
 ## Template Structure
 Terra Invicta stores static / configuration data in the \Terra Invicta\TerraInvicta_Data\StreamingAssets\Templates folder. Each file in this folder corresponds to a Template class in the game assembly. Each file is organized as [JSON](https://www.json.org/json-en.html) formatted data. It is the serialization of an array of class instances.
@@ -96,6 +96,12 @@ Each mod requires a `ModInfo.json` file. This file allows description of all pos
 ```
 
 If Unity Mod Manager is installed, an expanded number of fields are available. (Reminder : any field in JSON that does not exist in the C# source is ignored, so including the below field will not cause problems if UMM is not installed)
+
+NOTE: if UMM is installed it will be complaining that there is no EntryPoint
+specified. You can ignore it for JSON modes, the in-game mod manager will pick
+it up regardless. To suppress the warning, you would need to turn your code into
+a proper [code mod](code-mods-with-umm.md) - you don't have to add logic, but
+you need to create an entry point.
 
 ```json
 {
@@ -199,13 +205,39 @@ Once this file is saved, the mod is complete.
 
 ## Testing The Mod
 
-After launching the game and enabling the mod (if it was created in the Disabled folder), relaunching the game will result in the game making a backup copy of the original `TIBilateralTemplate.json` and then merging in your mod's changes in to the version in the Templates folder. ![image](https://user-images.githubusercontent.com/11687023/195463092-dc9abea8-99a3-4f40-9d79-2781cbbc017a.png)
+* Launch the game.
+* Navigate to `Mods` menu.
+* Make sure to `Enable` the mod if you created it in `Disabled` folder.
+* Make sure "Use Mods" check box is checked.
+* Relaunch the game.
+* When the game starts it will make a backup copy of the original
+  `TIBilateralTemplate.json` and then will merge in your mod's changes to the
+  file in the Templates folder.  
+  ![image](https://user-images.githubusercontent.com/11687023/195463092-dc9abea8-99a3-4f40-9d79-2781cbbc017a.png)
+* You can examine the changed `TIBilateralTemplate.json` int the Templates
+  folder to verify that the "ClaimUSAAlaska" has `"initialOwner": false` and
+  Canada has a new claim added.
+* Launch a new campaign to observe the modded-in regional claim and initial
+  ownership.  
+  ![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
 
-Examining the changed `TIBilateralTemplate.json` from the Templates folder we can verify that the "ClaimUSAAlaska" has `"initialOwner": false` and the new claim for Canada with initial ownership has been added.
+## Upload your Mod
 
-Launching a new campaign demonstrates the modded-in regional claim and initial ownership.
+After your mod is complete, you can
+[upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md).
 
-![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
+## Known Issues
 
-After your mod is complete, you can [upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
-
+* If mod directory contains a json file that doesn't match the name of an
+  existing one in the game's Templates folder (with the exception for
+  `ModInfo.json`), it will crash. If you have a code-mode that needs to load a
+  new template type, you need to alternate the extension of the file and load
+  it manually.
+* `TIMapGroupVisualizerTemplate.json` and `TISpaceFleetTemplate.json` contain
+  invalid json, and will likely cause a crash if tried modding.
+* Patching arrays performs field-wise merge for entries on the matching indices.
+  The only presently known ways to "extend" the list with a json mode are to
+  either specify the list in its entirety or to specify empty stubs for already
+  presented entries. Both ways likely make multiple mods patching the same list
+  incompatible. You may create a code mod to do such patching.
+  <TODO(dkoiman): add a guide for in-code modifications of templates>
