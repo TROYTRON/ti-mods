@@ -45,4 +45,3 @@
 
 ## Mod Releases
 - [Tayta Malikai](mods/tayta/Tayta's%20Mods.md)
-  - [Project Valkyrie Core - World Map Prototype](mods/tayta/pvc-world-map)
