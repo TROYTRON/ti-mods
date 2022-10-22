@@ -1,0 +1,12 @@
+{
+	"Id": "CodeTemplatePatchExample",
+	"DisplayName": "CodeTemplatePatchExample",
+	"Title": "CodeTemplatePatchExample",
+	"Author": "dkoiman",
+	"ModURL": "TBD",
+	"Requirements": [],
+	"Version": "0.0.1",
+	"Description": "An example mod to demonstrate patching templates without JSON files",
+	"AssemblyName": "CodeTemplatePatchExample.dll",
+	"EntryMethod": "CodeTemplatePatchExample.TemplatePatchExample.Load"
+}

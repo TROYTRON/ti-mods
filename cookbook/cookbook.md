@@ -17,3 +17,7 @@ common modding operations.
   document. Put source files into `src` sub-directory of your recipe.
 * Update the recipe list bellow to reference your recipe. The entry name should
   match the title of the recipe in the `index.md`
+
+## Recipes
+
+* [Patching data templates in the code](patching_data_templates_in_code/index.md)
