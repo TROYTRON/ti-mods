@@ -239,5 +239,5 @@ After your mod is complete, you can
   The only presently known ways to "extend" the list with a json mod are to
   either specify the list in its entirety or to specify empty stubs for already
   presented entries. Both ways likely make multiple mods patching the same list
-  incompatible. You may create a code mod to do such patching.
-  <TODO(dkoiman): add a guide for in-code modifications of templates>
+  incompatible. To workaround. you may create a code mod to do such patching.See
+  [Patching data templates in the code](/cookbook/patching_data_templates_in_code/index.md)
