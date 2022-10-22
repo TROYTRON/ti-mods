@@ -4,17 +4,26 @@
 
 Tested on 0.3.26
 
+## Motivation
+
+The in-game built-in json merger has some behavioural problems - it requires
+game restart after enabling to take an effect, but more annoyingly, the list
+merge behaviour - indices-wise entry merges - might be not desiarable, e.g. one
+can not easily and in a cross-mod-compatible way extend an array field of a
+data template. In-code patching of data templates can help avoud the problem.
+
 ## Background
 
 `PavonisInteractive.TerraInvicta.TemplateManager` (further referred to as
 `TemplateManager`) iterates over `\TerraInvicta_Data\StreamingAssets\Templates`
-directory and loads data templates. Each file contains a json array of data
-template objects. Each object contains an identifier `dataName` that is supposed
-to be globally unique. `TemplateManager` deserializes those json objects into
-instances of classes, designated by the file name (i.e. `TIMissileTemplate.json`
-content will be parsed into `TIMissileTemplate` instances). The templates can be 
-later query by their type and `dataName` with
-`TemplateManager.Find<T>(dataName)`.
+directory and loads data templates. The loading of each specific template file
+is done by `TemplateManager.RegisterFileBasedTemplate` method. Each file
+contains a json array of data template objects. Each object contains an
+identifier `dataName` that is supposed to be globally unique. `TemplateManager`
+deserializes those json objects into instances of classes, designated by the
+file name (i.e. `TIMissileTemplate.json` content will be parsed into
+`TIMissileTemplate` instances). The templates can be  later query by their type
+and `dataName` with `TemplateManager.Find<T>(dataName)`.
 
 ## Recipe
 
