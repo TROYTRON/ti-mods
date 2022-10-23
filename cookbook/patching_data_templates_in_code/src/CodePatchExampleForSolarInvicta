@@ -1,0 +1,462 @@
+using System;
+using System.Linq;
+using System.Reflection;
+using HarmonyLib;
+using PavonisInteractive.TerraInvicta;
+using UnityModManagerNet;
+using UnityEngine;
+using TMPro;
+
+namespace SolarInvicta
+{
+	internal static class Main
+	{
+		//Load Unity Mod Manager
+		private static bool Load(UnityModManager.ModEntry modEntry)
+		{
+			new Harmony(modEntry.Info.Id).PatchAll(Assembly.GetExecutingAssembly());
+			Main.mod = modEntry;
+			modEntry.OnToggle = new Func<UnityModManager.ModEntry, bool, bool>(Main.OnToggle);
+			return true;
+		}
+
+		private static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
+		{
+			Main.enabled = value;
+			return true;
+		}
+
+		public static bool enabled;
+
+		public static UnityModManager.ModEntry mod;
+
+		//Allow councilor to reach target when they are in the same spacebody, skip the original method
+		[HarmonyPatch(typeof(TIMissionCondition_TargetInRange), "CanTarget")]
+		private class TIMissionCondition_TargetInRange_CanTarget_Patch
+		{
+			private static bool Prefix(TIMissionCondition __instance, ref string __result, TICouncilorState councilor, TIGameState possibleTarget)
+			{
+				bool flag = councilor.ref_spaceBody == possibleTarget.ref_spaceBody && !possibleTarget.ref_spaceBody.isEarth;
+				if (flag)
+				{
+					__result = "_Pass";
+				}
+				bool flag2 = !(councilor.ref_spaceBody != possibleTarget.ref_spaceBody);
+				if (flag2)
+				{
+					bool isCouncilorState = possibleTarget.isCouncilorState;
+					if (isCouncilorState)
+					{
+						TIGameState tigameState = TIMissionPhaseState.CouncilorLastKnownLocation(possibleTarget.ref_councilor);
+						bool flag3 = (!(councilor.ref_hab != null) || !(councilor.ref_hab == tigameState.ref_hab)) && (!(councilor.ref_fleet != null) || !(councilor.ref_fleet == tigameState.ref_fleet)) && (!(councilor.ref_habSite != null) || !(councilor.ref_habSite == tigameState.ref_habSite));
+						if (flag3)
+						{
+							bool flag4 = !councilor.OnEarth || !(tigameState.ref_spaceAsset == null);
+							if (flag4)
+							{
+								__result = __instance.GetType().Name;
+							}
+							TISpaceBodyState ref_spaceBody = tigameState.ref_spaceBody;
+							bool flag5 = ref_spaceBody == null || !ref_spaceBody.isEarth;
+							if (flag5)
+							{
+								__result = __instance.GetType().Name;
+							}
+						}
+						bool flag6 = councilor.ValidDestination(TIUtilities.ObjectToExactLocation(tigameState));
+						if (flag6)
+						{
+							__result = "_Pass";
+						}
+					}
+					else
+					{
+						bool flag7 = (!(councilor.ref_hab != null) || !(councilor.ref_hab == possibleTarget.ref_hab)) && (!(councilor.ref_fleet != null) || !(councilor.ref_fleet == possibleTarget.ref_fleet)) && (!(councilor.ref_habSite != null) || !(councilor.ref_habSite == possibleTarget.ref_habSite));
+						if (flag7)
+						{
+							bool flag8 = !councilor.OnEarth || !(possibleTarget.ref_spaceAsset == null);
+							if (flag8)
+							{
+								__result = __instance.GetType().Name;
+							}
+							TISpaceBodyState ref_spaceBody2 = possibleTarget.ref_spaceBody;
+							bool flag9 = ref_spaceBody2 == null || !ref_spaceBody2.isEarth;
+							if (flag9)
+							{
+								__result = __instance.GetType().Name;
+							}
+							bool flag10 = councilor.ref_spaceBody == ref_spaceBody2 && !ref_spaceBody2.isEarth;
+							if (flag10)
+							{
+								__result = "_Pass";
+							}
+						}
+						bool flag11 = councilor.ValidDestination(TIUtilities.ObjectToExactLocation(possibleTarget));
+						if (flag11)
+						{
+							__result = "_Pass";
+						}
+					}
+				}
+				return false;
+			}
+		}
+
+		//Economy post patch for space nations
+		[HarmonyPatch(typeof(TINationState), "economyPriorityPerCapitaIncomeChange", MethodType.Getter)]
+		private class TINationState_economyPriorityPerCapitaIncomeChange_Patch
+		{
+			private static void Postfix(TINationState __instance, ref float __result)
+			{
+				bool flag = __instance.solarBody != "Earth";
+				if (flag)
+				{
+					bool flag2 = (double)__instance.population_Millions < 0.01;
+					if (flag2)
+					{
+						__result *= 0.5f;
+					}
+					else
+					{
+						bool flag3 = __instance.population_Millions < 10f;
+						if (flag3)
+						{
+							__result *= 0.8f;
+						}
+						else
+						{
+							__result *= 1.1f;
+						}
+					}
+				}
+			}
+		}
+
+		//Welfare post patch for space nations
+		[HarmonyPatch(typeof(TINationState), "WelfarePriorityComplete")]
+		private class TINationState_WelfarePriorityComplete_Patch
+		{
+			private static void Postfix(TINationState __instance)
+			{
+				bool flag = __instance.solarBody != "Earth";
+				if (flag)
+				{
+					bool flag2 = __instance.population_Millions < 0.01f;
+					if (flag2)
+					{
+						foreach (TIRegionState tiregionState in __instance.regions)
+						{
+							tiregionState.populationInMillions += 0.01f;
+						}
+					}
+					else
+					{
+						bool flag3 = __instance.population_Millions < 10f;
+						if (flag3)
+						{
+							foreach (TIRegionState tiregionState2 in __instance.regions)
+							{
+								tiregionState2.populationInMillions *= 1.04f;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//knowledge post patch for space nations
+		[HarmonyPatch(typeof(TINationState), "knowledgePriorityEducationChange", MethodType.Getter)]
+		private class TINationState_knowledgePriorityEducationChange_Patch
+		{
+			private static void Postfix(TINationState __instance, ref float __result)
+			{
+				bool flag = __instance.solarBody != "Earth";
+				if (flag)
+				{
+					bool flag2 = __instance.population_Millions < 0.01f;
+					if (flag2)
+					{
+						__result = TemplateManager.global.knowledgePriorityEducationIncrease * 10f;
+					}
+					else
+					{
+						bool flag3 = __instance.population_Millions < 10f;
+						if (flag3)
+						{
+							__result = TemplateManager.global.knowledgePriorityEducationIncrease * 5f;
+						}
+						else
+						{
+							__result = TemplateManager.global.knowledgePriorityEducationIncrease * 2f;
+						}
+					}
+				}
+			}
+		}
+
+		//Boost post patch for space nations
+		[HarmonyPatch(typeof(TINationState), "BoostIncrease")]
+		private class TINationState_BoostIncrease_Patch
+		{
+			private static void Postfix(TINationState __instance, ref float __result)
+			{
+				bool flag = __instance.solarBody != "Earth";
+				if (flag)
+				{
+					__result = TemplateManager.global.boostPriorityIncreaseAtEquator * TemplateManager.global.spaceResourceToTons * (10f / (float)__instance.ref_spaceBody.escapeVelocity_kps);
+				}
+			}
+		}
+
+		//Initial Boost post patch for space nations
+		[HarmonyPatch(typeof(TINationState), "spaceflightInitialBoost", MethodType.Getter)]
+		private class TINationState_spaceflightInitialBoost_Patch
+		{
+			private static void Postfix(TINationState __instance, ref float __result)
+			{
+				bool flag = __instance.solarBody != "Earth";
+				if (flag)
+				{
+					__result = 20f;
+				}
+			}
+		}
+
+		//Post patch to correct population display for all spacebodies
+		[HarmonyPatch(typeof(TISpaceBodyState), "population", MethodType.Getter)]
+		private class TISpaceBodyState_population_Patch
+		{
+			private static void Postfix(TISpaceBodyState __instance, ref ulong __result)
+			{
+				ulong num = 0UL;
+				foreach (TINationState tinationState in __instance.nations)
+				{
+					num += (ulong)tinationState.population;
+				}
+				bool isEarth = __instance.isEarth;
+				if (isEarth)
+				{
+					__result = num;
+				}
+				else
+				{
+					__result += num;
+				}
+			}
+		}
+
+		//Post patch to correct population display for earth and space
+		[HarmonyPatch(typeof(IntelScreenController), "RefreshGlobalTab")]
+		private class IntelScreenController_RefreshGlobalTab_Patch
+		{
+			private static void Postfix(IntelScreenController __instance)
+			{
+				double num = 0.0;
+				double num2 = 0.0;
+				foreach (TISpaceBodyState tispaceBodyState in GameStateManager.AllSpaceBodies())
+				{
+					bool isEarth = tispaceBodyState.isEarth;
+					if (isEarth)
+					{
+						num = tispaceBodyState.population;
+					}
+					else
+					{
+						num2 += tispaceBodyState.population;
+					}
+				}
+				double num3 = GameStateManager.AllNations().Sum((TINationState x) => x.GDP);
+				double num4 = num3 / (num + num2);
+				__instance.globalDataData.SetText(Loc.T("UI.Intel.GlobalDataData", new object[]
+				{
+					num.ToString("N0"),
+					num2.ToString("N0"),
+					TIUtilities.FormatBigNumber(num3, 1),
+					num4.ToString("N0")
+				}), true);
+			}
+		}
+
+		//Post patch for space marine with enum index ArmyType10	
+		[HarmonyPatch(typeof(TIArmyState), "techLevel", MethodType.Getter)]
+		private class TIArmyState_techLevel_Patch
+		{
+			private static void Postfix(TIArmyState __instance, ref float __result)
+			{
+				if (__instance.armyType == (ArmyType)10)
+				{
+					__result = __instance.homeNation.maxMilitaryTechLevel + 1f;
+				}
+				else
+                {
+					__result = __instance.homeNation.militaryTechLevel;
+				}
+			}
+		}
+
+		//Post patch for space marine with enum index ArmyType10
+		[HarmonyPatch(typeof(TIArmyState), "NewArmy")]
+		private class TIArmyState_NewArmy_Patch
+		{
+			private static void Postfix(TIArmyState __instance, ArmyType ___armyType)
+			{
+				if (___armyType == (ArmyType)10)
+				{
+					__instance.displayName = Loc.T("TIArmyTemplate.displayName.SpaceMarine");
+					__instance.displayNameWithArticle = Loc.T("TIArmyTemplate.displayNameWithArticle.SpaceMarine");
+				}
+			}
+		}
+
+		//Post patch for space marine with enum index ArmyType10
+		[HarmonyPatch(typeof(TIArmyState), "Disband")]
+		private class TIArmyState_Disband_Patch
+		{
+			private static void Postfix(TIArmyState __instance)
+			{
+				if (__instance.armyType == (ArmyType)10)
+				{
+					GameStateManager.RemoveGameState<TIAlienArmyState>(__instance.ID, false);
+				}
+			}
+		}
+
+		//Space Marine deployment patch, skip the original method
+		[HarmonyPatch(typeof(AlienLandArmyOperation), "ExecuteOperation")]
+		private class AlienLandArmyOperation_ExecuteOperation_Patch
+		{
+			private static bool Prefix(TIGameState actorState, TIGameState target)
+			{
+				TISpaceFleetState ref_fleet = actorState.ref_fleet;
+				TIRegionState ref_region = target.ref_region;
+				TIFactionState ref_faction = actorState.ref_faction;
+				TINationState ref_nation = target.ref_nation;
+				if (!ref_fleet.inCombat)
+				{
+					foreach (TISpaceShipState tispaceShipState in ref_fleet.ships)
+					{
+						if (tispaceShipState.landArmyEligible)
+						{
+							tispaceShipState.DestroyShip(false, null);
+							if (ref_faction == GameStateManager.AlienFaction())
+							{
+								ref_region.alienLanding.TriggerLanding();
+							}
+							else
+							{
+								TIArmyState tiarmyState = GameStateManager.CreateNewGameState<SISpaceMarineState>();
+								tiarmyState.createdFromTemplate = false;
+								tiarmyState.deploymentType = DeploymentType.Naval;
+								if (ref_nation.executiveFaction != null && ref_nation.executiveFaction != ref_faction && ref_nation.wars.Count != 0)
+								{
+									int num = UnityEngine.Random.Range(0, ref_nation.wars.Count);
+									TINationState tinationState = ref_nation.wars[num];
+									int num2 = UnityEngine.Random.Range(0, tinationState.regions.Count);
+									tiarmyState.homeRegion = tinationState.regions[num2];
+									tiarmyState.NewArmy((ArmyType)10, 0, 1f);
+									tinationState.AddArmy(tiarmyState);
+									tiarmyState.MoveArmyToRegion(ref_region, true);
+								}
+								else if (ref_nation.executiveFaction != null && ref_nation.executiveFaction != ref_faction && ref_nation.rivals.Count != 0)
+								{
+									int num3 = UnityEngine.Random.Range(0, ref_nation.rivals.Count);
+									TINationState tinationState2 = ref_nation.rivals[num3];
+									int num4 = UnityEngine.Random.Range(0, tinationState2.regions.Count);
+									tinationState2.DeclareLimitedWar(ref_faction, ref_nation);
+									tinationState2.IsAtWarWith(ref_nation);
+									tiarmyState.homeRegion = tinationState2.regions[num4];
+									tiarmyState.NewArmy((ArmyType)10, 0, 1f);
+									tinationState2.AddArmy(tiarmyState);
+									tiarmyState.MoveArmyToRegion(ref_region, true);
+								}
+								else
+								{
+									tiarmyState.homeRegion = ref_region;
+									tiarmyState.NewArmy((ArmyType)10, 0, 1f);
+									ref_nation.AddArmy(tiarmyState);
+									tiarmyState.MoveArmyToRegion(ref_region, true);
+								}
+								TINotificationQueueState.LogNewArmyBuilt(tiarmyState);
+								tiarmyState.homeNation.SetDataDirty();
+								TIGlobalValuesState.GlobalValues.ModifyMarketValuesForArmyPriority();
+								tiarmyState.SetGameStateCreated();
+								tiarmyState.faction = ref_faction;
+								TINotificationQueueState.LogArmyAssignedToFaction(tiarmyState, ref_faction);
+							}
+							foreach (TICouncilorState ticouncilorState in tispaceShipState.councilorPassengers)
+							{
+								ticouncilorState.SetLocation(ref_region);
+							}
+							TIEffectsState.AddEffect(TemplateManager.Find<TIEffectTemplate>("Effect_ManyAliensOnEarth", false), GameStateManager.AlienFaction(), null, null);
+							break;
+						}
+					}
+				}
+				return false;
+			}
+
+		}
+
+		//Space Marine display patch, skip the original method
+		[HarmonyPatch(typeof(ArmyDetailController), "SetArmyMiltech")]
+		private class ArmyDetailController_SetArmyMiltech_Patch
+		{
+			private static bool Prefix(ref TIArmyState army, ref TMP_Text textItem)
+			{
+				ArmyType armyType = army.armyType;
+				if (armyType - ArmyType.AlienMegafauna <= 1)
+				{
+					textItem.SetText(army.techLevel.ToString("N1"), true);
+				}
+				else if (armyType == (ArmyType)10)
+				{
+					textItem.SetText(army.battleValue.ToString("N1"), true);
+				}
+                else
+                {
+					textItem.SetText(army.homeNation.GetMilitaryDescriptiveStringAndValue(1), true);
+				}
+				return false;
+			}
+		}
+
+		//CTD Fixed For AI
+		[HarmonyPatch(typeof(TINationState), "BestBoostLatitude", MethodType.Getter)]
+		private class TINationState_BestBoostLatitude_Patch
+		{
+			private static bool Prefix(TINationState __instance, ref float __result)
+			{
+				if (__instance.solarBody == "Earth")
+				{
+					__result = __instance.regions.MinBy((TIRegionState x) => Mathf.Abs(x.boostLatitude)).boostLatitude;
+				}
+				else 
+				{
+					__result = 0;
+				}
+				return false;
+			}
+		}
+		//Pop Fixed For SpaceRegions
+		[HarmonyPatch(typeof(TIRegionState), "InitWithTemplate")]
+		private class TIRegionState_InitWithTemplate_Patch
+		{
+			private static void Postfix(TIRegionState __instance, TIDataTemplate ___template)
+			{
+				TIRegionTemplate tiregionTemplate = ___template as TIRegionTemplate;
+				__instance.populationInMillions = tiregionTemplate.population_Millions;			
+			}
+		}
+		//GDF fix for mission
+		[HarmonyPatch(typeof(TIMissionModifier_TargetNationGDP), "GetModifier")]
+		private class TIMissionModifier_TargetNationGDP_GetModifier_Patch
+		{
+			private static void Postfix(ref float __result)
+			{
+				if (float.IsNaN(__result) || float.IsInfinity(__result))
+				{
+					__result = 0;
+				}
+			}
+		}
+	}
