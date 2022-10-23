@@ -1,0 +1,13 @@
+{
+	"Id": "EnsembleCodeTemplatePatchExample",
+	"DisplayName": "EnsembleCodeTemplatePatchExample",
+	"Title": "EnsembleCodeTemplatePatchExample",
+	"Author": "dkoiman",
+	"ModURL": "TBD",
+	"Requirements": [ "ModEnsemble" ],
+	"LoadAfter": [ "ModEnsemble" ],
+	"Version": "0.0.1",
+	"Description": "An example mod to demonstrate patching templates without JSON files",
+	"AssemblyName": "EnsembleCodeTemplatePatchExample.dll",
+	"EntryMethod": "EnsembleCodeTemplatePatchExample.TemplatePatchExample.Load"
+}

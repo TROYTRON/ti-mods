@@ -2,7 +2,7 @@
 
 ## Version compatibility
 
-Tested on 0.3.26
+Tested on 0.3.27
 
 ## Motivation
 
@@ -23,9 +23,17 @@ identifier `dataName` that is supposed to be globally unique. `TemplateManager`
 deserializes those json objects into instances of classes, designated by the
 file name (i.e. `TIMissileTemplate.json` content will be parsed into
 `TIMissileTemplate` instances). The templates can be  later query by their type
-and `dataName` with `TemplateManager.Find<T>(dataName)`.
+and `dataName` with `TemplateManager.Find<T>(dataName)`. When all teplates are
+processed, `TemplateManager.VerifyAllTemplates` is called.
 
 ## Recipe
+
+All 3 methods below provide the following result in game:
+
+![image](result.png)
+
+
+### Method 1 (Obsolete)
 
 * Intercept `TemplateManager.RegisterFileBasedTemplate` post method execution.
 * The argument of the method contains full path to the last loaded tempalte
@@ -37,9 +45,9 @@ and `dataName` with `TemplateManager.Find<T>(dataName)`.
   the desired template.
 * Modify desired parameters.
 
-## Example
+#### Example
 
-[Complete code example](src/TemplatePatchExample.cs)
+[Complete code example](src/CodeTemplatePatchExample/TemplatePatchExample.cs)
 
 ``` C#
 // Intercept `TemplateManager.RegisterFileBasedTemplate`.
@@ -70,8 +78,77 @@ static class UseAlternateTemplateLoadManager {
 }
 ```
 
-In game result:  
-![image](result.png)
+### Method 2
+
+* Intercept `TemplateManager.ValidateAllTemplates` prior method execution.
+* Use `TemplateManager.Find<*template type*>(*template dataName*)` to retrieve
+  the desired template.
+* Modify desired parameters.
+
+#### Example
+
+[Complete code example](src/BetterCodeTemplatePatchExample/TemplatePatchExample.cs)
+
+``` C#
+// Intercept `TemplateManager.ValidateAllTemplates`.
+[HarmonyPatch(typeof(TemplateManager), "ValidateAllTemplates")]
+static class UseAlternateTemplateLoadManager {
+  // Intercept the method prior execution.
+  static void Prefix() {
+    // Use `dataName` of the template you wish to modify to find it.
+    // among others of the same type.
+    TILaserWeaponTemplate template =
+      TemplateManager.Find<TILaserWeaponTemplate>("PointDefenseLaserTurret");
+    if (template == null) {
+      return;
+    }
+
+    // Modify properties of the template
+    template.targetingRange_km = 1337;
+  }
+}
+```
+
+### Method 3 (ModEnsemble)
+
+[ModEnsmble](https://github.com/dkoiman/ModEnsemble) is an alternative temaplate
+loader that provides better and more flexible mod loading behaviour than in-game
+template loader. Doing in-code tempalte patching is similar to Method 2, but
+works around the known issue with skirmish below.
+
+* Intercept `AlternateTemplateLoadManager.ModHook_InCodeTemplateOverride` prior
+  method execution.
+* Use `TemplateManager.Find<*template type*>(*template dataName*)` to retrieve
+  the desired template.
+* Modify desired parameters.
+
+#### Example
+
+[Complete code example](src/EnsembleCodeTemplatePatchExample/TemplatePatchExample.cs)
+
+
+``` C#
+
+using ModEnsemble;
+
+// Intercept `AlternateTemplateLoadManager.ModHook_InCodeTemplateOverride`.
+[HarmonyPatch(typeof(AlternateTemplateLoadManager), "ModHook_InCodeTemplateOverride")]
+static class UseAlternateTemplateLoadManager {
+  // Intercept the method prior execution.
+  static void Prefix() {
+    // Use `dataName` of the template you wish to modify to find it.
+    // among others of the same type.
+    TILaserWeaponTemplate template =
+      TemplateManager.Find<TILaserWeaponTemplate>("PointDefenseLaserTurret");
+    if (template == null) {
+      return;
+    }
+
+    // Modify properties of the template
+    template.targetingRange_km = 1337;
+  }
+}
+```
 
 ## Known issues
 
@@ -81,6 +158,10 @@ In game result:
   You can also manually reload all the templates upon the mod loading with the
   following snippet. The snippet requires extra reference to
   `Assembly-CSharp-firstpass.dll`
+
+  NOTE: EnsembleMod correctly handles the loading of templates for skirmish, so
+  the workaround below is not required.
+
   WARNING: reloading templates which are referenced by any active game objects
   will likely result in crash. Practically, full re-loading of templates is
   safe in the main menu only.
