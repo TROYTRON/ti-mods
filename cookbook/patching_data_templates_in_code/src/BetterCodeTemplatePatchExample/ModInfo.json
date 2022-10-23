@@ -1,0 +1,12 @@
+{
+	"Id": "BetterCodeTemplatePatchExample",
+	"DisplayName": "BetterCodeTemplatePatchExample",
+	"Title": "BetterCodeTemplatePatchExample",
+	"Author": "dkoiman",
+	"ModURL": "TBD",
+	"Requirements": [],
+	"Version": "0.0.1",
+	"Description": "An example mod to demonstrate patching templates without JSON files",
+	"AssemblyName": "BetterCodeTemplatePatchExample.dll",
+	"EntryMethod": "BetterCodeTemplatePatchExample.TemplatePatchExample.Load"
+}
