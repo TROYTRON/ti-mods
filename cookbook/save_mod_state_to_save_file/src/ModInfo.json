@@ -1,0 +1,12 @@
+{
+	"Id": "SaveStateExample",
+	"DisplayName": "SaveStateExample",
+	"Title": "SaveStateExample",
+	"Author": "dkoiman",
+	"ModURL": "TBD",
+	"Requirements": [],
+	"Version": "0.0.1",
+	"Description": "An example mod to demonstrate dealing with save state",
+	"AssemblyName": "SaveStateExample.dll",
+	"EntryMethod": "SaveStateExample.Main.Load"
+}
