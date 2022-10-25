@@ -1,0 +1,12 @@
+{
+	"Id": "ExampleConsoleCommand",
+	"DisplayName": "ExampleConsoleCommand",
+	"Title": "ExampleConsoleCommand",
+	"Author": "dkoiman",
+	"ModURL": "TBD",
+	"Requirements": [],
+	"Version": "0.0.1",
+	"Description": "An example mod to demonstrate adding new console commands",
+	"AssemblyName": "ExampleConsoleCommand.dll",
+	"EntryMethod": "ExampleConsoleCommand.Main.Load"
+}
