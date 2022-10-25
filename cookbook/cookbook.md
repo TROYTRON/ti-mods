@@ -22,3 +22,4 @@ common modding operations.
 
 * [Patching data templates in the code](patching_data_templates_in_code/index.md)
 * [Preserving mod state over save/load](save_mod_state_to_save_file/index.md)
+* [Adding a console command](add_console_command/index.md)
