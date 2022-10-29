@@ -28,6 +28,7 @@
 - [Reference Guide for Narrative Events](https://docs.google.com/document/d/1s3x96SyjvKFwx3pRSaMS7Zjo3FLwVVSLzSWzidT4CEo/edit)
 - [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
 - [Uploading and Updating Steam Workshop Mods](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
+- [An example of modifying ingame UI with code](tutorials/IntroToUI.md)
 - [Modding Cookbook](cookbook/cookbook.md)
 
 ## Tips and Tricks
@@ -44,6 +45,7 @@
 ## Future Investigation
 - Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
 - Ability to add new UI elements to the game.
+  - See an example of modifying the UI in code - it is possible to do, but different things might be less or more complex to alter.
 
 ## Mod Releases
 - [Tayta Malikai](mods/tayta/Tayta's%20Mods.md)
