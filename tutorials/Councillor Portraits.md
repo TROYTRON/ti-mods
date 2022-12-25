@@ -9,7 +9,7 @@ Tools used:
 3. Procure a suitable image, preferably of size 512x512*.
 4. Duplicate the image to form a sequence `1.png, 2.png`.
 5. Run this command in cmd/shell: `ffmpeg -framerate 1 -i %1d.png -c:v libvpx -auto-alt-ref 0 <PORTRAIT_NAME>.webm`. This will produce a 2-frame video.
-    -	The PowerShell script I wrote [here](https://github.com/TROYTRON/ti-mods/blob/main/mods/tayta/anime-councilors/waifu2vid.ps1) allows you to skip steps 4 and 5. Simply run the script in the directory with your .pngs to produce the needed .webms.
+    -	The PowerShell script I wrote [here](https://github.com/TROYTRON/ti-mods/blob/main/mods/tayta/anime-councilors/waifu2vid.ps1) allows you to skip steps 3 and 4. Simply run the script in the directory with your .pngs to produce the needed .webms.
 7. Import your new .webm into Unity, add it to your preferred AssetBundle, build the AssetBundle, and put it into `StreamingAssets\AssetBundles`.
     -	PROTIP: If your new AssetBundle has the string "charactericons" in it, the game will try to replace it with "charactericons_gui" in certain situations, which will cause an NRE crash. Either make this bundle as well, or use a different name to avoid this.
 9. Don't forget to configure `TICouncilorAppearanceTemplate.json` with your new portrait.
