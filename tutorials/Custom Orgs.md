@@ -1,13 +1,15 @@
 Tools used:
 -	Unity 2020.3.30f1
 
+This tutorial up to step 8) will also generally introduce you to importing new assets into the game.
+
 Steps:
 1. Follow the steps in this tutorial: https://learn.unity.com/tutorial/introduction-to-asset-bundles#6028bab6edbc2a750bf5b8a4, up to Step 4. In particular:
     -	Create a new Unity project.
     -	Create a new folder named “Editor” in Assets.
     -	In Editor, create a new C# script named “CreateAssetBundles”. Copy the script shown in the tutorial.
     -	Create new folders named “BundledAssets” and “StreamingAssets” in Assets.
-2. Import all desired logos into the Org Logos folder in Unity. Drag-and-drop from Windows Explorer is sufficient.
+2. Import all desired logos into Unity. Drag-and-drop from Windows Explorer is sufficient.
 3. Ctrl+A to select all the logos you just imported.
 4. In the Inspector pane in Unity (should already be open on the right of the screen) you should see “[number] Texture 2Ds Import Settings” near the top. Below that is a drop-down menu marked “Texture Type”. Change this from “Default” to “Sprite (2D and UI)”. Click “Apply” further down.
     -	You should now see arrows on all your imported logos.
