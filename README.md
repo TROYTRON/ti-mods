@@ -30,6 +30,7 @@
 - [Uploading and Updating Steam Workshop Mods](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
 - [An example of modifying ingame UI with code](tutorials/IntroToUI.md)
 - [Modding Cookbook](cookbook/cookbook.md)
+- [Introduction to MonoMod](tutorials/MonoMod%20Guide.md)
 
 ## Tips and Tricks
 - If you want to savegame edit you unpack, edit the embedded json and repack with z7ip, default settings for gzip (format: gzip, 5 - normal,word size:32)
