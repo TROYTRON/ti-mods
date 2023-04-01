@@ -13,20 +13,17 @@
 
 # Setting up your Development Environment
 
-1) You'll need a form of Git set up on your computer. For people less seasoned with programming and software development (like myself, lol), it is recommended to use GitHub Desktop, downloadable from https://desktop.github.com/.
-2) Once Git is set up, you'll need to clone the project repository to your computer. In GitHub Desktop, this is done by going to File -> Clone repository, choosing URL, pasting in https://github.com/TROYTRON/ti-pvc-monomod.git, and designating an empty directory to store the project files in.
-3) The default branch is peerless-branch. Please switch to the branch named after you and do all your work in there. If it doesn't exist, or you just need another branch, feel free to create a new one.
-4) The recommended IDE is Visual Studio 2019. You can download it from https://visualstudio.microsoft.com/vs/older-downloads/. You may need to create a free account if you don't already have one.
-5) Once installed, use it to open `TIProjectValkyrieCore_MonoMod.sln` in your mod project folder.
-6) You will likely need to add the necessary **References** to the game's code. You should see a list of these in the right-hand panel of VS2019.
+1) The recommended IDE is Visual Studio 2019. You can download it from https://visualstudio.microsoft.com/vs/older-downloads/. You may need to create a free account if you don't already have one. See [here](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Build%20Environment.md) for reference.
+2) Once installed, create a new project `<yourmodname>.sln`.
+3) You will likely need to add the necessary **References** to the game's code. You should see a list of these in the right-hand panel of VS2019.
    - ![image](https://user-images.githubusercontent.com/16394154/212811900-9bc7fcb0-48c1-4de0-b8e7-f9ac51b3ccc0.png)
    - Right-click on References and click Add Reference (or go to Project->Add Reference in the top bar).
    - Use the browser to navigate to `Terra Invicta\BepInEx\core`. Ctrl+A to highlight all the DLL files there and add them all as references.
    - ![image](https://user-images.githubusercontent.com/16394154/212812475-810ef45f-f43b-4cd0-8832-ba19cc41d565.png)
    - Use the browser to navigate to `Terra Invicta\TerraInvicta_Data\Managed`. Add `Assembly-Csharp.dll`, `UnityEngine.dll`, `UnityEngine.CoreModule.dll`, `UnityEngine.UI.dll`, `UnityEngine.UIModule.dll` `Unity.TextMeshPro.dll`, and any other DLL files the editor complains about not having.
    - ![image](https://user-images.githubusercontent.com/16394154/213096527-99ea8625-155d-4cc6-8559-afd160be9909.png)
-8) To create a new build of the mod's code, go to Build -> Build Solution in the top menu. If there are no errors, it should compile. If there are any errors, you will need to fix them first. Warnings can be safely ignored (usually).
-9) The resulting file will be named `Assembly-CSharp.TIProjectValkyrieCore_MonoMod.mm.dll` and will be in the `bin\Debug` folder of the project. Copy and paste it into `Terra Invicta\BepInEx\monomod`.
+4) To create a new build of the mod's code, go to Build -> Build Solution in the top menu. If there are no errors, it should compile. If there are any errors, you will need to fix them first. Warnings can be safely ignored (usually).
+5) The resulting file will be named `Assembly-CSharp.<yourmodname>.mm.dll` and will be in the `bin\Debug` folder of the project. Copy and paste it into `Terra Invicta\BepInEx\monomod`.
    - ![image](https://user-images.githubusercontent.com/16394154/213363294-dfdd117a-3b14-4457-951c-4d9b158187f3.png)
    - ![image](https://user-images.githubusercontent.com/16394154/213363141-cf5147c0-0842-442a-86e5-98e39c148c4b.png)
 
