@@ -55,7 +55,7 @@ MonoMod uses the convention `patch_classname : classname`. This means that as fa
 ```csharp
 namespace PavonisInteractive.TerraInvicta
 {
-   patch_TINationState : TINationState
+   public class patch_TINationState : TINationState
    {
    }
 }
@@ -66,7 +66,7 @@ In this case, `EconomyPriorityComplete()` has no arguments and returns void.
 ```csharp
 namespace PavonisInteractive.TerraInvicta
 {
-   patch_TINationState : TINationState
+   public class patch_TINationState : TINationState
    {
       public void EconomyPriorityComplete()
       {
@@ -81,7 +81,7 @@ Often we want to **preserve** the original method and simply add additional code
 ```csharp
 namespace PavonisInteractive.TerraInvicta
 {
-   patch_TINationState : TINationState
+   public class patch_TINationState : TINationState
    {
       public extern void orig_EconomyPriorityComplete();
       public void EconomyPriorityComplete()
@@ -112,7 +112,7 @@ Simply use the same patching methods to modify the method's return value, like s
 ```csharp
 namespace PavonisInteractive.TerraInvicta
 {
-   patch_TINationState : TINationState
+   public class patch_TINationState : TINationState
    {
       public float get_economyPriorityInequalityChange()
       {
