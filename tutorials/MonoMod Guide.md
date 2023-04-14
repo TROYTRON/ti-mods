@@ -22,8 +22,9 @@
    - ![image](https://user-images.githubusercontent.com/16394154/212812475-810ef45f-f43b-4cd0-8832-ba19cc41d565.png)
    - Use the browser to navigate to `Terra Invicta\TerraInvicta_Data\Managed`. Add `Assembly-Csharp.dll`, `UnityEngine.dll`, `UnityEngine.CoreModule.dll`, `UnityEngine.UI.dll`, `UnityEngine.UIModule.dll` `Unity.TextMeshPro.dll`, and any other DLL files the editor complains about not having.
    - ![image](https://user-images.githubusercontent.com/16394154/213096527-99ea8625-155d-4cc6-8559-afd160be9909.png)
-4) To create a new build of the mod's code, go to Build -> Build Solution in the top menu. If there are no errors, it should compile. If there are any errors, you will need to fix them first. Warnings can be safely ignored (usually).
-5) The resulting file will be named `Assembly-CSharp.<yourmodname>.mm.dll` and will be in the `bin\Debug` folder of the project. Copy and paste it into `Terra Invicta\BepInEx\monomod`.
+4) Navigate to Project -> <yourmodname> Properties. Change the Assembly name to follow this format: `Assembly-CSharp.<yourmodname>.mm`.
+5) To create a new build of the mod's code, go to Build -> Build Solution in the top menu. If there are no errors, it should compile. If there are any errors, you will need to fix them first. Warnings can be safely ignored (usually).
+6) The resulting file will be named `Assembly-CSharp.<yourmodname>.mm.dll` and will be in the `bin\Debug` folder of the project. Copy and paste it into `Terra Invicta\BepInEx\monomod`.
    - ![image](https://user-images.githubusercontent.com/16394154/213363294-dfdd117a-3b14-4457-951c-4d9b158187f3.png)
    - ![image](https://user-images.githubusercontent.com/16394154/213363141-cf5147c0-0842-442a-86e5-98e39c148c4b.png)
 
