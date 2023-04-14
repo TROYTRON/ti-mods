@@ -14,7 +14,7 @@
 # Setting up your Development Environment
 
 1) The recommended IDE is Visual Studio 2019. You can download it from https://visualstudio.microsoft.com/vs/older-downloads/. You may need to create a free account if you don't already have one. See [here](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Build%20Environment.md) for reference.
-2) Once installed, create a new project `<yourmodname>.sln`.
+2) Once installed, create a new project `<yourmodname>.sln`. The Class Library (.NET Framework) is suggested as a template to use.
 3) You will likely need to add the necessary **References** to the game's code. You should see a list of these in the right-hand panel of VS2019.
    - ![image](https://user-images.githubusercontent.com/16394154/212811900-9bc7fcb0-48c1-4de0-b8e7-f9ac51b3ccc0.png)
    - Right-click on References and click Add Reference (or go to Project->Add Reference in the top bar).
