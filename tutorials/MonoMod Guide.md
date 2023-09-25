@@ -202,7 +202,7 @@ public enum patch_TechCategory : ushort
     Infrastructure = 20,
 }
 ```
-You **must** define an integer value for each new item when patching. Any value can be used, including arbitrarily large ones like 5001, as long as it is outside of the normal range used by the vanilla game.
+You **must** define an integer value for the **first** new item when patching. Any value can be used, including arbitrarily large ones like 5001, as long as it is outside of the normal range used by the vanilla game.
 
 To replace the enum's contents entirely, we use the `[MonoModEnumReplace]` annotation:
 ```csharp
