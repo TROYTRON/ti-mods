@@ -3,6 +3,7 @@
 ## Mod Framework
 
 1) Download BepInEx 5.1 from here: https://github.com/BepInEx/BepInEx/releases/tag/v5.1
+   - Specifically, the x64 version is required for Terra Invicta.
 2) Unzip the files into your Terra Invicta game directory, where the game .exe is.
    - Steam users can access this by right-clicking the game and clicking Manage->Browse local files.
    - ![image](https://user-images.githubusercontent.com/16394154/212786586-7904c37b-4f02-4a7a-a995-5f907120534d.png)
