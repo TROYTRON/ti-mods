@@ -41,8 +41,10 @@
 
 ## Future Investigation
 - Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
+  - This has now been officially implemented by Pavonis.
 - Ability to add new UI elements to the game.
   - See an example of modifying the UI in code - it is possible to do, but different things might be less or more complex to alter.
+  - In general, this is extremely difficult to do from outside the editor.
 
 ## Mod Releases
 - [Tayta Malikai](mods/tayta/Tayta's%20Mods.md)
