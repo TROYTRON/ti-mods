@@ -214,6 +214,47 @@ public enum patch_TechCategory : ushort
 ```
 Be aware that many enums in TI are defined _outside_ of a namespace, so your patch will have to be outside the namespace as well.
 
+Many methods in TI make use of switch statements centred on a particular enum type as the variable, which cause different code to be executed depending on which enum value the variable has. For example:
+```csharp
+public static string PathTechCategoryIcon(TechCategory category)
+	{
+		switch (category)
+		{
+		case TechCategory.Materials:
+			return TemplateManager.global.pathMaterialsIcon;
+		case TechCategory.SpaceScience:
+			return TemplateManager.global.pathSpaceScienceIcon;
+		case TechCategory.Energy:
+			return TemplateManager.global.pathEnergyIcon;
+		case TechCategory.LifeScience:
+			return TemplateManager.global.pathLifeScienceIcon;
+		case TechCategory.MilitaryScience:
+			return TemplateManager.global.pathMilitaryScienceIcon;
+		case TechCategory.InformationScience:
+			return TemplateManager.global.pathInformationScienceIcon;
+		case TechCategory.SocialScience:
+			return TemplateManager.global.pathSocialScienceIcon;
+		case TechCategory.Xenology:
+			return TemplateManager.global.pathXenologyIcon;
+		default:
+			return string.Empty;
+		}
+	}
+```
+When patching in new enum values, we will usually need to define new return values for them in these sorts of methods as well. In order to avoid having to duplicate the original code, we can use the orig_methodName process, like so:
+```csharp
+public static extern string orig_PathTechCategoryIcon(TechCategory category);
+public static string PathTechCategoryIcon(TechCategory category)
+{
+    switch ((patch_TechCategory)category)
+    {
+        case patch_TechCategory.Magic: return TemplateManager.global.pathEnergyIcon; // your path here
+        default:
+            return orig_PathTechCategoryIcon(category);
+    }
+}
+```
+
 ## Adding Variables to Existing Classes
 
 Adding variables to existing classes is very easy. Simply define the new variables anywhere in your patch class, and they will be considered part of the original class when the game runs.
