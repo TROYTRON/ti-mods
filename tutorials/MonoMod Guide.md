@@ -255,6 +255,39 @@ public static string PathTechCategoryIcon(TechCategory category)
 }
 ```
 
+A warning: the game will be unable to actually _save_ variables making use of new enum values patched into existing enums. You'll need to include this code somewhere in your project for it to work.
+```
+namespace FullSerializer.Internal
+{
+    public class patch_fsEnumConverter : fsEnumConverter
+    {
+        // This handles non-vanilla enum values that get handled as ints instead of strings when saving.
+        public extern fsResult orig_TrySerialize(object instance, out fsData serialized, Type storageType);
+        public override fsResult TrySerialize(object instance, out fsData serialized, Type storageType)
+        {
+            if (!Serializer.Config.SerializeEnumsAsInteger)
+            {
+                if (Enum.GetName(storageType, instance) == null)
+                {
+                    //Log.Debug($"{instance} is not a valid enum value for {storageType}!");
+                    serialized = new fsData(Convert.ToInt64(instance));
+                    //Log.Debug($"We have converted it to an int {serialized}");
+                    return fsResult.Success;
+                }
+                else
+                {
+                    return orig_TrySerialize(instance, out serialized, storageType);
+                }
+            }
+            else
+            {
+                return orig_TrySerialize(instance, out serialized, storageType);
+            }
+        }
+    }
+}
+```
+
 ## Adding Variables to Existing Classes
 
 Adding variables to existing classes is very easy. Simply define the new variables anywhere in your patch class, and they will be considered part of the original class when the game runs.
