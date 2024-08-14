@@ -47,11 +47,10 @@ To include the audio in your mod just copy both of the built banks into your mod
 
 ![10](https://github.com/user-attachments/assets/ffda3648-c292-4e72-9ab8-e997bcd80388)
 
-Stallion — 28/09/2023 04:09
 I believe the leader audio is in both the tech template and objective template
-Stallion — 28/09/2023 04:18
+
 Not all of the audio is easily moddable right now, like councilors on missions, the path is generated in code depending on the context. We may need to expose some more paths in the future for things like that. I'll think on an easier way to replace audio? Maybe if a modded audio event had the same path as a vanilla file, it replaces it.
-Stallion — 30/09/2023 02:59
+
 I've attached another .fspackage, this one has the metadata for all events which means you can swap audio without having to touch the .json template files. (I'll ping this thread once we actually upload the patch which has the functionality)
 
 -As in the picture you can select the vanilla event you wish to replace.
