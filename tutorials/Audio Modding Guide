@@ -1,0 +1,56 @@
+Mirrored from this guide on Discord written by __Stallion__:
+https://discord.com/channels/462769550841348126/1155428797408088064
+
+Stallion — 28/09/2023 03:53
+This won't be in until a later patch but I'm going to post the guide while it's fresh in my head.
+
+I've attached the fmod project that will need to be opened in fmod for modding. You will need to use the same version as us, FMOD 2.01.07
+https://www.fmod.com/download#fmodstudio 
+Image
+Once you open the package you can import your audio files here
+Image
+You can then right-click the assets and "create event", 2D timeline is the standard for regular sounds that aren't in 3d space.
+Image
+In the banks tab, create your own bank, with a name that you want. Make sure to "Mark as Master Bank"
+Image
+The Events tab has the audio events, rename them however you like, the name is what will go into the json templates in order to get the game to play them.
+
+You can also apply volume or special effects to the audio here if need.
+Image
+If you right-click an event you can "copy path" this is the path that goes in the jsons for example ModTest is "event:/ModTest"
+Stallion — 28/09/2023 04:00
+Make sure to right click and add each event into your bank
+Image
+Next is the Window -> Mixer screen, here is where you route the audio into the buses. For example if you are adding voiceovers, add them into "Voice processing". That will make sure they work with the volume sliders in-game
+Image
+When you are finished with everything, go to edit -> preferences make sure to enable the metadata and assets into a single bank
+Image
+Then File -> Build to create your banks
+Image
+"Export GUIDs" will create a text file of every asset if you wanted that for a reference
+To include the audio in your mod just copy both of the built banks into your mod folder. Then you just need to call the paths in the json templates where applicable
+Image
+Stallion — 28/09/2023 04:09
+I believe the leader audio is in both the tech template and objective template
+Stallion — 28/09/2023 04:18
+Not all of the audio is easily moddable right now, like councilors on missions, the path is generated in code depending on the context. We may need to expose some more paths in the future for things like that. I'll think on an easier way to replace audio? Maybe if a modded audio event had the same path as a vanilla file, it replaces it.
+Tayta Malikai — 28/09/2023 10:19
+Great stuff!
+Image
+Or-Horo — 28/09/2023 22:07
+Outstanding!
+Stallion — 30/09/2023 02:59
+I've attached another .fspackage, this one has the metadata for all events which means you can swap audio without having to touch the .json template files. (I'll ping this thread once we actually upload the patch which has the functionality)
+
+-As in the picture you can select the vanilla event you wish to replace.
+-Click "single instrument"
+-At the bottom you will see there is no audio file, you can drag your file there.
+-Follow the previous instructions above to create a bank and assign the events to your mod's bank and build.
+-The mixer buses are already setup with this package so if you are just replacing vanilla audio no need to route them.
+
+I think this workflow would be much easier for just replacing audio in a mod. 
+Image
+Hm wait that file is not the entire package let me double check
+Stallion — 30/09/2023 03:12
+Attachment file type: archive
+TerraInvictaFMODModdingPackage.zip
