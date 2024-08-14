@@ -4,6 +4,8 @@ https://discord.com/channels/462769550841348126/1155428797408088064
 I've attached the fmod project that will need to be opened in fmod for modding. You will need to use the same version as us, FMOD 2.01.07
 https://www.fmod.com/download#fmodstudio
 
+[Official FMOD Package for Terra Invicta](/tutorial-files/TerraInvictaFMODModdingPackage.zip)
+
 Once you open the package you can import your audio files here
 
 ![2](https://github.com/user-attachments/assets/3a81d9c6-28c5-4721-9a80-56138b592160)
