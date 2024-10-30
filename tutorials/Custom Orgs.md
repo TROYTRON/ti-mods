@@ -1,5 +1,5 @@
 Tools used:
--	Unity 2020.3.30f1
+-	Unity 2020.3.48f1
 
 This tutorial up to step 8) will also generally introduce you to importing new assets into the game.
 
