@@ -4,7 +4,7 @@ Tools used:
 This tutorial up to step 8) will also generally introduce you to importing new assets into the game.
 
 Steps:
-1. Follow the steps in this tutorial: https://learn.unity.com/tutorial/introduction-to-asset-bundles#6028bab6edbc2a750bf5b8a4, up to Step 4. In particular:
+1. Follow the steps in this tutorial: [https://web.archive.org/web/20220611191154/https://learn.unity.com/tutorial/introduction-to-asset-bundles#6028bab6edbc2a750bf5b8a4](https://web.archive.org/web/20220611191154/https://learn.unity.com/tutorial/introduction-to-asset-bundles#6028bab6edbc2a750bf5b8a4), up to Step 4. In particular:
     -	Create a new Unity project.
     -	Create a new folder named “Editor” in Assets.
     -	In Editor, create a new C# script named “CreateAssetBundles”. Copy the script shown in the tutorial.
