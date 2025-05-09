@@ -21,9 +21,31 @@ UNITY:
 
 ![Folderstructure](https://github.com/user-attachments/assets/a3b26a00-bc5c-47db-815d-492a9f513013)
 
-In detail: Create Assetbundle folder if it does not exist. Create “Portraits” folder in Assetbundle, then create a “2d” and a “Video” folder within Portraits. Create “Editor” folder in Assets. Ensure folder names are exactly as written above, including caps.
+In detail: Create Assetbundle folder if it does not exist. Create “Portraits” folder in Assetbundle, then create a “2d” and a “Video” folder within Portraits. Create “Editor” folder in Assets. Ensure folder names and structures are exactly as shown above, including caps.
 
-3. Place CreateAssetBundles.cs into Editor folder. 
+3. Acquire CreateAssetBundles.cs from the tutorial-files folder. Place CreateAssetBundles.cs into Editor folder. 
+Alternatively: Create .cs file with the following code and name it CreateAssetBundles. Place into Editor folder.
+```
+using UnityEditor;
+using UnityEngine;
+using System.IO;
+
+public class CreateAssetBundles : MonoBehaviour
+{
+    [MenuItem("Assets/Build AssetBundles")]
+    static void BuildAllAssetBundles()
+    {
+        string assetBundleDirectory = "Assets/StreamingAssets";
+        if (!Directory.Exists(Application.streamingAssetsPath))
+        {
+            Directory.CreateDirectory(assetBundleDirectory);
+        }
+        BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
+    }
+    
+}
+```
+
 4. Place your Webms into Video folder and pngs into 2d folder
 5. Assign webms to new assetbundle in lower right. Give it the name of your mod. No settings changes are necessary.
  ![Assetbundle](https://github.com/user-attachments/assets/3ce9d775-72fa-4ab6-8b67-4d5595dd791b)
