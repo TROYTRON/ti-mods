@@ -1,0 +1,11 @@
+{
+  "Id": "TiMods.SaveState",
+  "DisplayName": "TI Mods Save State Example",
+  "Author": "TI Mods contributors",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.33.0",
+  "Requirements": [],
+  "AssemblyName": "TiMods.SaveState.dll",
+  "EntryMethod": "TiMods.SaveState.Main.Load",
+  "Description": "Explicitly create a campaign counter in a disposable save to investigate custom TIGameState persistence."
+}

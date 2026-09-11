@@ -1,0 +1,11 @@
+{
+  "Id": "TiMods.Diagnostics",
+  "DisplayName": "TI Mods Diagnostics",
+  "Author": "TI Mods contributors",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.33.0",
+  "Requirements": [],
+  "AssemblyName": "TiMods.Diagnostics.dll",
+  "EntryMethod": "TiMods.Diagnostics.Main.Load",
+  "Description": "Opt-in logging of template, localization and campaign probes; no automatic gameplay changes."
+}

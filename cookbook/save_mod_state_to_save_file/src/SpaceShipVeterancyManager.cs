@@ -39,8 +39,7 @@ namespace SaveStateExample {
         }
 
         public void UnregisterShip(TISpaceShipState ship) {
-            if (!SpaceShipVeterancyStateMapping.ContainsKey(ship.ID)) {
-                TISpaceShipVeterancyState shipVeterancyState = this[ship];
+            if (ship != null && SpaceShipVeterancyStateMapping.TryGetValue(ship.ID, out TISpaceShipVeterancyState shipVeterancyState)) {
                 if (GameStateManager.RemoveGameState<TISpaceShipVeterancyState>(shipVeterancyState.ID, false)) {
                     SpaceShipVeterancyStateMapping.Remove(ship.ID);
                 }

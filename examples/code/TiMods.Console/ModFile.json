@@ -1,0 +1,11 @@
+{
+  "Id": "TiMods.Console",
+  "DisplayName": "TI Mods Console Example",
+  "Author": "TI Mods contributors",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.33.0",
+  "Requirements": [],
+  "AssemblyName": "TiMods.Console.dll",
+  "EntryMethod": "TiMods.Console.Main.Load",
+  "Description": "Registers the timods_echo debug-console command."
+}

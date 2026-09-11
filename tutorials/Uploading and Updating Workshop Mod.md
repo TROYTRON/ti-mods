@@ -1,33 +1,47 @@
-# Uploading and Updating Steam Workshop Mods
+# Uploading and updating Steam Workshop mods
 
-## Uploading a new mod
+Use the game's publishing interface to create or update an item. The **1.0.53a** upload helper uses `WorkshopItemInfo.xml` to retain item identity. Interface labels and the older screenshots below may differ in your build; the upload sequence has not been retested here.
 
-When you first upload a mod to Workshop from within Terra Invicta, you will see a screen like this
+## Prepare the exact package
 
-![image](https://user-images.githubusercontent.com/11687023/194989961-bf3bb725-b94f-43e1-aab5-33d858530adc.png)
+Test the deployed mod before staging an upload. Record game version, branch, DLC requirements, and any code-loader dependency. A Workshop subscription does not establish that a third-party loader is installed; state the required installation steps in the mod description.
 
+Prepare a clean copy containing the native `ModInfo.json` and template/localization files, each required AssetBundle with its `.manifest`, and any FMOD bank files. Code mods also need their loader-specific metadata and compiled DLL as described in [the code-mod guide](code-mods-with-umm.md). Do not ship the whole `Mods/Enabled` directory, game assemblies, unrelated mod files, or an entire Unity/FMOD authoring project by accident.
 
-Selecting the "OPEN MOD FOLDER" button will open a folder in the AppData/LocalLow area, the same place the detailed Player.log is written. This folder will be created in this area
+Use a file list to check the package. Copying new files over old staging contents leaves deleted files behind, so explicitly compare the staged contents with the intended release and remove only confirmed obsolete mod files. Preserve the Workshop identity file described below.
 
-![image](https://user-images.githubusercontent.com/11687023/194988376-9d747a4b-e086-4a6b-8625-769fa1d8d59b.png)
+## Upload a new item
 
-This is the folder you copy your mod contents into. You do not rename the folder. Only copy your mod contents (ideally the working contents from your Mods/Enabled folder). After your mod contents are copied into the folder, navigate back to Terra Invicta and select the "UPLOAD MOD" button.
+1. Open Terra Invicta's mod publishing interface and select the new-mod upload action.
+2. Select **OPEN MOD FOLDER**. Use the exact folder the game opens; do not guess a directory from a screenshot or rename the generated folder.
+3. Copy the contents of your prepared release into that folder, preserving the mod's internal structure. Avoid an accidental extra wrapper directory.
+4. Review the title, description, preview image, dependencies, and intended visibility shown by the interface. Select **UPLOAD MOD** when the staged package is ready.
+5. Wait for completion and open the resulting Workshop page. Check item identity, description, visibility, and any outstanding Steam Workshop agreement prompt. Steam's upload flow can require agreement acceptance before an item is visible. [Steamworks Workshop documentation](https://partner.steamgames.com/doc/features/workshop/implementation)
 
-![image](https://user-images.githubusercontent.com/11687023/194990042-5aea97dd-a252-4e37-9332-24af8ab02b4a.png)
+![Historical upload interface](https://user-images.githubusercontent.com/11687023/194989961-bf3bb725-b94f-43e1-aab5-33d858530adc.png)
 
-When your mod is uploaded, a file named "WorkshopItemInfo.xml". This file included the PublishedFileId without which you can't update an existing mod. So it's a good idea to create a backup of this file.
+After creation, back up **`WorkshopItemInfo.xml`** and record the Workshop page URL/item ID. The helper stores `PublishedFileId` there to identify the existing item for later updates. Keep that backup outside the staging folder as well.
 
-## Updating an existing mod
+## Update the existing item
 
-After you've made an update to your mod and you want to update to Workshop, click "UPDATE EXISTING MOD" button from within the Terra Invicta Mods menu. This will create a dropdown menu of the existing mods you have submitted to Workshop. Select the mod you want to update.
+1. In the game's publishing interface, select **UPDATE EXISTING MOD**, then choose the intended existing item. Verify its title and Workshop ID.
+2. Select **OPEN MOD FOLDER**. Back up its `WorkshopItemInfo.xml` before changing staged contents.
+3. Replace the staged release files with the tested new version. Compare file lists so renamed bundles, removed JSON, or obsolete DLLs do not survive. Preserve the existing item metadata; do not substitute another mod's XML file.
+4. Update release notes/version information and review the package. Select **UPLOAD MOD** and wait for a successful result.
+5. Check the same Workshop URL after upload. Confirm its update time and content; creating a second item is not an update of the original subscription.
 
-![image](https://user-images.githubusercontent.com/11687023/194990246-731c681a-fcab-4567-90be-55833a0f959a.png)
-![image](https://user-images.githubusercontent.com/11687023/194990482-29b8f99a-9a2c-40c7-8162-94e843664447.png)
+![Historical update selection](https://user-images.githubusercontent.com/11687023/194990246-731c681a-fcab-4567-90be-55833a0f959a.png)
 
-After selecting your mod, click the "OPEN MOD FOLDER" button to take you to the same AppData/LocalLow folder that you copied your files to when you first uploaded your mod. It contains the original upload of the mod, so again copy the working, current files from the Mods/Enabled folder into this folder.
+If the item cannot be found, confirm the active Steam account and ownership, retain the metadata backup, and inspect the error log before creating a replacement listing. A local XML file does not transfer ownership of somebody else's Workshop item.
 
-![image](https://user-images.githubusercontent.com/11687023/194989301-9f2f4d60-023c-4b05-9bfe-fa3c650a588a.png)
+## Troubleshoot an upload failure
 
-After you have copied the updated files into this folder, navigate back to Terra Invicta and select "UPLOAD MOD" and your updated mod will be uploaded to Workshop.
+If the log shows `k_EResultLimitExceeded`, check the preview image's file size. Reducing it to **below 500 KB** resolved one upload failure reported by Long, following Stallion's suggestion; that is a useful troubleshooting size, not an official limit. [Confirmed result](https://discord.com/channels/462769550841348126/780213497028018207/1508068274422808777).
 
-![image](https://user-images.githubusercontent.com/11687023/194990042-5aea97dd-a252-4e37-9332-24af8ab02b4a.png)
+Keep the log, inspect the failed upload stage, and verify the existing item's ID before retrying. A failed upload can leave a blank item; creating another listing immediately can duplicate it. If reducing the preview does not help, continue from the actual error rather than assuming every failure has the same cause.
+
+## Check the subscriber installation
+
+The staging folder, your local development mod, and Steam's downloaded Workshop copy are different locations. Confirm the subscriber copy receives the update, enable it through the game's mod controls, and restart. Test with your separate development copy disabled so it cannot mask a missing Workshop file or create duplicate template/bundle conflicts.
+
+Repeat the mod's actual feature test, then save/reload when relevant. Keep the published package with its source revision. See [assets](../docs/assets.md) for bundle requirements and [debugging](../docs/debugging.md) for logs.

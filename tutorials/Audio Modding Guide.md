@@ -1,64 +1,71 @@
-Mirrored from this guide on Discord written by __Stallion__:
-https://discord.com/channels/462769550841348126/1155428797408088064
+# Audio modding with FMOD
 
-I've attached the fmod project that will need to be opened in fmod for modding. You will need to use the same version as us, FMOD 2.01.07
-https://www.fmod.com/download#fmodstudio
+Adapted from [Stallion's FMOD guide](https://discord.com/channels/462769550841348126/1155428797408088064). Package paths and bank discovery apply to Windows stable **1.0.53a** with **Dark Skies**; authored banks still need playback testing.
 
-[Official FMOD Package for Terra Invicta](/tutorials/tutorial-files/TerraInvictaFMODModdingPackage.zip)
+## Start with the package shipped with your game
 
-Once you open the package you can import your audio files here
+Copy and extract this file into a separate working directory:
 
-![2](https://github.com/user-attachments/assets/3a81d9c6-28c5-4721-9a80-56138b592160)
+```text
+<Terra Invicta>/TerraInvicta_Data/StreamingAssets/ModdingTools/TerraInvictaFMODModdingPackage.zip
+```
 
-You can then right-click the assets and "create event", 2D timeline is the standard for regular sounds that aren't in 3d space.
+Open the contained `.fspro` project from the extracted copy, retaining its associated folders. Keep the working project outside the game installation.
 
-![3](https://github.com/user-attachments/assets/bfd00360-1cf9-4fd9-ac53-9ef4d488a86e)
+Stallion's guide specifies **FMOD Studio 2.01.07**; the exact authoring version for newer packages is unconfirmed. Use [FMOD's downloads](https://www.fmod.com/download#fmodstudio) and check the game's package instructions before upgrading the project. Keep an untouched copy: a newer Studio release can change bank compatibility.
 
-In the banks tab, create your own bank, with a name that you want. Make sure to "Mark as Master Bank"
+## Add a new event
 
-![4](https://github.com/user-attachments/assets/a6203e49-62ca-482d-8cf3-a04d757fad44)
+1. Import your WAV or other supported source into the project's audio assets. Keep source recordings in your working project so future builds do not depend on files in a downloads folder.
+2. Create an event from the asset. Use a **2D timeline** for ordinary non-positional sounds. Match a comparable supplied event when the sound needs parameters, sequencing, or positional behavior.
+3. Give a new event a distinct path such as `event:/ExampleMod/ObjectiveComplete`. Use the event's **Copy Path** command; typing a guessed path makes troubleshooting harder.
+4. Create a uniquely named bank, for example `ExampleAudio`, and assign the event to it. Unassigned events are not included just because their source audio is in the project.
+5. Stallion's small-mod workflow marks the mod bank as **Master Bank** so its project-wide mixer metadata is available. Preserve the provided project's mixer setup and use a unique bank name. This is the TI package workflow, not a rule that every FMOD project should place all audio in a master bank.
+6. In **Window > Mixer**, route voice events through the supplied voice processing bus, and other sounds through their matching supplied buses. This is what lets the game's volume controls affect them. Preview the event and adjust gain without clipping.
 
-The Events tab has the audio events, rename them however you like, the name is what will go into the json templates in order to get the game to play them.
+Banks contain event metadata and sample data; master banks also carry project-wide mixer information. FMOD does not automatically put a newly created event into a bank. [FMOD 2.01 bank documentation](https://www.fmod.com/docs/2.01/studio/getting-events-into-your-game.html)
 
-You can also apply volume or special effects to the audio here if need.
+## Reference the new sound
 
-![5](https://github.com/user-attachments/assets/6710bc9a-c8a7-4b94-991d-2dcbfedf0965)
+Use a field that already accepts an FMOD event path. In `TIObjectiveTemplate.json`, fields such as `completedVoicePathAppease` contain `event:/...` values. Start with one applicable field on a copied objective entry and replace its value with the event path, following the [native template mod guide](Create_Template_JSON_mod.md).
 
-If you right-click an event you can "copy path" this is the path that goes in the jsons for example ModTest is "event:/ModTest"
+The field name is not a command that makes arbitrary gameplay play audio. Its consuming code must actually execute, and faction/language/context choices can select another field. Some councillor voice paths are assembled in code; adding a random JSON field cannot expose those call sites. For new audio, prove one simple event works before expanding a voice pack.
 
-Make sure to right click and add each event into your bank
+## Replace a supplied event
 
-![6](https://github.com/user-attachments/assets/027af609-c599-4769-82e7-91f47e01c175)
+Use the event metadata from the supplied project:
 
-Next is the Window -> Mixer screen, here is where you route the audio into the buses. For example if you are adding voiceovers, add them into "Voice processing". That will make sure they work with the volume sliders in-game
+1. Locate the existing event in the package and inspect its instruments, parameters, and routing.
+2. Select the relevant **single instrument** and replace the missing/source audio with your asset.
+3. Preserve the event's identity and behavior, assign the edited event to your mod bank, and build.
 
-![7](https://github.com/user-attachments/assets/6d4a2565-b604-4378-bb57-1cb9d62e3482)
+Preserve the supplied event's path and GUID; a new event with the same visible name is not equivalent. Test the replacement in the relevant language with conflicting audio mods disabled.
 
-When you are finished with everything, go to edit -> preferences make sure to enable the metadata and assets into a single bank
+## Build and package
 
-![8](https://github.com/user-attachments/assets/e67eee4c-9f9e-4188-973a-311c2e0bfe5f)
+Select the Desktop target and review the build output directory. Keep **metadata and assets in a single bank** for this example, then package your bank and the generated strings bank used for path lookup, such as `ExampleAudio.bank` and `ExampleAudio.strings.bank`. If using split bank output instead, include its required `.assets.bank` file too. Build with **File > Build**, and retain the exact set of outputs from that build. [FMOD build outputs](https://www.fmod.com/docs/2.01/studio/getting-events-into-your-game.html#what-building-creates)
 
-Then File -> Build to create your banks
+```text
+Mods/Enabled/ExampleAudio/
+  ModInfo.json
+  TIObjectiveTemplate.json
+  ExampleAudio.bank
+  ExampleAudio.strings.bank
+```
 
-![9](https://github.com/user-attachments/assets/f785abc6-67ae-4794-a682-b158bc57cac8)
+Copy only the mod's needed banks, not the entire vanilla bank set or the editable project. FMOD banks do not need Unity `.manifest` files. An exported GUID listing is a reference file, not audio content.
 
-"Export GUIDs" will create a text file of every asset if you wanted that for a reference
-To include the audio in your mod just copy both of the built banks into your mod folder. Then you just need to call the paths in the json templates where applicable
+The loader finds banks in enabled mod folders and uses mod load order. **Audio Bank Mod Found** and **Loading mod audio bank** show discovery and load attempts; they do not confirm successful loading or playback. Check for FMOD errors and trigger the sound in the game.
 
-![10](https://github.com/user-attachments/assets/ffda3648-c292-4e72-9ab8-e997bcd80388)
+## Verify in the game
 
-I believe the leader audio is in both the tech template and objective template
+Restart after deploying rebuilt banks. Trigger the exact objective/event or voice context and check that the expected audio plays, ends correctly, and responds to the relevant volume slider. Test the chosen language, repetition/interrupt behavior, and save/reload if the trigger is campaign-dependent.
 
-Not all of the audio is easily moddable right now, like councilors on missions, the path is generated in code depending on the context. We may need to expose some more paths in the future for things like that. I'll think on an easier way to replace audio? Maybe if a modded audio event had the same path as a vanilla file, it replaces it.
+| Problem | Check |
+| --- | --- |
+| No bank discovery log | Mod enabled, bank included in deployed folder, correct package copied |
+| Bank found but silence | FMOD version mismatch, unassigned event, missing samples/strings bank, wrong event path, bus volume |
+| Old sound still plays | Wrong event identity/context/language, duplicate bank, another mod replacement |
+| Volume slider has no effect | Event's route through the supplied mixer buses |
 
-I've attached another .fspackage, this one has the metadata for all events which means you can swap audio without having to touch the .json template files. (I'll ping this thread once we actually upload the patch which has the functionality)
-
--As in the picture you can select the vanilla event you wish to replace.
--Click "single instrument"
--At the bottom you will see there is no audio file, you can drag your file there.
--Follow the previous instructions above to create a bank and assign the events to your mod's bank and build.
--The mixer buses are already setup with this package so if you are just replacing vanilla audio no need to route them.
-
-I think this workflow would be much easier for just replacing audio in a mod. 
-
-![11](https://github.com/user-attachments/assets/743bc294-9a1b-423a-b546-cb033b8b92fe)
+Keep the Studio version, built bank list, game version/branch/DLC, and playback test results with your project. Use [debugging](../docs/debugging.md) for logs and [Workshop publishing](Uploading%20and%20Updating%20Workshop%20Mod.md) for release staging.

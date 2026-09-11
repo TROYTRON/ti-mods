@@ -1,1 +1,7 @@
 .*.swp
+**/bin/
+**/obj/
+**/__pycache__/
+.local/
+*.user
+*.suo

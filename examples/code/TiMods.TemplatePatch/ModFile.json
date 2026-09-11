@@ -1,0 +1,11 @@
+{
+  "Id": "TiMods.TemplatePatch",
+  "DisplayName": "TI Mods Template Patch Example",
+  "Author": "TI Mods contributors",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.33.0",
+  "Requirements": [],
+  "AssemblyName": "TiMods.TemplatePatch.dll",
+  "EntryMethod": "TiMods.TemplatePatch.Main.Load",
+  "Description": "Gameplay demonstration: changes PointDefenseLaserTurret targeting range to 1337 km; restart required to disable."
+}

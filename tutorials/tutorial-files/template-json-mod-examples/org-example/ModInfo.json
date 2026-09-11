@@ -1,0 +1,9 @@
+{
+  "Title": "Handbook Org Example",
+  "Author": "Your name",
+  "Description": "Adds a small Research org to ModernOrgTemplates using an existing game logo.",
+  "LoadOrder": 0,
+  "TemplatesToConcatArrays": [
+    "TIMetaTemplate.json"
+  ]
+}

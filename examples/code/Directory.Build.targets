@@ -1,0 +1,10 @@
+<Project>
+  <Target Name="CheckLocalGameReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(TerraInvictaDir)' == ''" Text="Set TerraInvictaDir to your own game installation, using -p:TerraInvictaDir=... or the TerraInvictaDir environment variable. See examples/code/README.md." />
+    <Error Condition="'%(Reference.HintPath)' != '' and !Exists('%(Reference.HintPath)')" Text="Missing local reference: %(Reference.HintPath). Check TerraInvictaDir and UnityModManagerDir; game and loader DLLs are not supplied by this repository." />
+  </Target>
+  <Target Name="StageModPackage" AfterTargets="Build" Condition="'$(IsModPackage)' != 'false'">
+    <MakeDir Directories="$(TargetDir)package/$(AssemblyName)" />
+    <Copy SourceFiles="$(TargetPath);$(MSBuildProjectDirectory)/ModFile.json" DestinationFolder="$(TargetDir)package/$(AssemblyName)" />
+  </Target>
+</Project>

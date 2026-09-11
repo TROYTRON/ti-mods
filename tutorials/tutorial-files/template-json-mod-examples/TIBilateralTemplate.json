@@ -1,20 +1,13 @@
 [
   {
     "dataName": "ClaimUSAAlaska",
-    "initialOwner": false,
+    "initialOwner": false
   },
   {
     "dataName": "ExampleMod_ClaimCANAlaska",
     "relationType": "Claim",
     "nation1": "CAN",
-    "nation2": "",
-    "federation": "",
     "region1": "Alaska",
-    "region2": "",
-    "projectUnlockName": "",
-    "capitalClaim": null,
-    "initialOwner": true,
-    "initialColony": null,
-    "friendlyOnly": null
-  },
+    "initialOwner": true
+  }
 ]

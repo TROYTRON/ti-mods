@@ -1,6 +1,6 @@
 {
-	"Title": "Example Mod",
-	"Author": "Me",
-	"ModURL": "TBD",
-	"Description": "This is an example mod."
+  "Title": "Example Mod",
+  "Author": "Your name",
+  "Description": "Starts the 2022 scenario with Alaska owned by Canada; preserves the US claim.",
+  "LoadOrder": 0
 }

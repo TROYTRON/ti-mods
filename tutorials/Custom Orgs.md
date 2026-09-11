@@ -1,32 +1,131 @@
-Tools used:
--	Unity 2020.3.48f1
+# Creating a custom organization
 
-This tutorial up to step 8) will also generally introduce you to importing new assets into the game.
+A new org needs a template, localization, an icon reference, and a route into the campaign. This example adds a small Research org to `ModernOrgTemplates` and reuses a shipped logo for its first test. It requires no Unity project or code DLL. Add your own sprite after the data works.
 
-Steps:
-1. Follow the steps in this tutorial: [https://web.archive.org/web/20220611191154/https://learn.unity.com/tutorial/introduction-to-asset-bundles#6028bab6edbc2a750bf5b8a4](https://web.archive.org/web/20220611191154/https://learn.unity.com/tutorial/introduction-to-asset-bundles#6028bab6edbc2a750bf5b8a4), up to Step 4. In particular:
-    -	Create a new Unity project.
-    -	Create a new folder named “Editor” in Assets.
-    -	In Editor, create a new C# script named “CreateAssetBundles”. Copy the script shown in the tutorial.
-    -	Create new folders named “BundledAssets” and “StreamingAssets” in Assets.
-2. Import all desired logos into Unity. Drag-and-drop from Windows Explorer is sufficient.
-3. Ctrl+A to select all the logos you just imported.
-4. In the Inspector pane in Unity (should already be open on the right of the screen) you should see “[number] Texture 2Ds Import Settings” near the top. Below that is a drop-down menu marked “Texture Type”. Change this from “Default” to “Sprite (2D and UI)”. Click “Apply” further down.
-    -	You should now see arrows on all your imported logos.
-5. Ctrl+A to select all the logos again.
-6. At the bottom of the Inspector pane, you should see a drop-down menu marked “AssetBundle”. Click on the centre menu, click “New”, and type in any name you like. A suggestion is “myname_orglogos”, replacing myname with your username or the name of your mod.
-7. In the Unity toolbar, click “Assets -> Build AssetBundles”.
-8. Navigate to your Unity project folder. In the StreamingAssets folder you should find two files: myname_orglogos and myname_orglogos.manifest. Copy these files.
-9. Navigate to your game directory, and then to the `Mods\Enabled\ folder. Create a new folder, let's call it "NewOrgs", and paste the above two files in there.
-10.	Navigate to TIOrgTemplate.json (found in `TerraInvicta_Data\StreamingAssets\Templates`). Copy and paste this file into `NewOrgs`.
-11.	Remove all the entries in NewOrgs\TIOrgTemplate.json, and then add new entries with your org's desired stats.
-    -	I strongly recommend using [JSON2CSV](http://www.convertcsv.com/json-to-csv.htm) to convert the JSON to a CSV, make your changes there, then convert it back using [CSV2JSON](http://www.convertcsv.com/csv-to-json.htm). Trust me, it's much easier.
-12. Configure `TIOrgTemplate.en` in `TerraInvicta_Data\StreamingAssets\Localization\en` (or your equivalent) to make sure your org’s name appears correctly in-game.
-13.	Launch the game.
-14.	Use the console command “giveorg [faction], [org]” to spawn your modified orgs. [faction] is the dataName of the faction (e.g. “ResistCouncil” for the Resistance), and [org] is the dataName of the org. Remember there is a comma between [faction] and [org]!
-15.	Bask in the glory of your modded content.
+This example targets **Terra Invicta 1.0.53a** with Dark Skies. Use the [native data guide](../docs/native-data.md) for merge behavior and scenario scope, and [version notes](../docs/compatibility.md) when targeting 1.0.57.
 
-If you want custom non-generic orgs (e.g. CIA, Perun, etc.) to be available for spawning randomly during the campaign, you will need to update TIMetaTemplate.json. Specifically:
-1. Navigate to TIMetaTemplate.json (found in `TerraInvicta_Data\StreamingAssets\Templates`).
-2. Scroll down to `ModernOrgTemplates`.
-3. Add an entry at the end with the dataName of your new org, as defined in TIOrgTemplate.json previously.
+## Files and metadata
+
+Copy the contents of the [org example directory](tutorial-files/template-json-mod-examples/org-example) into:
+
+```text
+Mods/Disabled/Handbook Org Example/
+  ModInfo.json
+  TIOrgTemplate.json
+  TIMetaTemplate.json
+  TIOrgTemplate.en
+```
+
+Use the matching directory name and metadata title. Keep the JSON files beside `ModInfo.json`; the loader reads settings from each JSON file's immediate directory.
+
+```json
+{
+  "Title": "Handbook Org Example",
+  "Author": "Your name",
+  "Description": "Adds a small Research org to ModernOrgTemplates using an existing game logo.",
+  "LoadOrder": 0,
+  "TemplatesToConcatArrays": [
+    "TIMetaTemplate.json"
+  ]
+}
+```
+
+The array policy is important: we will append our org ID to the existing scenario list. The default merge would instead modify its first array element.
+
+## Define the org
+
+Save this as `TIOrgTemplate.json`:
+
+```json
+[
+  {
+    "dataName": "Handbook_OpenResearchGroup",
+    "friendlyName": "Open Research Group",
+    "orgType": "Research",
+    "tier": 1,
+    "randomized": false,
+    "allowedOnMarket": true,
+    "requiresNationality": false,
+    "costMoney": 20,
+    "costInfluence": 10,
+    "chanceIncomeResearch": 100,
+    "incomeResearch": 5,
+    "chanceScience": 100,
+    "science": 1,
+    "iconResource": "orglogos/JapanSocietyforthePromotionofScience"
+  }
+]
+```
+
+This is a new `dataName`, so its supplied values define a new template rather than patching an existing organization. `orgType` must be a supported non-`Any` value; `TIOrgTemplate.IsValid` rejects an unset type. The example uses `Research`.
+
+The chance/value pairs follow the shipped non-randomized Research org pattern. Treat `incomeResearch: 5` as the configured base amount and test the resulting org state/UI; campaign scaling can matter. The logo is a temporary reference to an existing game resource.
+
+The constructor initializes relevant trait/affinity/mission/tech-bonus collections to empty, so the example does not need null-filled placeholders. When you add restrictions or bonuses, inspect the current members and copy a record with matching behavior. Common fields include:
+
+| Intent | Fields to inspect |
+| --- | --- |
+| Home-country / councilor restrictions | `homeRegionMapTemplateName`, `requiresNationality`, `requiredOwnerTraits`, `prohibitedOwnerTraits` |
+| Ideological availability | `affinities`, `restricted` |
+| Research gating | `requiredTechName`, plus the current `CanSpawn` implementation |
+| Market presence | `allowedOnMarket`, campaign meta lists, and the org state/market selection |
+| Mission access | `missionsGrantedNames` with exact mission IDs |
+| Research-category bonus | `techBonuses` using the current structured entry format |
+| Research projects | `projectsGranted`, `projectGrantedName`, with the appropriate supported semantics |
+| Acquisition and income | Cost/income fields, associated chance/randomization fields, and org-state initialization |
+| Visual identity | `iconResource` |
+
+`homeRegionMapTemplateName` points to a **map-region** template such as `map_NorthHonshu`, not a nation's three-letter ID. An org being valid, being instantiated, qualifying for the market, and being purchasable by a specific councilor are separate checks.
+
+## Register campaign availability
+
+Save this as `TIMetaTemplate.json`:
+
+```json
+[
+  {
+    "dataName": "ModernOrgTemplates",
+    "templateNames": [
+      "Handbook_OpenResearchGroup"
+    ]
+  }
+]
+```
+
+Together with the metadata's concatenation policy, this appends the new ID without copying or replacing the existing org list. `ModernOrgTemplates` has `templateType: "TIOrgTemplate"`; the 2022 root selects it. Other scenario roots reuse it too, so this example can affect several scenarios.
+
+For a different scenario, trace the active root and its org group. If it uses a separate group, extend that group or create/select your own. Adding `allowedOnMarket: true` to a template is not a substitute for arranging campaign creation/availability of a fixed org. Conversely, a debug command that grants an org does not prove its natural market route works.
+
+The concat policy is file-wide: if you later add other `TIMetaTemplate` edits containing arrays, those arrays will append too. Keep the intended policy explicit and do not list this filename under `TemplatesToReplaceArrays` at the same time.
+
+## Add localization
+
+Save these lines in your mod's `TIOrgTemplate.en`:
+
+```text
+TIOrgTemplate.displayName.Handbook_OpenResearchGroup=Open Research Group
+TIOrgTemplate.displayNameWithArticle.Handbook_OpenResearchGroup=the Open Research Group
+```
+
+Add equivalent files/keys for other languages you support. Keep each entry on one physical line and preserve any required markup/placeholders. Do not modify `StreamingAssets/Localization/en/TIOrgTemplate.en` in the installed game. See [localization details](../docs/content-authoring.md#localization-files) for parser behavior and language discovery.
+
+## Test before adding artwork
+
+1. Validate all three JSON files. Enable the mod and Use Mods in the game menu, then restart.
+2. Start a disposable 2022 campaign. Check logs for the org, meta-template, localization, and missing-resource errors.
+3. Check that the org template resolves and that the campaign creates the intended fixed-org state. Inspect its configured stats, icon, and localized name.
+4. Check the ordinary market and councilor restrictions. Random market selection means “not offered immediately” is not enough to conclude the mod failed.
+5. If you use the game's developer terminal, enter `giveorg ResistCouncil, Handbook_OpenResearchGroup`. It accepts a faction template ID or councilor display name before the comma, then the org template ID. Use a campaign with an existing councilor. The command can grant a new org to a councilor or move an existing org, so inspect both councilor inventories and faction pools when checking the result.
+6. Save, quit, reload, and verify the org and its effects. Test another claimed scenario and any other enabled mods that edit the same lists.
+
+Granting the org is a diagnostic shortcut; also test its normal market availability.
+
+## Add a custom logo
+
+Once the template works, replace the temporary `iconResource` with your own sprite resource. Use the current [asset workflow](../docs/assets.md) to import a Sprite (2D and UI), assign a uniquely named bundle, build for the game's platform, and deploy the bundle and its matching manifest inside your mod.
+
+The asset workflow uses Unity **2020.3.49f1** as its build profile for this game's Windows baseline. Follow its import and platform settings, then check the resulting sprite in the game.
+
+The native `iconResource` reference must resolve to the bundle/asset combination expected by the loader. Importing a PNG into Unity or naming a bundle is not enough by itself. Validate the exact resource string, sprite type, bundle discovery, and resulting UI image. Keep the working data-only version available so you can distinguish a template problem from an asset-loading problem.
+
+For other content types, continue with [content authoring](../docs/content-authoring.md).

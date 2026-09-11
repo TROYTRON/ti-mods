@@ -1,0 +1,12 @@
+{
+  "Id": "TiMods.Starter",
+  "DisplayName": "TI Mods Starter",
+  "Author": "TI Mods contributors",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.33.0",
+  "Requirements": [],
+  "AssemblyName": "TiMods.Starter.dll",
+  "EntryMethod": "TiMods.Starter.Main.Load",
+  "HomePage": "https://github.com/TROYTRON/ti-mods",
+  "Description": "A menu-safe Harmony probe and optional precise project contribution display."
+}

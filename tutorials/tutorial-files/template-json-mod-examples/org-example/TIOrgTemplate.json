@@ -1,0 +1,18 @@
+[
+  {
+    "dataName": "Handbook_OpenResearchGroup",
+    "friendlyName": "Open Research Group",
+    "orgType": "Research",
+    "tier": 1,
+    "randomized": false,
+    "allowedOnMarket": true,
+    "requiresNationality": false,
+    "costMoney": 20,
+    "costInfluence": 10,
+    "chanceIncomeResearch": 100,
+    "incomeResearch": 5,
+    "chanceScience": 100,
+    "science": 1,
+    "iconResource": "orglogos/JapanSocietyforthePromotionofScience"
+  }
+]

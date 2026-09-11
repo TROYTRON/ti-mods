@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsModPackage>false</IsModPackage>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Remove="Microsoft.NETFramework.ReferenceAssemblies" />
+    <Reference Remove="Assembly-CSharp-firstpass;UnityEngine;UnityEngine.CoreModule;UnityEngine.IMGUIModule;UnityModManager;0Harmony" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(TerraInvictaManagedDir)/Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

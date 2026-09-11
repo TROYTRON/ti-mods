@@ -1,0 +1,6 @@
+{
+  "Title": "Handbook Config Example",
+  "Author": "Your name",
+  "Description": "Sets the notification input delay to one second.",
+  "LoadOrder": 0
+}

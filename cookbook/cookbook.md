@@ -1,25 +1,17 @@
-# Cookbook
+# Code modding cookbook
 
-Cookbook is intended as a collection of various code snippets and tricks for
-common modding operations.
+Each recipe links to a maintained project with a manifest and shared build configuration. Start with the [UMM/Harmony starter](../examples/code/README.md) if you have not built a mod yet.
 
-## Adding new recipe
+| Task | Recipe | Source |
+| --- | --- | --- |
+| Change templates after loading | [Patching data templates](patching_data_templates_in_code/index.md) | [TiMods.TemplatePatch](../examples/code/TiMods.TemplatePatch/Main.cs) |
+| Preserve dynamic campaign data | [Saving mod state](save_mod_state_to_save_file/index.md) | [TiMods.SaveState](../examples/code/TiMods.SaveState/Main.cs) |
+| Add a debug-console command | [Console commands](add_console_command/index.md) | [TiMods.Console](../examples/code/TiMods.Console/Main.cs) |
 
-* Create a new directory under cookbook for you recipe. The name of the
-  directory should be descriptive of the recipe.
-* Create `index.md` under the directory you created above. That is the main
-  entry point to your recipe. Small recipes should be able to fit entirely into
-  `index.md`. You can split you recipe onto multiple files.
-  If you find yourself inclined to do so, consider making a tutorial instead.
-* The content of the recipe entry should include `Version Compatibility`
-  section mentioned first, but otherwise is free-form.
-* The recipe dikrectory should include a compilable example referenced from the
-  document. Put source files into `src` sub-directory of your recipe.
-* Update the recipe list bellow to reference your recipe. The entry name should
-  match the title of the recipe in the `index.md`
+The projects compile against stable **1.0.53a**, targeting **net48** with UMM **0.33** and bundled Harmony **2.3.6**. In-game feature and save tests remain necessary. For **1.0.57**, rebuild against that installation and follow the [update checklist](../docs/code-modding.md#updating-from-1053a-to-1057).
 
-## Recipes
+## Adding a recipe
 
-* [Patching data templates in the code](patching_data_templates_in_code/index.md)
-* [Preserving mod state over save/load](save_mod_state_to_save_file/index.md)
-* [Adding a console command](add_console_command/index.md)
+Keep the explanation focused on the task, patch timing, state ownership and cleanup. Link a complete project rather than duplicating source in Markdown. Specify how to observe success, what disabling does, and which tests require a disposable campaign. Use local game references with Copy Local disabled; never include game or loader DLLs.
+
+The template, persistence and console recipe concepts originated with dkoiman. Their maintained implementations and current build instructions are linked above.

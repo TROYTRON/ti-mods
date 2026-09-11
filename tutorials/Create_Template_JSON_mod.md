@@ -1,243 +1,107 @@
-# Creating a Template/JSON Mod
+# Creating a native template / JSON mod
 
-- [Template Structure](#template-structure)
-- [Setting Up The Mod Folder](#setting-up-the-mod-folder)
-- [Creating The JSON Mod File](#creating-the-json-mod-file)
-- [Testing The Mod](#testing-the-mod)
-- [Upload your Mod](#upload-your-mod)
-- [Known Issues](#known-issues)
+This tutorial changes the initial owner of Alaska to Canada in a new **2022 campaign**. It needs no DLL, Unity project, or Unity Mod Manager. It targets **Terra Invicta 1.0.53a**; see [version notes](../docs/compatibility.md) for other builds and the [native data reference](../docs/native-data.md) for merge rules and troubleshooting.
 
-## Template Structure
-Terra Invicta stores static / configuration data in the \Terra Invicta\TerraInvicta_Data\StreamingAssets\Templates folder. Each file in this folder corresponds to a Template class in the game assembly. Each file is organized as [JSON](https://www.json.org/json-en.html) formatted data. It is the serialization of an array of class instances.
+## Template structure
 
-For example, here is the definition of `TIBilateralTemplate.cs`
+The installed game's `TerraInvicta_Data/StreamingAssets/Templates` directory contains the base template files. A file such as `TIBilateralTemplate.json` describes instances of the corresponding game template type. Each file contains a JSON array, including files with just one object.
 
-```cs
-public class TIBilateralTemplate : TIDataTemplate
+`dataName` is the identifier the native JSON merger uses to match records. An existing record needs only that identifier and the fields you want to change. A new identifier needs enough fields to construct a valid new template. Referenced identifiers, enum values, property names, and filenames should retain their exact spelling and capitalization.
+
+Keep the installed templates as reference material. Develop your files in a separate mod folder. A sparse patch inherits untouched values from the record being merged; it does not reset them to C# constructor values.
+
+## Setting up the mod folder
+
+Create this layout under the game installation:
+
+```text
+Mods/
+  Disabled/
+    Example Mod/
+      ModInfo.json
+      TIBilateralTemplate.json
+```
+
+Use a mod directory whose name matches `Title`. Keep `ModInfo.json` beside the JSON files: the loader looks for metadata in each template file's immediate directory, even though it discovers mod files recursively.
+
+Save this complete, valid [ModInfo.json](tutorial-files/template-json-mod-examples/ModInfo.json):
+
+```json
 {
-	// public fields are read
-	public BilateralRelationType relationType;
-	public string federation;
-	public string nation1;
-	public string nation2;
-	public string region1;
-	public string region2;
-	public string projectUnlockName;
-	public bool capitalClaim;
-	public bool initialOwner;
-	public bool initialColony;
-	public bool friendlyOnly;
-
-	// private fields are not read and are for temporary code use only
-	private bool _currentScenarioSet;
-	private bool _inCurrentScenario;
+  "Title": "Example Mod",
+  "Author": "Your name",
+  "Description": "Starts the 2022 scenario with Alaska owned by Canada; preserves the US claim.",
+  "LoadOrder": 0
 }
 ```
 
-The corresponding file _always_ has the same name as the class, appended with the .json suffix. So in the Templates folder, we look for `TIBilateralTemplate.json`. The first few entries are shown below.
+`LoadOrder` and array policies belong in `ModInfo.json`. A native data mod does not need `AssemblyName` or `EntryMethod`; those belong to the separate [code mod workflow](code-mods-with-umm.md).
+
+## Creating the JSON mod file
+
+In the base `TIBilateralTemplate.json`, Alaska's initial ownership is represented by:
 
 ```json
 [
-  {
-    "dataName": "WarRUSUKR",
-    "relationType": "War",
-    "nation1": "RUS",
-    "nation2": "UKR",
-    "federation": "",
-    "region1": "",
-    "region2": "",
-    "projectUnlockName": "",
-    "capitalClaim": null,
-    "initialOwner": null,
-    "initialColony": null,
-    "friendlyOnly": null
-  },
-  {
-    "dataName": "FederationBASEUAFed",
-    "relationType": "Federation",
-    "nation1": "BAS",
-    "nation2": "",
-    "federation": "EUAFed",
-    "region1": "",
-    "region2": "",
-    "projectUnlockName": "",
-    "capitalClaim": null,
-    "initialOwner": null,
-    "initialColony": null,
-    "friendlyOnly": null
-  },
-```
-
-The opening `[` and closing `]` indicate that this is an array/list of class instances.
-
-Note that the `dataName` field is defined in the JSON file but not in the TIBilateralTemplate. This field is inherited from the base `TIDataTemplate.cs` class, which means that _every_ template type will include the following fields.
-
-```cs
-public class TIDataTemplate
-{
-	public string dataName { get; protected set; }
-	public string friendlyName { get; protected set; }
-}
-```
-
-Also note that not all allowed fields need be defined in the JSON file. Any field not defined will retain the default value defined in the C# class. Any field defined in the JSON class that does not exist in the C# class will be ignored by the serializer.
-
-## Setting Up The Mod folder
-
-A mod folder resides in \Terra Invicta\Mods\Disabled or \Terra Invicta\Mods\Enabled. The game will move a mod folder between these two when the player enables or disables a mod using the in-game interface.
-
-Each mod requires a `ModInfo.json` file. This file allows description of all possible information a mod may need to function, but not all fields are required for a mod to work. For a mod that modifies only JSON Template files, the following contents are sufficient. If Unity Mod Manager is not installed, the following field are available. The `Title` field and the name of your Mod folder must be identical for your mod to work.
-
-```json
-	"Title": "Your Mod Name",
-	"Author": "Optional",
-	"ModURL": "Currently unused",
-	"Description": "Short description that shows up in-game and is uploaded to Steam Workshop"
-```
-
-If Unity Mod Manager is installed, an expanded number of fields are available. (Reminder : any field in JSON that does not exist in the C# source is ignored, so including the below field will not cause problems if UMM is not installed)
-
-NOTE: if UMM is installed it will be complaining that there is no EntryPoint
-specified. You can ignore it for JSON mods, the in-game mod manager will pick
-it up regardless. To suppress the warning, you would need to turn your code into
-a proper [code mod](code-mods-with-umm.md) - you don't have to add logic, but
-you need to create an entry point.
-
-```json
-{
-	"Id": "Nexus Mods / Unity Mod Manager ID",
-	"DisplayName": "Pretty name for Unity Mod Manager",
-	"Title": "Your Mod Name",
-	"Author": "Optional",
-	"ModURL": "Currently unused",
-	"Requirements": [], //array of other mods your mod requires, by Id
-	"Version": "Optional - useful for Nexus Mod users in conjunction with Homepage so Unity Mod Manager can display if an update is available",
-	"HomePage": "Optional - will link to your mod's website if Unity Mod Manager is installed"
-	"Description": "Short description that shows up in-game and is uploaded to Steam Workshop"
-}
-```
-
-For this example, we will include some simple changes to the `TIBilateralTemplate.json` that will start a new campaign with Alaska owned by Canada instead of the USA. To accomplish this only the following files are required in the mod folder
-
-![image](https://user-images.githubusercontent.com/11687023/195460805-dbf2eb70-feb0-475a-8839-4bfb03d96c16.png)
-
-[ModInfo file](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/tutorial-files/template-json-mod-examples/TIBilateralTemplate.json)
-
-## Creating The JSON Mod File
-
-Mod JSON files need only include the fields that they are changing with respect to the base game's definition (including the `dataName` field for matching) and any _new_ entries that will include a _new_ `dataName`
-
-Continuing our example mod, the first piece we will look at is the existing ownership of the Alaska region by USA at game start. This is defined in the base game's `TIBilateralTemplate.json` with the entry
-
-```json
   {
     "dataName": "ClaimUSAAlaska",
     "relationType": "Claim",
     "nation1": "USA",
-    "nation2": "",
-    "federation": "",
     "region1": "Alaska",
-    "region2": "",
-    "projectUnlockName": "",
-    "capitalClaim": null,
-    "initialOwner": true,
-    "initialColony": null,
-    "friendlyOnly": null
-  },
+    "initialOwner": true
+  }
+]
 ```
 
-The only thing we want to change is that the initial owner is false. This will preserve a claim on the Alaska region by the USA, but it will not start a new campaign as a part of the USA. To accomplish this, we add to our mod's `TIBilateralTemplate.json`
-
-```json
-  {
-    "dataName": "ClaimUSAAlaska",
-    "initialOwner": false,
-  },
-```
-
-Canada starts with no claim or relation to the Alaska region, so we have to create a new entry, with a new dataName, filling out all of the relevant information. I did so by copying the information from an existing claim (British Columbia) and modifying it.
-
-```json
-  {
-    "dataName": "ExampleMod_ClaimCANAlaska",
-    "relationType": "Claim",
-    "nation1": "CAN",
-    "nation2": "",
-    "federation": "",
-    "region1": "Alaska",
-    "region2": "",
-    "projectUnlockName": "",
-    "capitalClaim": null,
-    "initialOwner": true,
-    "initialColony": null,
-    "friendlyOnly": null
-  },
-```
-
-Put together, the full mod `TIBilateralTemplate.json` files reads
+Our patch makes that claim cease to be the initial ownership claim. It adds a new claim whose initial owner is Canada. Save this as [TIBilateralTemplate.json](tutorial-files/template-json-mod-examples/TIBilateralTemplate.json):
 
 ```json
 [
   {
     "dataName": "ClaimUSAAlaska",
-    "initialOwner": false,
+    "initialOwner": false
   },
   {
     "dataName": "ExampleMod_ClaimCANAlaska",
     "relationType": "Claim",
     "nation1": "CAN",
-    "nation2": "",
-    "federation": "",
     "region1": "Alaska",
-    "region2": "",
-    "projectUnlockName": "",
-    "capitalClaim": null,
-    "initialOwner": true,
-    "initialColony": null,
-    "friendlyOnly": null
-  },
+    "initialOwner": true
+  }
 ]
 ```
 
-Once this file is saved, the mod is complete.
-- [ModInfo.json](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/tutorial-files/template-json-mod-examples/TIBilateralTemplate.json)
-- [TIBilateralTemplate.json](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/tutorial-files/template-json-mod-examples/TIBilateralTemplate.json)
+There are no trailing commas, comments, placeholder records, or copied unrelated claims in these example files. The `ExampleMod_` prefix reduces the risk of colliding with another author's new identifier.
 
-## Testing The Mod
+This changes campaign initialization data. It does not order the transfer of Alaska in a campaign that has already created its nation and region states. Other start dates can use different region/nation records and scenario variants; test those separately if you intend to support them.
 
-* Launch the game.
-* Navigate to `Mods` menu.
-* Make sure to `Enable` the mod if you created it in `Disabled` folder.
-* Make sure "Use Mods" check box is checked.
-* Relaunch the game.
-* When the game starts it will make a backup copy of the original
-  `TIBilateralTemplate.json` and then will merge in your mod's changes to the
-  file in the Templates folder.  
-  ![image](https://user-images.githubusercontent.com/11687023/195463092-dc9abea8-99a3-4f40-9d79-2781cbbc017a.png)
-* You can examine the changed `TIBilateralTemplate.json` int the Templates
-  folder to verify that the "ClaimUSAAlaska" has `"initialOwner": false` and
-  Canada has a new claim added.
-* Launch a new campaign to observe the modded-in regional claim and initial
-  ownership.  
-  ![image](https://user-images.githubusercontent.com/11687023/195463605-0a5aa5ea-74bd-417c-b2c9-9db119016963.png)
+## Testing the mod
 
-## Upload your Mod
+1. Validate both files before installation. For example, run `python -m json.tool ModInfo.json` and `python -m json.tool TIBilateralTemplate.json` from your mod's working directory. Validate the metadata again whenever you add array policies; a malformed concat list can cause symptoms that look like missing content.
+2. Open the game's Mods menu, enable `Example Mod`, and enable **Use Mods**. Restart the game after changing the installed files or enabled set.
+3. Check the log for the mod's filename and for JSON parsing, unknown-template, and missing-reference errors. A successful merge message confirms discovery and merging, not the final campaign result.
+4. Start a new 2022 campaign. Check that Alaska belongs to Canada and that the US claim still exists.
+5. Save, quit, and reload that disposable campaign. Check the same facts and the logs again.
+6. Test with other enabled mods that touch bilateral relations or the same scenario. Record the game build, scenario, DLC, and enabled mod list with your results.
 
-After your mod is complete, you can
-[upload your mod to Steam Workshop](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md).
+The loader merges JSON **in memory**. It does not overwrite the vanilla template or create a backup file. An unchanged file under `StreamingAssets/Templates` is expected; check the game result and logs.
 
-## Known Issues
+## Upload your mod
 
-* If mod directory contains a json file that doesn't match the name of an
-  existing one in the game's Templates folder (with the exception for
-  `ModInfo.json`), it will crash. If you have a code-mod that needs to load a
-  new template type, you need to alternate the extension of the file and load
-  it manually.
-* `TIMapGroupVisualizerTemplate.json` and `TISpaceFleetTemplate.json` contain
-  invalid json, and will likely cause a crash if tried modding.
-* Patching arrays performs field-wise merge for entries on the matching indices.
-  The only presently known ways to "extend" the list with a json mod are to
-  either specify the list in its entirety or to specify empty stubs for already
-  presented entries. Both ways likely make multiple mods patching the same list
-  incompatible. To workaround. you may create a code mod to do such patching.See
-  [Patching data templates in the code](/cookbook/patching_data_templates_in_code/index.md)
+Package just your mod directory and its required files. Follow the [Workshop upload and update guide](Uploading%20and%20Updating%20Workshop%20Mod.md). State the tested game build and start scenario, describe the two modified claim identifiers, and say that this example requires a new campaign to demonstrate its intended behavior.
+
+## Common problems
+
+| Symptom | First thing to inspect |
+| --- | --- |
+| Nothing changes in an existing save | Test a new campaign; initial ownership is not a live transfer instruction. |
+| Mod appears, but arrays do surprising things | Default array handling merges by index. Choose an explicit [array policy](../docs/native-data.md#array-policies) where necessary. |
+| Adding concat produces a crash or missing names/flags | Validate the metadata syntax, then check for duplicate starting-content entries in appended arrays. See [concat troubleshooting](../docs/native-data.md#diagnosing-concatenation-and-replacement-conflicts). |
+| A nested template ignores `LoadOrder` | Put its `ModInfo.json` in the same immediate directory. |
+| The log cannot find a template type | Preserve the exact supported template filename. A filename does not define a new C# type. |
+| A patch appears to work only in one scenario | Follow `TIMetaTemplate.json` to the actual region/nation IDs, including the DLC's separate template directory. Check tags and variants; a prefix used by one scenario is not a rule for every start. |
+| The vanilla file does not change | Expected for the current in-memory merge path. |
+
+Use a supported template filename: it must resolve to a game template type. Keep unrelated `.json` settings, backup files, and alternative examples outside the installed mod directory.
+
+Continue with [global configuration](../docs/global-config.md), [content authoring](../docs/content-authoring.md), or [custom organizations](Custom%20Orgs.md).

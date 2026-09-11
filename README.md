@@ -1,55 +1,46 @@
-# Terra Invicta Modding Hub
+# Terra Invicta Modding Handbook
 
-## Basic Knowledge
-- Terra Invicta is currently (as of build 1.0.32) built with Unity **2020.3.49f1**.
-- Configuration files are located in `\TerraInvicta_Data\StreamingAssets\Templates`.
-- Localization files (game text) are located in `\TerraInvicta_Data\StreamingAssets\Localization\en`.
-- The game's assets (textures, models, videos) are located in `\TerraInvicta_Data\StreamingAssets\AssetBundles`.
-- The game's code is located in `\TerraInvicta_Data\Managed\Assembly-CSharp.dll`.
+Practical guides and source examples for creating Terra Invicta data mods, code mods, scenarios, and assets.
 
-## Useful Tools
-- [Unity](https://unity3d.com/get-unity/download/archive): Necessary for creating new AssetBundles to import new assets into the game.
-  - Requires version Unity 2020.3.49f1. You **must** use this version or your game will crash when loading new bundles.
-- [FFmpeg](https://www.ffmpeg.org/download.html): Used for creating .webms to add as new councillor portraits to TI.
-  - [PowerShell script](mods/tayta/anime-councilors/waifu2vid.ps1) for mass conversion of pngs to webms.
-- [GIMP](https://www.gimp.org/downloads/): Open-source image editor, useful for preparing new 2D graphics to import into the game.
-  - [Older versions archive](https://download.gimp.org/pub/gimp/)
-- [dnSpy](https://github.com/dnSpy/dnSpy/releases): Used to view and edit the game's code.
-  - Note that this is decompiled code, therefore lacks documentation and can be difficult to decipher.
-- [AssetStudio](https://github.com/Perfare/AssetStudio/releases): Allows decompiling the game's AssetBundles to see what's inside.
-  - Currently the only known such utility that works with Unity 2020.
-- [JSON to CSV](http://www.convertcsv.com/json-to-csv.htm): Enables easier editing of the game's configuration files in spreadsheet format.
-- [Navigable Tech Tree (maintained by Sarah)](https://sarahwatt.ca/terra-invicta/techtree/?lang=en) : Allows navigating the large tech tree outside the game.
+Start with the guide for your task, and check [compatibility](docs/compatibility.md) for the recorded game/tool versions, testing limits, and update notes.
 
-## Tutorials
-- [Introduction to Importing Assets](tutorials/Custom%20Orgs.md)
-- [Creating Template JSON Mods](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Create_Template_JSON_mod.md)
-- [Building Code Mods](/tutorials/code-mods-with-umm.md)
-- [Reference Guide for Narrative Events](https://docs.google.com/document/d/1s3x96SyjvKFwx3pRSaMS7Zjo3FLwVVSLzSWzidT4CEo/edit)
-- [Making New Councillor Portraits](tutorials/Councillor%20Portraits.md)
-- [Uploading and Updating Steam Workshop Mods](https://github.com/TROYTRON/ti-mods/blob/main/tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md)
-- [An example of modifying ingame UI with code](tutorials/IntroToUI.md)
-- [Modding Cookbook](cookbook/cookbook.md)
-- [Introduction to MonoMod](tutorials/MonoMod%20Guide.md)
-- [Audio Modding Guide by Stallion](tutorials/Audio%20Modding%20Guide.md)
+## Start here
 
-## Modding Resources
-- [TIShipModdingFramework by Razorback](https://github.com/UNNRazorback/TIShipModdingFramework/tree/master)
-  - [MonoMod version by Tayta](tutorials/tutorial-files/TIShipModdingFramework_MonoMod.cs)
+1. [Find your installation, logs, and saves](docs/getting-started.md).
+2. [Create a native JSON mod](tutorials/Create_Template_JSON_mod.md), then learn [loading, arrays, and scenarios](docs/native-data.md).
+3. For behavior changes, [set up UMM/Harmony](tutorials/code-mods-with-umm.md) and build the [C# examples](examples/code/README.md).
+4. Test in a disposable campaign, then [package and publish your mod](tutorials/Uploading%20and%20Updating%20Workshop%20Mod.md).
 
-## Tips and Tricks
-- If you want to savegame edit you unpack, edit the embedded json and repack with z7ip, default settings for gzip (format: gzip, 5 - normal,word size:32)
+## Find a capability
+
+| Goal | Guide |
+|---|---|
+| Change values, add records, control arrays and conflicts | [Native data](docs/native-data.md) |
+| Configure fields absent from vanilla JSON | [GlobalConfig](docs/global-config.md) |
+| Add organizations, flags, technology, events, or localization | [Content authoring](docs/content-authoring.md), [organizations](tutorials/Custom%20Orgs.md) |
+| Target base-game or Dark Skies scenarios | [Scenarios](docs/native-data.md) |
+| Build asset bundles or work with ships | [Assets](docs/assets.md) |
+| Make councilor portraits and badges | [Portraits](tutorials/Councillor%20Portraits.md) |
+| Edit maps and region geometry | [Maps](tutorials/MapCreation.md) |
+| Add audio | [Audio](tutorials/Audio%20Modding%20Guide.md) |
+| Patch code, add settings, or persist state | [Code modding](docs/code-modding.md), [recipes](cookbook/cookbook.md) |
+| Look up templates and understand campaign state | [Template and state APIs](docs/template-and-state-apis.md) |
+| Modify a game screen | [Unity UI](tutorials/IntroToUI.md) |
+| Work with BepInEx/MonoMod | [Alternative loaders](tutorials/MonoMod%20Guide.md) |
+| Diagnose a crash or conflict | [Debugging](docs/debugging.md) |
+| Choose a compiler, decompiler, or editor | [Tools](docs/tools.md) |
+
+## Resources
+
+- **[Terra Invicta AI mod template](https://github.com/Laurentiu-Andronache/ti-mod-template)**: Windows scaffolding for creating mods with AI agents, including agent instructions, MCP, ILSpy, and build, test, and packaging workflows.
+- **TerraInvictaMCP**: tools for interacting with the game during mod development. Compare [Laurentiu-Andronache's fork](https://github.com/Laurentiu-Andronache/TerraInvictaMCP) and [MeatBunny's upstream](https://github.com/MeatBunny/TerraInvictaMCP), and use whichever was updated most recently. Follow the chosen repository's setup instructions.
+- [TIShipModdingFramework by UNNRazorback](https://github.com/UNNRazorback/TIShipModdingFramework): custom ship support; follow the project's installation and version requirements.
+- [MonoMod adaptation by Tayta](tutorials/tutorial-files/TIShipModdingFramework_MonoMod.cs): source for existing MonoMod ship projects; see [adaptation notes](docs/assets.md#inspect-assets-and-ship-examples).
+- [Narrative event reference](https://docs.google.com/document/d/1s3x96SyjvKFwx3pRSaMS7Zjo3FLwVVSLzSWzidT4CEo/edit): use alongside your installed templates and field signatures.
+- [Sarah's navigable tech tree](https://sarahwatt.ca/terra-invicta/techtree/?lang=en): browse prerequisites and unlocks; check its data version against your game.
+- [Tutorial resources](tutorials/tutorial-files/tutorial-files.md): bundle helper, badge templates, and JSON examples.
 
 ## Modding Wishlist
+
 - Native support for DLL patching, similar to how Rimworld does it.
   - This would alleviate the need for players to download and install third party patching tools (like Unity Mod Manager or BepInEx/MonoMod) to be able to play code mods.
-
-## Future Investigation
-- Ability to add new sounds (e.g. custom voice packs for councillors) to the game.
-  - This has now been officially implemented by Pavonis.
-- Ability to add new UI elements to the game.
-  - See an example of modifying the UI in code - it is possible to do, but different things might be less or more complex to alter.
-  - In general, this is extremely difficult to do from outside the editor.
-
-## Mod Releases
-- [Tayta Malikai](mods/tayta/Tayta's%20Mods.md)

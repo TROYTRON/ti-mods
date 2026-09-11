@@ -1,260 +1,38 @@
 # Preserving mod state over save/load
 
-## Version compatibility
+Use [TiMods.SaveState](../../examples/code/TiMods.SaveState/Main.cs) for a small campaign counter. It creates, increments or removes state only after a button click in a loaded campaign, and never saves automatically. [Build it](../../examples/code/README.md) and use a disposable campaign.
 
-Tested on 0.3.28
+## Register persistent state
 
-## Motivation
+Derive a public class from `TIGameState` and create it through `GameStateManager.CreateNewGameState<T>()`. The game assigns its ID and registers it for persistence. Plain static fields and dictionaries in your mod are not automatically saved.
 
-Mod makers may want to introduce state that needs to be preserved over
-save/load. Examples of that may include tracking some modded state of objects
-that are not contained in vanilla data structures - say a mod may add tracking
-of amount of combats a particular ship partook in. We will follow that idea as an example.
+Keep the assembly identity, namespace and class name stable after distribution. Include a schema version and define migrations before changing saved fields. The example retrieves its singleton with `GameStateManager.FindGameState<CampaignCounterState>()`; it does not retain a reference from a previous campaign. Its `PostInitializationInit_4` callback illustrates work performed after state restoration.
 
-## Background
+## Attach extra state to existing objects
 
-`TIGameState` class represents saveable entities in the game. All objects that
-preserve the state over save/load inherit the class.
+For a feature such as ship veterancy, use a separate persistent record for each owner:
 
-`GameStateManager` is a centralized tracker of the state. You can use
-`GameStateManager.CreateNewGameState<*state type*>()` to manually register state
-with the manager. At the time of save, the manager goes over the list of all
-registered objects and serializes them to the json file alongside with the
-associated in-game type. It also preserves cross-object references in the saved
-objects using the IDs of them.
+1. Store the owning ship's **`GameStateID`** alongside the counter or other custom values. Resolve it after loading with `GameStateManager.FindGameState<TISpaceShipState>(ownerId, false)`.
+2. Build an in-memory dictionary keyed by that owner ID for quick lookup. Rebuild it from restored records and clear it when the campaign is unloaded; never carry old object references into a new campaign.
+3. Make registration idempotent. A restored record must be indexed as-is, without creating a duplicate through the creation path.
+4. When an owner is destroyed, look up an existing record with `TryGetValue`, remove that record through `GameStateManager`, then remove its index entry. A removal path must not call an accessor that creates missing state.
 
-On-load, the manager iterates over the serialized objects in the loaded save
-file, deserializes them in order, and calls initialization functions on the
-objects. There are total 7 initialization stages:
+Choose initialization hooks after the owning objects exist, tolerate missing/destroyed owners, and test the owner relationship after reload. The maintained counter is deliberately smaller than a complete per-ship implementation.
 
-* PostGameStateCreateInit_OnCreationOnly_1
-* PostGlobalGameStateCreateInit_2
-* PostCanvasManagerCreateInit_3
-* PostInitializationInit_4
-* PostAllStartUpInit_5
-* PostVisualizerCreationInit_6
-* PostVisualizerCreationInit_7
+[dkoiman's per-ship veterancy walkthrough](ship-veterancy.md) supplies the larger worked example: serialized ship references, initialization stages, index rebuilding, combat/destruction hooks, and UI indicators. It records the original tested version and the corrections needed when adapting its source; it is not covered by the maintained counter's build check.
 
-One can not extend an existing state object, and thus is required to define a
-new one as well as keep track of the state for the purpose of keeping up to the
-intended state. The newly created state needs to inherit `TIGameState` as well
-as override at least on of the aforementioned initialization functions. Unless
-in special circumstances, you likely need to override either
-`PostInitializationInit_4` or `PostAllStartUpInit_5` (in most cases there is no
-practical difference between them, so you can choose either).
+## Remove state before uninstalling
 
-Once the object is no longer required to be preserved across save/load, you
-should remove it from the state manager with
-`GameStateManager.RemoveGameState<*state type*>(*stateID*, false)`.
+Toggling a mod off does not erase its saved types. In **1.0.53a**, `RemoveGameState<T>` also leaves an empty type bucket that the serializer can still write. The example's cleanup removes that bucket only when it belongs to `CampaignCounterState` and is empty, using the private `GameStateManager.gamestates` dictionary.
 
-If you want to attach extra state to an existing entity, you need to separately
-track mapping between the original entity and the extra state. To avoid
-unintentionally leaking the extra state across save/load you should clean up the
-state in prefix patches of `SolarSystemBootstrap.LoadGame` and
-`ViewControl.ClearGameData`.
+Recheck that private API after updates. If cleanup fails, keep the mod installed. A removal changes the current campaign only: save to a **new file** before testing uninstall, and retain the original. Other saved references to a removed type would need their own migration.
 
-## A note on save compatibility
+## Test the complete cycle
 
-Your mod should not see any issues with compatibility with existing saves as
-long as your mod can generate a default extra state for existing objects first
-time it is requested (see the manager's mapping accessor in the example below).
-However, removing the mod that generates the extra state will cause crash when
-attempting to load a save referencing the state from the removed mod.
+1. Create/increment the counter and save a new disposable file.
+2. Return to the menu and reload; check the value and restoration log.
+3. Restart the application with the mod installed, then reload again.
+4. Load a second campaign and confirm it has independent state.
+5. Remove the counter, verify that instance and owned-bucket cleanup succeeded, and save a new file. Restart without the mod and test that new file.
 
-## Recipe
-
-* Create a custom state class inhereting TIGameState. The class should contain
-  a reference to the object you extend (if any), and you custom state. Public
-  fields of the class are serializable to the save state by default. Private
-  fields require `[SerializeField]` annotation.
-
-```C#
-    class TISpaceShipVeterancyState : TIGameState {
-        // Override the ship reference field to allow setting a cross-reference on the field.
-        // Since we attach the veterancy status to the the specific ship, we have to keep track
-        // of the object we extend the state of.
-        new public TISpaceShipState ref_ship;
-
-        [SerializeField]
-        public int battlesSurvived { get; private set; } = 0;
-
-        public void RecordBattle() {
-            battlesSurvived += 1;
-        }
-
-        // Initialized function since we can't have constructors for TIGameState objects.
-        public void InitWithSpaceShipState(TISpaceShipState ship) {
-            if (ship.template == null) {
-                return;
-            }
-            this.ref_ship = ship;
-        }
-
-        // On load - restore the state to the manager. See below the definition of the manager.
-        public override void PostInitializationInit_4() {
-            SpaceShipVeterancyManager.singleton.RegisterShip(this.ref_ship, this);
-        }
-    }
-```
-
-* Create a manager to map the state to the object it is attached to. The manager
-  should keep a mapping between the original object's ID and its extension.
-
-```C#
-    class SpaceShipVeterancyManager {
-
-        // Create a global manager object for the state tracking.
-        public static SpaceShipVeterancyManager singleton = new SpaceShipVeterancyManager();
-
-        // Mapping between ID of the `TISpaceShipState` and associated `TISpaceShipVeterancyState`.
-        private Dictionary<GameStateID, TISpaceShipVeterancyState> 
-            SpaceShipVeterancyStateMapping =
-            new Dictionary<GameStateID, TISpaceShipVeterancyState>();
-
-        // Accessor to the above mapping.
-        public TISpaceShipVeterancyState this[TISpaceShipState ship] {
-            get { 
-                if (ship == null) {
-                    return null;
-                }
-
-                // To avoid crashing - register the new state extension with defaults.
-                if (!SpaceShipVeterancyStateMapping.ContainsKey(ship.ID)) {
-                    this.RegisterShip(ship);
-                }
-
-                return SpaceShipVeterancyStateMapping[ship.ID];
-            }
-        }
-
-        // Add new extra state to an existing object.
-        public void RegisterShip(TISpaceShipState ship, TISpaceShipVeterancyState veterancy = null) {
-            if (SpaceShipVeterancyStateMapping.ContainsKey(ship.ID)) {
-                return;
-            }
-
-            if (veterancy == null) {
-                // Create the object within the state manager.
-                veterancy = GameStateManager.CreateNewGameState<TISpaceShipVeterancyState>();
-                // And initialize it with defaults
-                veterancy.InitWithSpaceShipState(ship);
-            }
-
-            SpaceShipVeterancyStateMapping.Add(ship.ID, veterancy);
-        }
-
-        // Remove the extra state from an existing object.
-        public void UnregisterShip(TISpaceShipState ship) {
-            if (!SpaceShipVeterancyStateMapping.ContainsKey(ship.ID)) {
-                TISpaceShipVeterancyState shipVeterancyState = this[ship];
-                if (GameStateManager.RemoveGameState<TISpaceShipVeterancyState>(shipVeterancyState.ID, false)) {
-                    SpaceShipVeterancyStateMapping.Remove(ship.ID);
-                }
-            }
-        }
-
-        // Clear up mapping
-        public void ResetState() {
-            SpaceShipVeterancyStateMapping.Clear();
-        }
-    }
-```
-
-* Patch in `SolarSystemBootstrap.LoadGame` and `ViewControl.ClearGameData` to
-  clear up the manager's state to ensure no unintentional leakage of the state
-  across save/load.
-
-```C#
-    [HarmonyPatch(typeof(SolarSystemBootstrap), "LoadGame")]
-    static class LoadGamePatch {
-        static void Prefix() {
-            SpaceShipVeterancyManager.singleton.ResetState();
-        }
-    }
-
-    [HarmonyPatch(typeof(ViewControl), "ClearGameData")]
-    static class ClearGameDataPatch {
-        static void Prefix() {
-            SpaceShipVeterancyManager.singleton.ResetState();
-        }
-    }
-```
-
-* Patch in the `<original state type>.InitWithTemplate` to initialize and
-  register the state extension for the newly created object.
-
-```C#
-    [HarmonyPatch(typeof(TISpaceShipState), "InitWithTemplate")]
-    static class InitWithTemplatePatch {
-        // In this case the argument is `rawTemplate`, but in others it might be
-        // just `template`.
-        static void Postfix(TIDataTemplate rawTemplate, TISpaceShipState __instance) {
-            if (rawTemplate as TISpaceShipTemplate != null) {
-                SpaceShipVeterancyManager.singleton.RegisterShip(__instance);
-            }
-        }
-    }
-```
-
-* Patch in relevant methods to update the state of your extra state. In the case
-  of tracking the combat state of the ship, we need to patch in
-  `TISpaceShipState.DestroyShip` which is responsible for removing the destroyed
-  ship from the active objects, and `TISpaceFleetState.PostCombat`, which is
-  triggered when the combat is resolved (either manually or via auto resolve).
-
-```C#
-    [HarmonyPatch(typeof(TISpaceShipState), "DestroyShip")]
-    static class DestroyShipPatch {
-        static void Postfix(ref TISpaceShipState __instance) {
-            SpaceShipVeterancyManager.singleton.UnregisterShip(__instance);
-        }
-    }
-
-    [HarmonyPatch(typeof(TISpaceFleetState), "PostCombat")]
-    static class PostCombatPatch {
-        static void Postfix(ref TISpaceFleetState __instance) {
-            foreach (var ship in __instance.ships) {
-                if (!ship.ShipDestroyed()) {
-                    SpaceShipVeterancyManager.singleton[ship].RecordBattle();
-                }
-            }
-        }
-    }
-```
-
-* In the case of the specific example, we also want to see the registered state
-  somewhere. Add some simple visual inidication for the battle proven ships.
-
-```C#
-    [HarmonyPatch(typeof(FleetsScreenController), "UpdateIndividualDataScreen")]
-    static class PatchUpdateIndividualDataScreen {
-        static void Postfix(ref FleetsScreenController __instance) {
-            if (SpaceShipVeterancyManager.singleton[__instance.selectedShip].battlesSurvived > 0) {
-                __instance.indiv_ShipName.SetText("*" + __instance.selectedShip.displayName, true);
-            }
-        }
-    }
-
-
-    [HarmonyPatch(typeof(FleetsScreenController), "OnClickSaveName")]
-    static class PatchOnClickSaveName {
-        static void Postfix(ref FleetsScreenController __instance) {
-            if (SpaceShipVeterancyManager.singleton[__instance.selectedShip].battlesSurvived > 0) {
-                __instance.indiv_ShipName.SetText("*" + __instance.selectedShip.displayName, true);
-            }
-        }
-    }
-```
-
-### Result
-
-Nice little indicator of battle hardened ships :)
-
-![image](result.png)
-
-### Complete Example
-
-* [Mod entry point](src/SaveStateExample.cs)
-* [Object state file](src/TISpaceShipVeterancyState.cs)
-* [Custom state manager](src/SpaceShipVeterancyManager.cs)
-* [Harmony patches](src/SpaceShipStatePatches.cs)
+The project compiles for the 1.0.53a baseline; the complete persistence and uninstall cycle has not been tested in game for this handbook. Rebuild and repeat it for **1.0.57**.

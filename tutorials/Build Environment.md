@@ -1,81 +1,32 @@
-# Terra Invicta Build Environment
-This example sets up a Build Environment using Visual Studio. Other code development environments may work. As details of how to set those up are learned they may be added
+# C# build environment
 
-## Install Visual Studio Community 2019
-* Go to the [Microsoft Visual Studio website](https://visualstudio.microsoft.com/)
-* Currently to access Visual Studio Community 2019 you must have a Microsoft account and be logged in
-* Once you are logged in, select the Downloads tab and search for "Visual Studio Community 2019"
-![Visual Studio Community 2019 Download](https://user-images.githubusercontent.com/11687023/194719522-262c64a5-0ed1-40a3-b05d-4ef6901d4edb.png)
-* In the Workloads section,under the "Desktop & Mobile" area select ".NET desktop development" and under the "Gaming" area select "Game development with Unity"
-![Visual Studio Community Installer](https://user-images.githubusercontent.com/11687023/194719674-c7cf8f5f-0a3e-4f7d-8b44-e86b589bea4f.png)
-![Visual Studio Community Install Options](https://user-images.githubusercontent.com/11687023/194719784-53a2ad2d-421e-42e0-8f3a-1c2e3d23e68f.png)
+Install the compiler and locate your own game/loader assemblies, then use the single set of [build and package commands](../examples/code/README.md#build). Unity Editor is unnecessary for code-only mods.
 
+## Compiler and editor
 
-## Install Unity Mod Manager
-* Go to the [Nexus Mods Unity Mod Manager website](https://www.nexusmods.com/site/mods/21/)
-* Select the "Files" tab, any version 0.25.0 or later
-* Download this and install it (it is only necessary to decompress it into the desired location)
-* Run the UnityModManager.exe
-  * Select Game = Terra Invicta
-  * Select the Folder where Terra Invicta is installed
-  * Select Installation method = DoorstopProxy
- 
-![UnityModManager_PreInstall](https://user-images.githubusercontent.com/11687023/190954427-0093c2d3-43b7-4313-8cb8-d029e6e4812b.PNG)
-![UnityModManager_PostInstall](https://user-images.githubusercontent.com/11687023/190954435-838b63fd-7881-4cbd-9b57-fa32caf7294e.PNG)
+The maintained projects use SDK **8.0.424**, pinned in [global.json](../examples/code/global.json). Install the **SDK**, not just a runtime, and verify that `dotnet --list-sdks` lists it. Follow [Microsoft's installation instructions](https://learn.microsoft.com/en-us/dotnet/core/install/windows); a user-local installation can be passed to the build script with `-DotnetPath`.
 
-Unity Mod Manager can also be used to install and update Terra Invicta mods available on Nexus Mods.
+Visual Studio, VS Code or another C# editor can use the same projects. For Visual Studio, install the .NET desktop development workload and use a version that supports the selected SDK.
 
-## Install Unity (optional)
-* Required version is 2020.3.30f1 (64-bit). Last I checked the automatic download of Visual Studio Community 2019 with Unity install was broken (likely because Visual Studio has updated current version to 2022).
-* TBD
+The mod target is **`net48`**, matching the installed Harmony dependency. The .NET 8 SDK compiles it; it does not turn the mod into a .NET 8 Unity plugin. The pinned `Microsoft.NETFramework.ReferenceAssemblies` package supplies framework reference assemblies during restore.
 
-## Create your first project in Visual Studio
-* Open Visual Studio
-* Select File / New / Project
-* Set options C#, All platforms, Library, choose "Class Library (.NET Framework) C#
-* Select "Next"
-![image](https://user-images.githubusercontent.com/11687023/190954831-08499f01-e039-4ab8-b0e7-83aac754097a.png)
-* Set your Project name and Solution name to your mod's name
-* Select a location where your mod project will be created
-* Select Framework ".NET Framework 4.6"
-* Select "Create"
-![image](https://user-images.githubusercontent.com/11687023/190955043-dfdd6892-a58f-4b9e-adb3-309f1c204170.png)
-* Rename the default "Class1.cs" to match your mod name (right-click on Class1.cs in Solution explorer and select rename)
-* Add at least the following references (right-click on References in Solution explorer and select "Add Reference..."
-![image](https://user-images.githubusercontent.com/11687023/190955894-2b11250e-171d-4b9d-8e85-75e908580045.png)
-* Insert the following boilerplate initial code
-```cs
-using HarmonyLib;
-using UnityEngine;
-using UnityModManagerNet;
-using System.Reflection;
-using PavonisInteractive.TerraInvicta;
+## Local game references
 
-namespace MyTerraInvictaMod
-{
-    public class MyTerraInvictaMod
-    {
-        public static bool enabled;
-        public static UnityModManager.ModEntry mod;
+Find the game through Steam's **Browse local files** or the storefront equivalent. `TerraInvictaDir` must point to the directory containing `TerraInvicta_Data/Managed/Assembly-CSharp.dll`.
 
-        //This is standard code, you can just copy it directly into your mod
-        static bool Load(UnityModManager.ModEntry modEntry)
-        {
-            var harmony = new Harmony(modEntry.Info.Id);
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-            mod = modEntry;
-            modEntry.OnToggle = OnToggle;
-            return true;
-        }
+Install [Unity Mod Manager](https://github.com/newman55/unity-mod-manager) for Terra Invicta and confirm its menu starts. The maintained baseline is **1.0.53a / Unity 2020.3.49f1 / UMM 0.33 / Harmony 2.3.6**. UMM and Harmony default to `TerraInvicta_Data/Managed/UnityModManager/`; use `UnityModManagerDir` if the chosen installation differs.
 
-        //This is also standard code, you can just copy it
-        static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
-        {
-            enabled = value;
-            return true;
-        }
-    }
-}
-```
+All references must come from the installation you will test. The shared project files set game, Unity and loader references to `Private=false`, so their DLLs do not enter your package. Do not add a separate Harmony package or commit copied game assemblies.
 
-More information on modding using Harmony can be found [here](https://harmony.pardeike.net/)
+## Resolve setup failures
+
+| Failure | Check |
+| --- | --- |
+| `dotnet` exists but no SDK is found | Install the SDK; inspect `dotnet --list-sdks` and the pinned version |
+| Missing `Assembly-CSharp.dll` | Point `TerraInvictaDir` at the game root, not its `Managed` subdirectory |
+| Missing UMM/Harmony reference | Verify the loader installation and `UnityModManagerDir` |
+| NuGet restore fails | Check configured sources/network access; the first build needs the pinned reference package |
+| Existing mod DLL cannot be replaced | Close the game before deploying the new build |
+| A UI type is unresolved | Add its owning installed assembly with `Private=false`; see [UI references](IntroToUI.md) |
+
+Continue with [build, install and smoke test](../examples/code/README.md). Rebuild and repeat the relevant feature tests after a game or loader update. AssetBundle authoring uses a separate [Unity asset workflow](../docs/assets.md).

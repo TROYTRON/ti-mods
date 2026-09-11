@@ -1,82 +1,21 @@
 # Adding a console command
 
-## Version Compatibility
+Use [TiMods.Console](../../examples/code/TiMods.Console/Main.cs), which registers `timods_echo` and removes its own registration when disabled. [Build and install it](../../examples/code/README.md) with your local game references.
 
-Tested on 0.3.29
+## Register at the right time
 
-## Motivation
+`TerminalController.RegisterCommand` accepts a command name, a handler taking `string[]`, and help text. Give your command a unique prefix and retain the controller needed for `Output` and `OutputError`.
 
-Debug console is a useful tool for the mod developers to simulate a variety of
-situations they may want to test. Most of vanilla entities have console commands
-which can manipulate with them. When mod add new entities, it can be extremely
-useful to add new console command hooks.
+The example handles both lifecycles: it checks for an existing terminal through `GlobalInstaller.container.TryResolve<Terminal>()`, and patches `Terminal.Initialize` for a terminal initialized later. Registration must be repeatable; the underlying dictionary rejects duplicate names.
 
-## Background
+## Validate arguments and clean up
 
-`TerminalController` is a class responsible for handling the debug console. It
-allows registering new command handlers with `RegisterCommand`. Each
-registration must supply a string representing the command (what user will type
-in the console), `CommandHandler` object and a help string for the command.
-`CommandHandler` is a simple delegate object that wraps a handler method.
-Handler method must return `void` and accept `string[]` as its argument - that
-represents the arguments supplied to the command. The handler object should
-preserve a reference to the `TerminalController` to be able to write to console.
+The game's parser trims comma-separated arguments. A bare command can arrive as **one empty string**, so test for empty/whitespace content rather than relying only on `args.Length == 0`. The example prints usage for empty input and echoes the supplied text without changing campaign state.
 
-## Recipe
+In **1.0.53a**, there is no public unregister operation. The example accesses the private `TerminalController.commands` dictionary and remembers the exact `CommandRegistration` it added. On disable, it removes the entry only if that object is still the current registration, preserving a replacement made by another mod. Destroyed terminals can have a null dictionary; cleanup skips those safely. Recheck this private field after updates.
 
-Below we will follow an example of adding a simple command that echoes back the
-first argument it received.
+## Test
 
-* Define a holding class for your command handler
+Open the game's debug console, run `help`, `timods_echo hello`, and bare `timods_echo`. Confirm the help entry, echoed text and usage message. Toggle the mod off and verify the command disappears, then enable it again and check that registration succeeds once. Restart and repeat with any other console mods you support.
 
-```C#
-    public class TerminalCustomCommandBinding {
-        public TerminalCustomCommandBinding(TerminalController terminalController) {
-            this.terminalController = terminalController;  // Save the reference to the controller
-            this.terminalController.RegisterCommand(
-                "MySimpleCommand",  // The command to be typed into the console
-                new CommandHandler(this.MySimpleCommand),  // the holder object for the command handler
-                "MySimpleCommand is an exmple of the a custom console command," +  // Help string
-                " prints back one argument it is give");
-        }
-
-        // Handler for the command, will be called when you type your command with arguments
-        // to the console and hit enter.
-        public void MySimpleCommand(string[] args) {
-            // Check amount of the supplied argument. Our example require at least one argument
-            if (args.Length < 1) {
-                // Print to console an error
-                this.terminalController.OutputError("MySimpleCommand requires one argument");
-                return;
-            }
-            // Print to console some regular text.
-            this.terminalController.Output("You called MySimpleCommand with: " + args[0]);
-        }
-
-        // A reference to the console controller object.
-        private TerminalController terminalController;
-    }
-```
-
-* The registration of the console command can happen at any time, but it is
-  convenient to do in the entry point of the mod.
-* Add a holder field for your handler and registration to you mod entry point.
-
-```C#
-        public static TerminalCustomCommandBinding terminalBindingHolder;
-        //...
-        static bool Load(UnityModManager.ModEntry modEntry) {
-        //...
-            var container = GlobalInstaller.container;
-            var terminalController = container.Resolve<Terminal>().controller;
-            terminalBindingHolder = new TerminalCustomCommandBinding(terminalController);
-        }
-```
-
-### Result
-
-![image](result.png)
-
-### Example
-
-[Complete example code](src/ExampleConsoleCommand.cs)
+The project compiles against the handbook's 1.0.53a baseline; console behavior still needs an in-game test on your installation.
