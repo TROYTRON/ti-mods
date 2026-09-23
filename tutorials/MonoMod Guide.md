@@ -31,6 +31,29 @@
 
 You can now start up Terra Invicta and test your newly developed functionality. Hopefully it doesn't crash too much.
 
+## Debugging Tools
+
+Some useful settings to help your modding efforts can be found in `Terra Invicta/BepInEx/confic/BepInEx.cfg`.
+
+This setting will cause a console to show up when you start up Terra Invicta.
+This will allow you to verify whether your mod assembly is actually getting patched and loaded properly at startup.
+```
+## Enables showing a console for log output.
+# Setting type: Boolean
+# Default value: false
+Enabled = true
+```
+
+By default, your mod assembly will be patched into the TI assembly in virtual memory.
+This option will allow you to save the patched DLL assembly, which is useful for debugging using dnSpy.
+```
+## If enabled, BepInEx will save patched assemblies into BepInEx/DumpedAssemblies.
+## This can be used by developers to inspect and debug preloader patchers.
+# Setting type: Boolean
+# Default value: false
+DumpAssemblies = true
+```
+
 # Using MonoMod
 
 MonoMod is a very powerful modding framework, but it does have one major downside: the documentation is virtually non-existent.
